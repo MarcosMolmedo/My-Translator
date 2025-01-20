@@ -1,0 +1,71 @@
+.footer {
+  background-color: #003366;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.footer .address {
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 10px 0 0 0;
+  padding: 0;
+  gap: 15px;
+}
+
+.social-links li a img {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-links li a img:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.developer-seal {
+  position: absolute;
+  bottom: 10px;
+  right: 10px; /* Margen derecho para el sello */
+  font-size: 0.7rem;
+  color: #cccccc;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.developer-seal img {
+  width: 20px; /* Tamaño pequeño para el logo */
+  height: 20px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.developer-seal img:hover {
+  transform: scale(1.2);
+  opacity: 0.9;
+}
+
+.developer-seal span {
+  font-size: 0.5rem; /* Texto discreto */
+}
+
+.developer-seal a {
+  text-decoration: none;
+}
+
+.developer-seal a:hover {
+  text-decoration: underline;
+}
