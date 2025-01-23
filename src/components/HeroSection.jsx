@@ -6,7 +6,7 @@ const HeroSection = () => {
   return (
     <section className="hero">
       <div className="hero-content">
-        <h2>Traducción Jurada en los Países Bajos</h2>
+        <h2>Traducciones Juradas en Los Países Bajos</h2>
         <p className="hero-description">Convierte tus documentos de forma rápida, precisa y efectiva.</p>
         <a href="#contact" className="cta-button">Contáctame</a>
       </div>

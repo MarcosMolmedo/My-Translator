@@ -1,48 +1,154 @@
+/* Hero Section - Estilos Base */
 .hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(to right, #0056b3, #007bff);
-    color: white;
-    padding: 50px;
-    text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff; /* Fondo blanco */
+  background: linear-gradient(to right, #62a0eb, #ce5540); /* Azul a coral suave */
+  color: white;
+  padding: var(--padding-large);
+  text-align: left;
+  font-family: helvetica;
+}
+
+.hero-content {
+  flex-basis: 60%; /* Proporciona más espacio al contenido */
+  max-width: 70%; /* Aumenta el ancho máximo */
+  min-width: 400px; /* Asegura que el contenido no se encoja demasiado */
+}
+
+.hero-content h2 {
+  font-size: var(--title-large);
+  margin-bottom: 20px;
+  white-space: nowrap; /* Mantiene el título en una línea */
+  overflow: hidden;
+  font-family: helvetica;
+  margin-left: 35px;
+}
+
+.hero-description {
+  font-size: var(--subtitle-large);
+  margin-bottom: 20px;
+  white-space: nowrap; /* Mantiene el subtítulo en una línea */
+  overflow: hidden;
+  margin-left: 35px;
+}
+
+.hero-image {
+  flex-basis: 40%; /* Ajusta el espacio disponible para la imagen */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(74, 128, 186, 0.1);
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.hero-image img {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
   }
-  
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.hero-content .cta-button {
+  background-color: #00ccff;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 204, 255, 0.5);
+  animation: heartbeat 1.2s ease-in-out infinite;
+  font-family: helvetica;
+  margin-left: 35px;
+}
+
+.hero-content .cta-button:hover {
+  background-color: #0056b3;
+}
+
+/* Media Queries */
+@media (max-width: 1162px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--padding-medium);
+  }
+
   .hero-content {
-    max-width: 50%;
+    flex-basis: auto; /* Deja que se adapte automáticamente */
+    max-width: 100%;
+    margin-bottom: 20px;
   }
-  
+
   .hero-content h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+    font-size: var(--title-medium);
   }
-  
+
   .hero-description {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    white-space: nowrap; /* Hace que el texto se quede en una sola línea */
-    overflow: hidden; /* Oculta texto que excede el ancho */
-    text-overflow: ellipsis; /* Añade puntos suspensivos si es necesario */
+    font-size: var(--subtitle-medium);
   }
-  
+
   .hero-content .cta-button {
-    background-color: #00ccff; /* Azul claro */
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    padding: 12px 25px;
+    font-size: 1rem;
   }
-  
-  .hero-content .cta-button:hover {
-    background-color: #0056b3; /* Azul oscuro */
-  }
-  
+
   .hero-image img {
-    width: 300px; /* Ajusta el tamaño */
-    height: auto;
-    border-radius: 10px; /* Opcional: Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    width: 80%;
+    max-width: 300px;
+    margin: 0 auto;
   }
-  
+}
+
+@media (max-width: 768px) {
+  .hero-content h2 {
+    font-size: var(--title-small);
+  }
+
+  .hero-description {
+    font-size: var(--subtitle-small);
+  }
+
+  .hero {
+    padding: var(--padding-small);
+  }
+
+  .hero-content .cta-button {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 417px) {
+  .hero-content h2 {
+    font-size: var(--title-xsmall);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  .hero-description {
+    font-size: var(--subtitle-xsmall);
+    margin-bottom: 10px;
+  }
+
+  .hero {
+    padding: var(--padding-xsmall);
+  }
+
+  .hero-content .cta-button {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+  }
+}

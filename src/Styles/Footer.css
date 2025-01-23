@@ -1,5 +1,5 @@
 .footer {
-  background-color: #003366;
+  background-color: #3e4ae9;
   color: white;
   text-align: center;
   padding: 20px;
@@ -68,4 +68,40 @@
 
 .developer-seal a:hover {
   text-decoration: underline;
+}
+
+/* Ajustes para pantallas extremadamente pequeñas */
+@media (max-width: 426px) {
+  .footer {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .footer p,
+  .footer .address {
+    font-size: 0.7rem; /* Texto más pequeño */
+    line-height: 1.2; /* Mejora la legibilidad */
+  }
+
+  .social-links {
+    flex-direction: column; /* Íconos apilados */
+    gap: 8px; /* Menor separación */
+  }
+
+  .social-links li a img {
+    width: 24px; /* Íconos más pequeños */
+    height: 24px;
+  }
+
+  .developer-seal {
+    font-size: 0.6rem; /* Sello más pequeño */
+    gap: 3px; /* Reduce el espacio entre texto y logo */
+    position: static; /* Evita problemas de posicionamiento */
+    margin-top: 10px; /* Espaciado para separación */
+  }
+
+  .developer-seal img {
+    width: 16px; /* Logo más pequeño */
+    height: 16px;
+  }
 }

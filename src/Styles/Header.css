@@ -1,61 +1,104 @@
+/* General styles for the header */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #003366; /* Azul oscuro del header */
-    padding: 20px;
-    color: white;
-  }
-  
-  .header h1 {
-    font-size: 1.8rem;
-    margin: 0;
-  }
-  
-  .header p {
-    margin: 0;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3e4ae9; /* Azul oscuro del header */
+  padding: 15px 0; /* Solo espaciado vertical */
+  color: white;
+  position: relative;
+  z-index: 1000;
+}
+
+/* Contenedor sin márgenes ni restricciones */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; /* Ocupa todo el ancho */
+  max-width: none; /* Deshabilita límites de ancho */
+  padding: 0; /* Elimina cualquier espaciado interno */
+  margin: 0; /* Elimina márgenes externos */
+}
+
+/* Logo and title styles */
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: helvetica;
+}
+
+.logo {
+  width: 50px; /* Tamaño del logo */
+  height: auto;
+}
+
+.header h1 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+/* Navigation menu styles */
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  font-family: helvetica;
+}
+
+.nav ul li a:hover {
+  color: #00ccff; /* Azul claro al pasar el cursor */
+}
+
+/* Hamburger menu styles */
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 968px) {
   .nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    display: none; /* Ocultar menú en dispositivos pequeños */
+  }
+
+  .nav.open ul {
     display: flex;
-    gap: 20px;
+    flex-direction: column; /* Poner las opciones en columna */
+    background-color: #003366; /* Mantener el fondo del menú */
+    position: absolute;
+    top: 100%; /* Mostrar menú debajo del header */
+    left: 0;
+    right: 0;
+    padding: 10px 20px; /* Espaciado interno para las opciones */
+    gap: 10px; /* Separación entre opciones */
+    z-index: 999; /* Asegurar que esté sobre otros elementos */
   }
-  
+
   .nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
+    font-size: 1.2rem; /* Hacer las opciones más grandes para mejor legibilidad */
+    padding: 10px 0; /* Espaciado vertical entre las palabras */
+    text-align: center; /* Centrar las palabras */
   }
-  
-  .nav ul li a:hover {
-    color: #00ccff; /* Azul claro al pasar el cursor */
-  }
-  
+
   .hamburger {
-    display: none;
+    display: block; /* Mostrar hamburguesa en dispositivos pequeños */
   }
-  
-  @media (max-width: 768px) {
-    .nav ul {
-      display: none;
-    }
-  
-    .nav.open ul {
-      display: flex;
-      flex-direction: column;
-      background-color: #003366;
-      position: absolute;
-      top: 100%;
-      right: 0;
-      padding: 10px;
-    }
-  
-    .hamburger {
-      display: block;
-      cursor: pointer;
-    }
-  }
-  
+}
