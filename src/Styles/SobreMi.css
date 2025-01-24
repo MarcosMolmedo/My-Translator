@@ -26,7 +26,7 @@
   .about-content {
     display: flex;
     align-items: center;
-    justify-content: center; /* Centrar horizontalmente */
+    justify-content: center; 
     gap: 2rem;
     flex-wrap: wrap; /* Adaptar en pantallas pequeñas */
   }

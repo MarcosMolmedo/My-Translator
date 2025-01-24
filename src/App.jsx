@@ -4,7 +4,10 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import SobreMi from "./pages/SobreMi";
-import Servicios from "./pages/Servicios"; // Asegúrate de que esta ruta y nombre estén correctos
+import Servicios from "./pages/Servicios"; 
+import Opiniones from "./pages/Opiniones"; 
+
+
 
 function App() {
   return (
@@ -15,7 +18,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/sobre-mi" element={<SobreMi />} />
-            <Route path="/servicios" element={<Servicios />} /> {/* Usa nombres consistentes */}
+            <Route path="/servicios" element={<Servicios />} /> 
+            <Route path="/opiniones" element={<Opiniones />} />
+           
+
           </Routes>
         </main>
         <Footer />
