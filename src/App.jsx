@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import SobreMi from "./pages/SobreMi";
 import Servicios from "./pages/Servicios"; 
 import Opiniones from "./pages/Opiniones"; 
+import PreguntasFrecuentes from "./pages/PreguntasFrecuentes";
 
 
 
@@ -20,6 +21,8 @@ function App() {
             <Route path="/sobre-mi" element={<SobreMi />} />
             <Route path="/servicios" element={<Servicios />} /> 
             <Route path="/opiniones" element={<Opiniones />} />
+            <Route path="/preguntasfrecuentes" element={<PreguntasFrecuentes />} />
+
            
 
           </Routes>

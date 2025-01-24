@@ -1,0 +1,117 @@
+body {
+  font-family: Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.preguntas-frecuentes {
+  max-width: 800px;
+  max-height: 400px; /* Altura máxima con scroll */
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Habilita scroll vertical */
+  position: relative; /* Necesario para el scroll-indicator */
+}
+
+.titulo {
+  color: #33e4ae;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contenedor-preguntas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pregunta-item {
+  border: 1px solid #ce5540;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.pregunta {
+  background-color: #33e4ae;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.pregunta.activa {
+  background-color: #ce5540;
+}
+
+.icono {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.pregunta.activa .icono {
+  transform: rotate(180deg);
+}
+
+.respuesta {
+  padding: 15px;
+  background-color: #e8f05c;
+  color: #333333;
+  border-top: 1px solid #ce5540;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  color: #ce5540;
+  cursor: pointer;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(5px);
+  }
+}
+
+/* Personalización del Scroll */
+.preguntas-frecuentes::-webkit-scrollbar {
+  width: 8px;
+}
+
+.preguntas-frecuentes::-webkit-scrollbar-thumb {
+  background-color: #ce5540;
+  border-radius: 4px;
+}
+
+.preguntas-frecuentes::-webkit-scrollbar-track {
+  background: #f9f9f9;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import "../Styles/Opiniones.css";
 import logo from "../assets/images/perfect_circular_logo.png";
@@ -50,14 +50,26 @@ const opinionesData = [
 
 const Opiniones = () => {
   const [showComentarios, setShowComentarios] = useState(false);
+  const [hideLogo, setHideLogo] = useState(false); // Nuevo estado para ocultar el logo
   const [selectedOpinion, setSelectedOpinion] = useState(null);
+
+  useEffect(() => {
+    if (showComentarios) {
+      // Desaparece el logo después de 4 segundos
+      const timer = setTimeout(() => {
+        setHideLogo(true);
+      }, 4000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [showComentarios]);
 
   return (
     <div className="opiniones-page-container">
       {/* Logo Animado */}
       <motion.div
         className={`opiniones-logo-container ${
-          showComentarios ? "opiniones-logo-background" : ""
+          hideLogo ? "hidden" : showComentarios ? "opiniones-logo-background" : ""
         }`}
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -83,7 +95,9 @@ const Opiniones = () => {
               onClick={() => setSelectedOpinion(opinion)}
             >
               <p>{opinion.text}</p>
-              <p><strong>{opinion.author}</strong></p>
+              <p>
+                <strong>{opinion.author}</strong>
+              </p>
               <p>{opinion.profession}</p>
             </motion.div>
           ))}
@@ -100,7 +114,9 @@ const Opiniones = () => {
           onClick={() => setSelectedOpinion(null)}
         >
           <p>{selectedOpinion.text}</p>
-          <p><strong>{selectedOpinion.author}</strong></p>
+          <p>
+            <strong>{selectedOpinion.author}</strong>
+          </p>
           <p>{selectedOpinion.profession}</p>
         </motion.div>
       )}

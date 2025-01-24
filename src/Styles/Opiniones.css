@@ -14,27 +14,29 @@
 
 /* Logo inicial y centrado */
 .opiniones-logo-container {
-  position: fixed;
+  
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
   transition: opacity 1.5s ease, transform 1.5s ease;
+  opacity: 1; /* Logo visible al inicio */
 }
+
+
+/* Logo desaparece */
+.opiniones-logo-container.hidden {
+  opacity: 0;
+  pointer-events: none; /* Evita que interfiera con interacciones */
+  transition: opacity 1.5s ease; /* Transición suave */
+}
+
 
 .opiniones-logo {
   width: 20vw;
   max-width: 300px;
   height: auto;
   object-fit: contain;
-  opacity: 0.8;
-}
-
-/* Logo en el fondo */
-.opiniones-logo-container.background {
-  opacity: 0.1;
-  transform: translate(-50%, -50%) scale(1.3);
-  z-index: 0;
 }
 
 /* Contenedor de los comentarios */
