@@ -7,36 +7,51 @@ require('dotenv').config();
 
 const app = express();
 app.use(cors());
-app.use(express.json()); 
-app.use(express.urlencoded({ extended: true })); 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-
+// 📌 Verificar si la carpeta "uploads/" existe, si no, crearla automáticamente
 const uploadDir = 'uploads/';
 if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true }); 
+    fs.mkdirSync(uploadDir, { recursive: true });
 }
 
-
+// 📌 Configuración de Multer para manejar archivos
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, uploadDir); 
+        cb(null, uploadDir);
     },
     filename: (req, file, cb) => {
-        cb(null, `${Date.now()}-${file.originalname}`); 
+        cb(null, `${Date.now()}-${file.originalname}`);
     },
 });
 const upload = multer({ storage });
 
-
+// 📌 Ruta para manejar el formulario y enviar el correo
 app.post('/send-email', upload.single('archivo'), async (req, res) => {
-    const { nombre, email } = req.body;
+    const { nombre, email, idioma, paisEmisor, apostillado, retiroUtrecht, envioPostNL, tiempoEntrega, comentario } = req.body;
     const archivo = req.file;
 
-    if (!nombre || !email) {
-        return res.status(400).json({ error: 'Nombre y correo electrónico son obligatorios' });
+    // 📌 Construcción del cuerpo del correo dinámicamente
+    let emailBody = `Nueva solicitud de cotización:\n\n`;
+    if (nombre) emailBody += `👤 Nombre: ${nombre}\n`;
+    if (email) emailBody += `📧 Correo Electrónico: ${email}\n`;
+    if (idioma) emailBody += `🌍 Idioma de traducción: ${idioma === "es-en" ? "Español - Inglés" : "Inglés - Español"}\n`;
+    if (paisEmisor) emailBody += `📍 País Emisor del Documento: ${paisEmisor}\n`;
+    if (apostillado) emailBody += `📜 Documento Apostillado: ${apostillado}\n`;
+    if (retiroUtrecht) emailBody += `📦 Retiro en Utrecht Terwijde: ${retiroUtrecht}\n`;
+
+    // 📌 Solo incluir "Envío por PostNL" si el usuario NO elige retirar en Utrecht
+    if (retiroUtrecht !== "Sí" && envioPostNL) {
+        emailBody += `🚚 Envío por PostNL: ${envioPostNL}\n`;
     }
 
-   
+    if (tiempoEntrega) emailBody += `⏳ Tiempo de Entrega: ${tiempoEntrega}\n`;
+
+    // 📌 Agregar comentario si el usuario escribió algo
+    if (comentario) emailBody += `📝 Comentario del cliente: ${comentario}\n`;
+
+    // 📌 Configuración de Nodemailer
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -45,19 +60,14 @@ app.post('/send-email', upload.single('archivo'), async (req, res) => {
         },
     });
 
-    
+    // 📌 Configurar el correo con toda la información
     const mailOptions = {
         from: email,
         to: process.env.EMAIL_USER,
         subject: 'Nueva Solicitud de Cotización',
-        text: `Nombre: ${nombre}\nCorreo: ${email}`,
+        text: emailBody,
         attachments: archivo
-            ? [
-                {
-                    filename: archivo.originalname,
-                    path: archivo.path,
-                },
-            ]
+            ? [{ filename: archivo.originalname, path: archivo.path }]
             : [],
     };
 
@@ -71,7 +81,7 @@ app.post('/send-email', upload.single('archivo'), async (req, res) => {
     }
 });
 
-
+// 📌 Iniciar el servidor en el puerto 3000
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
