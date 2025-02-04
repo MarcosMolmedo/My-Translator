@@ -1,88 +1,125 @@
 .contact-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    max-width: 900px;
-    margin: 50px auto;
-    padding: 20px;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+/* Imagen de la izquierda con efecto de aparición */
+.contact-sticker {
+  width: 300px;
+  height: auto;
+  opacity: 0;
+  animation: fadeIn 4s ease-in forwards;
+  order: -1; 
+}
+
+/* Cuadro de mensaje alineado a la derecha */
+.contact-message {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 450px;
+  text-align: left;
+  flex-basis: 55%;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+/* Ajuste del título */
+.contact-title {
+  color: #333;
+  font-size: 1.3rem;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: block;
+  text-align: center;
+}
+
+/* Texto del párrafo */
+.contact-message p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.contact-message a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contact-message a:hover {
+  text-decoration: underline;
+}
+
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.contact-icon {
+  width: 40px;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.contact-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
   }
-  
-  .contact-sticker {
-    width: 180px;
-    height: auto;
-    object-fit: contain;
+  to {
+      opacity: 1;
   }
-  
-  .contact-message {
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 450px;
-    text-align: center;
-  }
-  
-  .contact-message h3 {
-    color: #333;
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-  }
-  
-  .contact-message p {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 10px;
-  }
-  
-  .contact-message a {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .contact-message a:hover {
-    text-decoration: underline;
-  }
-  
-  .contact-icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-top: 15px;
-  }
-  
-  .contact-icon {
-    width: 40px;
-    height: auto;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .contact-icon:hover {
-    transform: scale(1.1);
-  }
-  
-  /* Responsive */
-  @media screen and (max-width: 768px) {
-    .contact-container {
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .contact-container {
       flex-direction: column;
       text-align: center;
-      gap: 20px;
-    }
-  
-    .contact-sticker {
-      width: 140px;
-    }
-  
-    .contact-message {
+  }
+
+  .contact-sticker {
+      width: 250px;
+      order: -1; 
+  }
+
+  .contact-message {
       max-width: 100%;
       padding: 20px;
-    }
-  
-    .contact-icons {
+  }
+
+  .contact-title {
+      font-size: 1.2rem;
+  }
+
+  .contact-icons {
       flex-wrap: wrap;
       gap: 10px;
-    }
   }
+}
+
+/* Ajuste especial para tamaños menores a 437px */
+@media screen and (max-width: 437px) {
+  .contact-title {
+      font-size: 0.8rem;
+  }
+  .contact-message p {
+      font-size: 0.7rem;
+  }
+}

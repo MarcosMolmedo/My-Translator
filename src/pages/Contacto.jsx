@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../Styles/Contacto.css";
-import stickercontacto from "../assets/images/stickercontacto.png";
+import banderas from "../assets/images/banderassinfondo.png";
 import linkedincontacto from "../assets/images/linkedincontacto.png";
 import instagramcontacto from "../assets/images/instagramcontacto.png";
 import gmailcontacto from "../assets/images/gmailcontacto.png";
@@ -10,15 +10,15 @@ import whatsappcontacto from "../assets/images/whatsappcontacto.png";
 const Contacto = () => {
   return (
     <div className="contact-container">
-      <img src={stickercontacto} alt="Sticker contacto" className="contact-sticker" />
       <div className="contact-message">
-        <h3>Gracias por querer contactarte conmigo.</h3>
+        <h3 className="contact-title">¡Gracias por llegar hasta acá y escribirme!</h3>
         <p>
-          Te pido por favor que leas las <Link to="/preguntasfrecuentes">preguntas frecuentes aquí</Link>,
-          y completes el siguiente formulario <Link to="/cotizaciones">aquí</Link> si deseas una cotización.
+          Para agilizar el tiempo de respuesta, te recomiendo primero revisar las 
+          <Link to="/preguntasfrecuentes" className="contact-highlight"> Preguntas Frecuentes</Link> y, en caso de requerir una cotización, 
+          completar el siguiente <Link to="/cotizaciones" className="contact-highlight"> formulario</Link>.
         </p>
         <p>
-          Si te queda alguna duda, no dudes en contactarme por los canales oficiales.
+          Si tu consulta no está contemplada en las Preguntas Frecuentes o aún tienes dudas, no dudes en contactarme a través de los canales oficiales.
         </p>
         <div className="contact-icons">
           <a href="https://www.linkedin.com/in/yohanamalvasio/" target="_blank" rel="noopener noreferrer">
@@ -35,8 +35,10 @@ const Contacto = () => {
           </a>
         </div>
       </div>
+      <img src={banderas} alt="Banderas" className="contact-sticker" />
     </div>
   );
 };
 
 export default Contacto;
+
