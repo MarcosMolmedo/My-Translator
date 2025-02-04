@@ -10,24 +10,37 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="header">
       <div className="container">
-        <div className="logo-title">
+        <Link to="/" className="logo-title" onClick={closeMenu}>
           <img src={logo} alt="My Translator Logo" className="logo" />
           <h1>My Translator</h1>
-        </div>
-        <div className="hamburger" onClick={toggleMenu} aria-label="Menu" aria-expanded={isMenuOpen}>
+        </Link>
+        <div 
+          className="hamburger" 
+          onClick={toggleMenu} 
+          role="button" 
+          tabIndex="0"
+          aria-label="Menú de navegación" 
+          aria-expanded={isMenuOpen}
+        >
           &#9776;
         </div>
         <nav className={`nav ${isMenuOpen ? "open" : ""}`}>
+          {/* Botón de cierre "X" */}
+          <div className="close-menu" onClick={closeMenu}>&times;</div>
           <ul>
-            <li><Link to="/">Inicio</Link></li>
-            <li><Link to="/sobre-mi">Sobre mí</Link></li>
-            <li><Link to="/Servicios">Servicios</Link></li>
-            <li><Link to="/cotizaciones">Cotizaciones</Link></li>
-            <li><Link to="/preguntasfrecuentes">Preguntas frecuentes</Link></li>
-            <li><Link to="/opiniones">Opiniones</Link></li>
+            <li><Link to="/" onClick={closeMenu}>Inicio</Link></li>
+            <li><Link to="/sobre-mi" onClick={closeMenu}>Sobre mí</Link></li>
+            <li><Link to="/servicios" onClick={closeMenu}>Servicios</Link></li>
+            <li><Link to="/cotizaciones" onClick={closeMenu}>Cotizaciones</Link></li>
+            <li><Link to="/preguntasfrecuentes" onClick={closeMenu}>Preguntas frecuentes</Link></li>
+            <li><Link to="/opiniones" onClick={closeMenu}>Opiniones</Link></li>
           </ul>
         </nav>
       </div>

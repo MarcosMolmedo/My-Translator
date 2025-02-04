@@ -3,8 +3,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #3e4ae9; /* Azul oscuro del header */
-  padding: 15px 0; /* Solo espaciado vertical */
+  background-color: #3e4ae9;
+  padding: 15px 0;
   color: white;
   position: relative;
   z-index: 1000;
@@ -15,22 +15,27 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%; /* Ocupa todo el ancho */
-  max-width: none; /* Deshabilita límites de ancho */
-  padding: 0; /* Elimina cualquier espaciado interno */
-  margin: 0; /* Elimina márgenes externos */
+  width: 100%;
+  padding: 0 20px;
+  margin: 0;
 }
 
-/* Logo and title styles */
+/* Logo y título */
 .logo-title {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: helvetica;
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  color: white;
+}
+
+.logo-title:hover {
+  color: white;
 }
 
 .logo {
-  width: 50px; /* Tamaño del logo */
+  width: 50px;
   height: auto;
 }
 
@@ -39,7 +44,7 @@
   margin: 0;
 }
 
-/* Navigation menu styles */
+/* NAV - MENÚ HORIZONTAL EN PANTALLAS GRANDES */
 .nav {
   display: flex;
   align-items: center;
@@ -58,47 +63,107 @@
   color: white;
   font-weight: bold;
   font-size: 1rem;
-  font-family: helvetica;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 .nav ul li a:hover {
-  color: #00ccff; /* Azul claro al pasar el cursor */
+  color: #00ccff;
 }
 
-/* Hamburger menu styles */
-.hamburger {
-  display: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: white;
-}
-
-/* Responsive design for smaller screens */
+/* MENÚ HAMBURGUESA SOLO EN PANTALLAS MÓVILES */
 @media (max-width: 968px) {
-  .nav ul {
-    display: none; /* Ocultar menú en dispositivos pequeños */
+  .nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%;
+    height: 100vh;
+    background-color: #3e4ae9;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
   }
 
-  .nav.open ul {
-    display: flex;
-    flex-direction: column; /* Poner las opciones en columna */
-    background-color: #003366; /* Mantener el fondo del menú */
+  .nav.open {
+    transform: translateX(0);
+  }
+
+  /* Botón para cerrar el menú */
+  .close-menu {
     position: absolute;
-    top: 100%; /* Mostrar menú debajo del header */
-    left: 0;
-    right: 0;
-    padding: 10px 20px; /* Espaciado interno para las opciones */
-    gap: 10px; /* Separación entre opciones */
-    z-index: 999; /* Asegurar que esté sobre otros elementos */
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+    background: none;
+    border: none;
+  }
+
+  .nav ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 50px;
+  }
+
+  .nav ul li {
+    width: 100%;
+    text-align: left;
+    padding: 12px 20px;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem; 
   }
 
   .nav ul li a {
-    font-size: 1.2rem; /* Hacer las opciones más grandes para mejor legibilidad */
-    padding: 10px 0; /* Espaciado vertical entre las palabras */
-    text-align: center; /* Centrar las palabras */
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    font-family: Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav ul li a:hover {
+    color: #00ccff;
+  }
+
+  /* Agregar un icono de "+" */
+  .nav ul li::after {
+    content: "+";
+    position: absolute;
+    right: 20px;
+    color: white;
+    font-size: 1.2rem;
   }
 
   .hamburger {
-    display: block; /* Mostrar hamburguesa en dispositivos pequeños */
+    display: block;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+    position: absolute;
+    top: 20px;
+    right: 20px;
   }
+}
+
+/* OCULTAR EL BOTÓN HAMBURGUESA Y EL BOTÓN "X" EN PANTALLAS GRANDES */
+@media screen and (min-width: 969px) {
+  .hamburger,
+  .close-menu {
+    display: none !important; 
+  }
+}
+
+/* Ajuste para pantallas menores a 335px */
+@media screen and (max-width: 335px) {
+  .header h1 {
+    font-size: 1.2rem; 
+  } 
 }
