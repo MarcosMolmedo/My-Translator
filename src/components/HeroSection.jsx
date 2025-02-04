@@ -10,7 +10,7 @@ const HeroSection = () => {
         <p className="hero-description">
           Convierte tus documentos de forma rápida, precisa y efectiva.
         </p>
-        <Link to="/contacto" className="cta-button">Contáctame</Link> {/* Corrección aquí */}
+        <Link to="/contacto" className="cta-button">Contáctame</Link> {}
       </div>
       <div className="hero-image">
         <img src="/yohana.jpg" alt="Yohana Malvasio" />
