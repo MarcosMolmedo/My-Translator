@@ -3,8 +3,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(to right, #62a0eb, #ce5540);
-  color: white;
+  background: linear-gradient(to right, #fafafa, #eaeaea);
+  color: #444444;
   padding: var(--padding-large);
   text-align: left;
   font-family: Helvetica, sans-serif;
@@ -45,8 +45,10 @@
   justify-content: center;
   align-items: center;
   background: rgba(74, 128, 186, 0.1);
-  padding: 20px;
+  padding: 35px;
   border-radius: 15px;
+ 
+  background: linear-gradient(to right, #eaeaea,  #fafafa);
 }
 
 .hero-image img {

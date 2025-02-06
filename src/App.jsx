@@ -10,26 +10,20 @@ import PreguntasFrecuentes from "./pages/PreguntasFrecuentes";
 import Cotizaciones from "./pages/Cotizaciones";
 import Contacto from "./pages/Contacto";
 
-
-
-
 function App() {
   return (
     <Router>
-      <div>
+      <div className="app-container">
         <Header />
-        <main>
+        <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/sobre-mi" element={<SobreMi />} />
             <Route path="/servicios" element={<Servicios />} /> 
             <Route path="/opiniones" element={<Opiniones />} />
             <Route path="/preguntasfrecuentes" element={<PreguntasFrecuentes />} />
-            <Route path="/cotizaciones" element ={<Cotizaciones />} />
+            <Route path="/cotizaciones" element={<Cotizaciones />} />
             <Route path="/contacto" element={<Contacto />} />
-
-           
-
           </Routes>
         </main>
         <Footer />

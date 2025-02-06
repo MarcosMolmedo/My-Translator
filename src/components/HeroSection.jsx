@@ -13,7 +13,8 @@ const HeroSection = () => {
         <Link to="/contacto" className="cta-button">Contáctame</Link> {}
       </div>
       <div className="hero-image">
-        <img src="/yohana.jpg" alt="Yohana Malvasio" />
+        <img src="/yoha12.png" alt="Yohana Malvasio" />
+        
       </div>
     </section>
   );

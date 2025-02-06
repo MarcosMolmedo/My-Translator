@@ -2,7 +2,7 @@
   background-color: #3e4ae9;
   color: white;
   text-align: center;
-  padding: 20px;
+  padding: 18px;
   position: relative;
 }
 
@@ -13,7 +13,7 @@
 
 .footer .address {
   font-size: 0.8rem;
-  margin-top: 5px;
+  margin-top: 3px; 
 }
 
 .social-links {
@@ -39,7 +39,7 @@
 .developer-seal {
   position: absolute;
   bottom: 10px;
-  right: 10px; /* Margen derecho para el sello */
+  right: 10px;
   font-size: 0.7rem;
   color: #cccccc;
   display: flex;
@@ -48,7 +48,7 @@
 }
 
 .developer-seal img {
-  width: 20px; /* Tamaño pequeño para el logo */
+  width: 20px;
   height: 20px;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -59,7 +59,7 @@
 }
 
 .developer-seal span {
-  font-size: 0.5rem; /* Texto discreto */
+  font-size: 0.5rem;
 }
 
 .developer-seal a {
@@ -70,38 +70,38 @@
   text-decoration: underline;
 }
 
-/* Ajustes para pantallas extremadamente pequeñas */
+/* Ajustes para pantallas pequeñas */
 @media (max-width: 426px) {
   .footer {
     padding: 10px;
-    text-align: center;
+    background-color: #4a58f0; 
   }
 
   .footer p,
   .footer .address {
-    font-size: 0.7rem; /* Texto más pequeño */
-    line-height: 1.2; /* Mejora la legibilidad */
+    font-size: 0.7rem;
+    line-height: 1.2;
   }
 
   .social-links {
-    flex-direction: column; /* Íconos apilados */
-    gap: 8px; /* Menor separación */
+    flex-direction: row; 
+    gap: 8px;
   }
 
   .social-links li a img {
-    width: 24px; /* Íconos más pequeños */
+    width: 24px;
     height: 24px;
   }
 
   .developer-seal {
-    font-size: 0.6rem; /* Sello más pequeño */
-    gap: 3px; /* Reduce el espacio entre texto y logo */
-    position: static; /* Evita problemas de posicionamiento */
-    margin-top: 10px; /* Espaciado para separación */
+    font-size: 0.6rem;
+    gap: 3px;
+    position: static;
+    margin-top: 10px;
   }
 
   .developer-seal img {
-    width: 16px; /* Logo más pequeño */
+    width: 16px;
     height: 16px;
   }
 }

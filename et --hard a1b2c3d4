@@ -1,0 +1,13 @@
+[33m55f5cd6[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m contacto.jsx queda terminado funcional, responsive
+[33m988ee6a[m se finaliza la modificacion de los estilos HeroSection, queda codigo funcional
+[33m724c42f[m Header 110% completo, funcional y responsive
+[33m525e116[m pagina web queda operativa y terminada desde backend, falta trabajar en los Styles para mejorar la unificacion de los estilos
+[33m5322784[m queda completo formulario cotizaciones, quizas hagan faltan algunas mejoras en el css, pero el codigo queda funcional
+[33me89cab1[m Actualización del proyecto, excluyendo archivos sensibles
+[33m6da66ea[m Añadiendo .gitignore para excluir archivos sensibles
+[33m080aa73[m Modificación en App.jsx
+[33m097024f[m queda codigo funcional y completo de opiniones.jsx pero quedan algunos estilos por retocar, ultimo cambio antes de comenzar non Node.js
+[33m1ef7206[m queda en funcionamiento la estructura del archivo PreguntasFrecuentes.jsx y PreguntasFrecuentes.css, queda penndiente agregar algunas preguntas mas
+[33m22a4d52[m Queda contenido funcional y estructurado de opiniones.jsx pero quedan mejorar algunas lineas de codigo para una visualizacion perfecta
+[33mf1efe54[m proyecto estructura y funcional. Estilos definidos, ultimo cambio queda funcional, estetico y terminado Servicios.jsx
+[33m81f9ddd[m Primer commit
