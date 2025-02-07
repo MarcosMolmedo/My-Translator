@@ -2,7 +2,7 @@ body {
   font-family: Helvetica, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
+  background-color: white;
 }
 
 .preguntas-frecuentes {
@@ -18,7 +18,7 @@ body {
 }
 
 .titulo {
-  color: #33e4ae;
+  color: #444444;
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
@@ -32,15 +32,15 @@ body {
 }
 
 .pregunta-item {
-  border: 1px solid #ce5540;
+  border: 1px solid #e8f05c;
   border-radius: 8px;
   overflow: hidden;
   transition: all 0.3s ease;
 }
 
 .pregunta {
-  background-color: #33e4ae;
-  color: #ffffff;
+  background: linear-gradient(to right, #fafafa, #eaeaea);
+  color: #444444;
   font-weight: bold;
   padding: 15px;
   display: flex;
@@ -50,7 +50,7 @@ body {
 }
 
 .pregunta.activa {
-  background-color: #ce5540;
+  background-color: #e8f05c;
 }
 
 .icono {
@@ -66,7 +66,7 @@ body {
   padding: 15px;
   background-color: #e8f05c;
   color: #333333;
-  border-top: 1px solid #ce5540;
+  border-top: 1px solid #e8f05c;
   animation: fadeIn 0.3s ease-in-out;
 }
 
@@ -79,18 +79,6 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* Scroll Indicator */
-.scroll-indicator {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.5rem;
-  color: #ce5540;
-  cursor: pointer;
-  animation: bounce 1.5s infinite;
 }
 
 @keyframes bounce {
@@ -108,7 +96,7 @@ body {
 }
 
 .preguntas-frecuentes::-webkit-scrollbar-thumb {
-  background-color: #ce5540;
+  background-color: #e8f05c;
   border-radius: 4px;
 }
 

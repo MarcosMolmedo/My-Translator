@@ -7,92 +7,201 @@ const PreguntasFrecuentes = () => {
   const preguntas = [
     {
       pregunta: "¿CÓMO SE CALCULA EL PRECIO DE UNA TRADUCCIÓN?",
-      respuesta:
-        "Para poder enviar una cotización se necesita lo siguiente:\n" +
-        "> Copia del documento a traducir, junto con sus legalizaciones y apostillas si las tuviera.\n" +
-        "> Fecha de cuando se va a necesitar la traducción.\n" +
-        "> Medio por el que se necesita la traducción (correo postal o retiro personal).",
+      respuesta: (
+        <div>
+          <p><strong>Para poder enviar una cotización se necesita lo siguiente:</strong></p>
+          <ul>
+            <li><strong>Copia del documento a traducir:</strong> junto con sus legalizaciones y apostillas si las tuviera.</li>
+            <li><strong>Fecha estimada:</strong> Indicar para cuándo se necesita la traducción.</li>
+            <li><strong>Medio de entrega:</strong> Especificar si se enviará por correo postal o si se retirará en persona.</li>
+          </ul>
+        </div>
+      ),
     },
-    {
-      pregunta: "¿EN CUÁNTO TIEMPO ESTARÍA LISTA?",
-      respuesta:
-        "Depende de la disponibilidad del traductor y la longitud del documento. Generalmente, se recomienda solicitarla con 2-3 semanas de anticipación.",
-    },
-    {
-      pregunta: "¿MI DOCUMENTO NECESITA APOSTILLA?",
-      respuesta: "Esto depende de la entidad a la que vayas a presentar el documento. Los documentos fuera de la Unión Europea usualmente requieren apostilla.",
-    },
-    {
-      pregunta: "¿TIENE QUE ESTAR INCLUIDA LA APOSTILLA EN LA TRADUCCIÓN?",
-      respuesta: "Sí, si el documento lleva apostilla, esta debe incluirse en la traducción, lo que también afecta el presupuesto.",
-    },
+    
+      {
+        pregunta: "¿EN CUÁNTO TIEMPO ESTARÍA LISTA?",
+        respuesta: (
+          <div>
+            <p><strong>El tiempo de entrega depende de varios factores:</strong></p>
+            <ul>
+              <li><strong>Disponibilidad del traductor:</strong> Si hay carga de trabajo alta, el tiempo puede extenderse.</li>
+              <li><strong>Longitud y complejidad del documento:</strong> Documentos más largos o técnicos requieren más tiempo.</li>
+              <li><strong>Solicitud anticipada:</strong> Se recomienda solicitar la traducción con al menos 2-3 semanas de anticipación.</li>
+              <li><strong>Urgencias:</strong> Las traducciones encargadas con urgencia pueden llevar un recargo adicional.</li>
+            </ul>
+          </div>
+        ),
+      },
+      
+      {
+        pregunta: "¿MI DOCUMENTO NECESITA APOSTILLA?",
+        respuesta: (
+          <div>
+            <p><strong>La necesidad de apostilla depende de varios factores:</strong></p>
+            <ul>
+              <li><strong>Entidad de destino:</strong> Es importante consultar con la organización que recibirá el documento.</li>
+              <li><strong>Documentos emitidos fuera de la Unión Europea:</strong> Generalmente, requieren apostilla para ser válidos en los Países Bajos.</li>
+              <li><strong>Reglas específicas:</strong> Cada país tiene normativas diferentes, por lo que es recomendable verificar antes de solicitar la traducción.</li>
+            </ul>
+          </div>
+        ),
+      },
+      
+      {
+        pregunta: "¿TIENE QUE ESTAR INCLUIDA LA APOSTILLA EN LA TRADUCCIÓN?",
+        respuesta: (
+          <div>
+            <p><strong>Sí, si el documento lleva apostilla, debe incluirse en la traducción.</strong></p>
+            <ul>
+              <li><strong>Obligatoriedad:</strong> La apostilla forma parte del documento oficial y debe ser traducida junto con el resto del contenido.</li>
+              <li><strong>Impacto en el presupuesto:</strong> La inclusión de la apostilla puede afectar el costo total de la traducción.</li>
+              <li><strong>Recomendación:</strong> Antes de solicitar la traducción, verifica si tu documento necesita apostilla para evitar costos adicionales inesperados.</li>
+            </ul>
+          </div>
+        ),
+      },
+      
     {
       pregunta: "¿QUÉ DOCUMENTOS UNIVERSITARIOS ESTAMOS AUTORIZADOS A TRADUCIR?",
-      respuesta:
-        "Algunos ejemplos:\n" +
-        "> Diplomas: certificados que acreditan títulos como licenciaturas o maestrías.\n" +
-        "> Transcripciones académicas: Listado oficial de tus calificaciones (analítico).\n" +
-        "> Certificados de graduación: Confirman que cumpliste con todos los requisitos.\n" +
-        "> Programas o planes de estudios: Descripción de los contenidos de tus cursos.\n" +
-        "> Documentos Administrativos:\n" +
-        "Certificados de inscripción: Constancia de matrícula.\n" +
-        "Cartas de buena conducta: Acreditan tu comportamiento en la universidad.\n" +
-        "Certificados de pago: Comprobante de matrícula u otros costos.",
+      respuesta: (
+        <div>
+          <p><strong>Algunos ejemplos:</strong></p>
+          <ul>
+            <li><strong>Diplomas:</strong> certificados que acreditan títulos como licenciaturas o maestrías.</li>
+            <li><strong>Transcripciones académicas:</strong> Listado oficial de tus calificaciones (analítico).</li>
+            <li><strong>Certificados de graduación:</strong> Confirman que cumpliste con todos los requisitos.</li>
+            <li><strong>Programas o planes de estudios:</strong> Descripción de los contenidos de tus cursos.</li>
+            <li><strong>Documentos Administrativos:</strong></li>
+            <ul>
+              <li><strong>Certificados de inscripción:</strong> Constancia de matrícula.</li>
+              <li><strong>Cartas de buena conducta:</strong> Acreditan tu comportamiento en la universidad.</li>
+              <li><strong>Certificados de pago:</strong> Comprobante de matrícula u otros costos.</li>
+            </ul>
+          </ul>
+        </div>
+      ),
     },
     {
       pregunta: "¿CÓMO SE PUEDE ABONAR Y DÓNDE NOS ENCONTRAMOS FÍSICAMENTE?",
-      respuesta:
-        "Por transferencia bancaria y/o iDEAL.\n" +
-        "Una vez recibido el pago, se emite la factura y coordinamos día y hora que te quede mejor.\n" +
-        "Se puede retirar físicamente en Utrecht, Terwijde.",
+      respuesta: (
+        <div>
+          <p><strong>Opciones de pago y ubicación:</strong></p>
+          <ul>
+            <li><strong>Métodos de pago:</strong> Se acepta transferencia bancaria y/o iDEAL.</li>
+            <li><strong>Factura:</strong> Una vez recibido el pago, se emite la factura correspondiente.</li>
+            <li><strong>Coordinación de retiro:</strong> Se acuerda un día y horario conveniente para la entrega.</li>
+            <li><strong>Ubicación:</strong> Se puede retirar físicamente en Utrecht, Terwijde.</li>
+          </ul>
+        </div>
+      ),
     },
+    
     {
       pregunta: "¿CUÁLES SON LOS REQUISITOS PARA CONVALIDAR UN TÍTULO UNIVERSITARIO EN LOS PAÍSES BAJOS?",
-      respuesta:
-        "1. Traducción jurada: Título y documentos académicos traducidos al neerlandés, inglés, alemán o francés por un traductor jurado.\n" +
-        "2. Legalización o apostilla: Garantiza la autenticidad de tus documentos con la legalización o apostilla de la Haya (si corresponde).\n" +
-        "3. Evaluación del diploma: Nuffic o IDW evaluarán el nivel académico de tu título en el sistema neerlandés.\n" +
-        "4. Requisitos adicionales: Algunas instituciones pueden pedirte cartas de recomendación o programas específicos de estudio.",
+      respuesta: (
+        <div>
+          <p><strong>Para convalidar un título universitario en los Países Bajos, se requiere lo siguiente:</strong></p>
+          <ul>
+            <li><strong>Traducción jurada:</strong> El título y los documentos académicos deben estar traducidos al neerlandés, inglés, alemán o francés por un traductor jurado.</li>
+            <li><strong>Legalización o apostilla:</strong> Se debe garantizar la autenticidad de los documentos con la legalización o apostilla de La Haya (si corresponde).</li>
+            <li><strong>Evaluación del diploma:</strong> Nuffic o IDW evaluarán el nivel académico de tu título en el sistema neerlandés.</li>
+            <li><strong>Requisitos adicionales:</strong> Algunas instituciones pueden solicitar cartas de recomendación o programas específicos de estudio.</li>
+          </ul>
+        </div>
+      ),
     },
+    
     {
       pregunta: "¿CUÁNTO DEMORA POSTNL EN ENVIAR DOCUMENTOS?",
-      respuesta: "El servicio de PostNL con código de rastreo suele tardar entre 1 y 10 días hábiles, dependiendo del destino y el servicio elegido.",
+      respuesta: (
+        <div>
+          <p><strong>El tiempo de entrega de PostNL depende de varios factores:</strong></p>
+          <ul>
+            <li><strong>Seguimiento:</strong> Se recomienda utilizar el servicio con código de rastreo para monitorear el envío.</li>
+            <li><strong>Tiempo estimado:</strong> Puede tardar entre 1 y 10 días hábiles, dependiendo del destino y tipo de servicio seleccionado.</li>
+            <li><strong>Destino del envío:</strong> Los envíos dentro de los Países Bajos suelen ser más rápidos que los envíos internacionales.</li>
+            <li><strong>Factores externos:</strong> En fechas festivas o periodos de alta demanda, el tiempo de entrega puede extenderse.</li>
+          </ul>
+        </div>
+      ),
     },
+    
     {
       pregunta: "¿EXISTE DIFERENCIA DE PRECIO ENTRE UNA TRADUCCIÓN DIGITAL Y DE PAPEL?",
-      respuesta:
-        "En los Países Bajos no estamos autorizados a emitir traducciones con firma digital. Podemos enviarte una versión escaneada de la traducción impresa, por si alguna vez te la solicitan.\n" +
-        "En cuanto a los costos, no hay diferencia de precio, pero si prefieres recibir la traducción impresa por correo postal, este servicio tiene un costo de aproximadamente 10 euros + IVA. El precio exacto dependerá del peso del sobre y el destino.",
+      respuesta: (
+        <div>
+          <p><strong>En los Países Bajos, no estamos autorizados a emitir traducciones con firma digital.</strong></p>
+          <ul>
+            <li><strong>Formato digital:</strong> Podemos enviarte una versión escaneada de la traducción impresa para que la tengas disponible si la necesitas.</li>
+            <li><strong>Costo:</strong> No hay diferencia de precio entre la versión digital y la impresa.</li>
+            <li><strong>Envío por correo postal:</strong> Si prefieres recibir la traducción impresa, el envío tiene un costo adicional de aproximadamente 10 euros + IVA.</li>
+            <li><strong>Variaciones en el costo del envío:</strong> El precio exacto dependerá del peso del sobre y del destino del envío.</li>
+          </ul>
+        </div>
+      ),
     },
+    
     {
       pregunta: "¿QUÉ DOCUMENTOS PERSONALES ESTAMOS AUTORIZADOS A TRADUCIR?",
-      respuesta:
-        "Actas de nacimiento.\n" +
-        "Certificados de matrimonio.\n" +
-        "Certificados de divorcio.\n" +
-        "Certificados de soltería.\n" +
-        "Actas de defunción.\n" +
-        "Certificados de estado civil.",
+      respuesta: (
+        <div>
+          <p><strong>Estamos autorizados a traducir los siguientes documentos personales:</strong></p>
+          <ul>
+            <li>Actas de nacimiento</li>
+            <li>Certificados de matrimonio</li>
+            <li>Certificados de divorcio</li>
+            <li>Certificados de soltería</li>
+            <li>Actas de defunción</li>
+            <li>Certificados de estado civil</li>
+          </ul>
+        </div>
+      ),
     },
+    
     {
       pregunta: "¿ES POSIBLE QUE OTRA PERSONA RETIRE LA TRADUCCIÓN POR MÍ?",
-      respuesta:
-        "Sí, claro que es posible. Solo tienes que enviarme un email con una solicitud que incluya:\n" +
-        "1. Nombre de la persona que lo va a retirar.\n" +
-        "2. Lugar donde se va a retirar el documento.\n" +
-        "3. Horario en que esa persona pasará a recoger la traducción.\n" +
-        "¿Prefieres que te lo envíe por correo postal? También es posible.",
+      respuesta: (
+        <div>
+          <p><strong>Sí, claro que es posible. Solo debes enviarnos un email con la siguiente información:</strong></p>
+          <ul>
+            <li><strong>Nombre:</strong> Indicar el nombre de la persona que retirará la traducción.</li>
+            <li><strong>Lugar de retiro:</strong> Especificar la ubicación donde se retirará el documento.</li>
+            <li><strong>Horario:</strong> Indicar en qué momento la persona pasará a recoger la traducción.</li>
+          </ul>
+          <p>¿Prefieres que te lo enviemos por correo postal? También es posible.</p>
+        </div>
+      ),
     },
+    
     {
       pregunta: "¿QUÉ PASA SI EL CORREO PIERDE LA TRADUCCIÓN?",
-      respuesta:
-        "Aunque nunca nos ha pasado, si sucede, la solución es reimprimirla. Esto conlleva un costo adicional tanto por la reimpresión de las copias certificadas como por los gastos de envío.",
+      respuesta: (
+        <div>
+          <p><strong>Aunque nunca nos ha pasado, en caso de que suceda, la solución es la siguiente:</strong></p>
+          <ul>
+            <li><strong>Reimpresión:</strong> Se realizará una nueva impresión de la traducción certificada.</li>
+            <li><strong>Costo adicional:</strong> Se aplicará un cargo extra por la reimpresión de las copias certificadas.</li>
+            <li><strong>Gastos de envío:</strong> También se deberá abonar nuevamente el costo del envío postal.</li>
+          </ul>
+         </div>
+      ),
     },
+    
     {
       pregunta: "¿ES NECESARIO CERTIFICAR NUESTRA TRADUCCIÓN?",
-      respuesta:
-        "¡Quedate tranquilo! Si la traducción va a ser presentada dentro de los Países Bajos, no hace falta nada más. La traducción está lista para ser presentada directamente en la entidad u organización donde la necesites.",
+      respuesta: (
+        <div>
+          <p><strong>¡Quedate traquilo! No es necesario certificar la traducción.</strong></p>
+          <ul>
+            <li><strong>Presentación en los Países Bajos:</strong> Si la traducción se usará dentro de los Países Bajos, no requiere certificación adicional.</li>
+            <li><strong>Uso directo:</strong> La traducción está lista para ser presentada directamente en la entidad u organización donde la necesites.</li>
+            <li><strong>Casos especiales:</strong> Si la institución que solicita la traducción requiere certificación extra, es recomendable confirmarlo con antelación.</li>
+          </ul>
+        </div>
+      ),
     },
+    
   ];
 
   const toggleRespuesta = (index) => {
@@ -120,9 +229,7 @@ const PreguntasFrecuentes = () => {
           </div>
         ))}
       </div>
-      <div className="scroll-indicator" onClick={scrollToBottom}>
-        ▼
-      </div>
+     
     </div>
   );
 };
