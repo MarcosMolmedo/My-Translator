@@ -25,7 +25,7 @@
 }
 
 .hero-content h2 {
-  font-size: var(--title-large);
+  font-size: Helvetica(--title-large);
   margin-bottom: 20px;
   white-space: nowrap;
 }
@@ -40,23 +40,20 @@
 
 /* Imagen de la hero section */
 .hero-image {
-  flex-basis: 40%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(74, 128, 186, 0.1);
-  padding: 35px;
-  border-radius: 15px;
-  background: linear-gradient(to right, #eaeaea,  #fafafa);
+  background: none !important; 
+  padding: 0 !important; 
+  border-radius: 0 !important; 
+  box-shadow: none !important; 
 }
 
 .hero-image img {
-  width: 300px;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  opacity: 0; 
-  animation: fadeIn 4s ease-in forwards; 
+  box-shadow: none !important; /* Asegura que la imagen no tenga sombra */
+  border-radius: 0 !important; /* Asegura que la imagen no tenga bordes curvos */
+  width: 100%; /* La imagen se ajustará al contenedor */
+  max-width: 360px; /* No será más grande de este valor */
+  margin-top: 10px;
+  opacity: 0; /* La imagen comienza invisible */
+  animation: fadeIn 4s ease-in forwards; /* Aplica la animación */
 }
 
 /* Definir la animación */
@@ -191,5 +188,11 @@
 @media (max-width: 1163px) and (min-width: 767px) {
   .hero-content .cta-button {
       max-width: 170px; 
+  }
+}
+
+@media (min-width: 1151px) and (min-height: 396px) {
+  .hero-image img {
+    padding-right: 60px; /* Ajusta este valor según lo que necesites */
   }
 }
