@@ -1,5 +1,5 @@
 import "../Styles/SobreMi.css";
-import YohaTranslations from "../assets/images/YohaTranslations.jpg";
+import YohaTranslations from "../assets/images/YohaTranslations.png";
 
 const SobreMi = () => {
   return (

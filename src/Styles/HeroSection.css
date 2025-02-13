@@ -47,7 +47,6 @@
   background: rgba(74, 128, 186, 0.1);
   padding: 35px;
   border-radius: 15px;
- 
   background: linear-gradient(to right, #eaeaea,  #fafafa);
 }
 
@@ -72,8 +71,8 @@
 
 /* Botón CTA */
 .hero-content .cta-button {
-  background-color: #00ccff;
-  color: white;
+  background-color: #e8f05c;
+  color: #444444;
   padding: 10px 20px;
   text-decoration: none;
   font-weight: bold;
@@ -88,7 +87,7 @@
 
 /* Cambio de color en hover */
 .hero-content .cta-button:hover {
-  background-color: #3e4ae9;
+  background-color: #00ccff;
 }
 
 /* Corrección para evitar el botón grande en móviles */

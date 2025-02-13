@@ -6,7 +6,7 @@ body {
 }
 
 .preguntas-frecuentes {
-  max-width: 800px;
+  max-width: 850px;
   max-height: 400px; /* Altura máxima con scroll */
   margin: 0 auto;
   padding: 20px;
@@ -19,7 +19,7 @@ body {
 
 .titulo {
   color: #444444;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
   margin-bottom: 20px;

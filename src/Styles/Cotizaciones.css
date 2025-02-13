@@ -5,6 +5,7 @@
     background: #f9f9f9;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #444444;
   }
   
   /* Hacer el formulario responsive */
@@ -77,8 +78,8 @@
   }
   
   .btn-enviar {
-    background-color: #00ccff !important; /* Forzar color */
-    color: white;
+    background-color: #e8f05c !important; /* Forzar color */
+    color: #444;
     padding: 0.75rem;
     font-size: 1rem;
     font-weight: bold;
