@@ -7,14 +7,14 @@ body {
 
 .preguntas-frecuentes {
   max-width: 850px;
-  max-height: 400px; /* Altura máxima con scroll */
+  max-height: 400px;
   margin: 0 auto;
   padding: 20px;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow-y: auto; /* Habilita scroll vertical */
-  position: relative; /* Necesario para el scroll-indicator */
+  overflow-y: auto; 
+  position: relative; 
 }
 
 .titulo {

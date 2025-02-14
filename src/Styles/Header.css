@@ -37,6 +37,7 @@
 .logo {
   width: 50px;
   height: auto;
+  padding-bottom: 5px;
 }
 
 .header h1 {

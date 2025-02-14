@@ -4,10 +4,7 @@ import "../Styles/Servicios.css";
 const Servicios = () => {
   return (
     <div>
-      {/* Imagen con animación */}
-      <div className="servicios-hero">
-        <img src="/YohaServicios2.png" alt="Yohana Malvasio" className="servicios-hero-image" />
-      </div>
+      
 
       {/* Texto ahora debajo de la imagen */}
       <div className="servicios-hero-text">

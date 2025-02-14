@@ -1,139 +1,162 @@
-/* Contenedor principal de Opiniones */
-.opiniones-page-container {
-  background-color: #f9f9f9;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  position: relative;
-  overflow: hidden; /* Evita desbordes */
-  isolation: isolate; /* Asegura que esta sección no herede estilos externos */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Previene el scroll horizontal */
+    width: 100%;
 }
 
-/* Logo inicial y centrado */
-.opiniones-logo-container {
-  
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  transition: opacity 1.5s ease, transform 1.5s ease;
-  opacity: 1; /* Logo visible al inicio */
+/* 🟡 Contenedor Principal */
+.opiniones-container {
+    position: relative;
+    width: 100vw;
+    min-height: 75vh; 
+    background: linear-gradient(to right, #fafafa, #eaeaea);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start; 
+    padding: 2rem;
+    gap: 1rem;
 }
 
-
-/* Logo desaparece */
-.opiniones-logo-container.hidden {
-  opacity: 0;
-  pointer-events: none; /* Evita que interfiera con interacciones */
-  transition: opacity 1.5s ease; /* Transición suave */
+/* 🟡 Estilos base para los post-its */
+.opinion {
+    background: #e8f05c;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    font-family: "Helvetica", sans-serif;
+    font-weight: bold;
+    color: #444;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 2rem; /* Espacio para el pin */
+    transition: transform 0.3s ease;
+    max-width: 100%;
 }
 
-
-.opiniones-logo {
-  width: 20vw;
-  max-width: 300px;
-  height: auto;
-  object-fit: contain;
+/* 🔹 Efecto hover */
+.opinion:hover {
+    transform: scale(1.15) rotate(0deg); /* Aumenta el tamaño 15% */
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4); /* Acentúa la sombra */
 }
 
-/* Contenedor de los comentarios */
-.opiniones-comments-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-  align-items: flex-start;
-  z-index: 2;
-  position: relative;
-  width: 90%;
-  max-width: 800px;
-  max-height: 70vh;
-  overflow-y: auto; /* Permite scroll vertical */
-  padding: 20px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-  isolation: isolate; /* Asegura que no herede estilos externos */
+/* 🔹 Imagen del pin */
+.pin-image {
+    width: 30px;
+    position: absolute;
+    top: -10px;
 }
 
-/* Estilo de cada comentario */
-.opiniones-comment {
-  background-color: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  text-align: left;
-  font-size: 0.9rem;
-  line-height: 1.4;
-  border: 1px solid transparent;
-  width: 100%;
-  max-width: 300px;
-  transition: transform 0.3s ease, border 0.3s ease;
+/* 🔹 Formato del texto */
+.opinion-text {
+    font-size: 1rem;
+    font-style: italic;
 }
 
-.opiniones-comment:hover {
-  border: 1px solid #ce5540;
-  transform: scale(1.05);
+/* 🟡 Formas irregulares de los post-its */
+.postit-1 { width: 140px; height: 130px; border-radius: 5px 15px 10px 20px; font-size: 0.75rem; }
+.postit-2 { width: 140px; height: 130px; border-radius: 10px 5px 20px 15px; font-size: 0.75rem; }
+.postit-3 { width: 140px; height: 120px; border-radius: 15px 20px 5px 10px; font-size: 0.75rem; }
+.postit-4 { width: 150px; height: 130px; border-radius: 10px 15px 5px 20px; font-size: 0.75rem; }
+.postit-5 { width: 150px; height: 140px; border-radius: 20px 10px 15px 5px; font-size: 0.75rem; }
+.postit-6 { width: 150px; height: 100px; border-radius: 5px 10px 20px 15px; font-size: 0.75rem; }
+.postit-7 { width: 140px; height: 140px; border-radius: 10px 20px 5px 15px; font-size: 0.75rem; }
+.postit-8 { width: 145px; height: 150px; border-radius: 15px 5px 10px 20px; font-size: 0.75rem; }
+
+/* 🟡 🔹 Responsive Design */
+
+/* 🔹 2 filas de 4 post-its en pantallas grandes */
+@media (min-width: 1062px) {
+    .opinion {
+        width: calc(25% - 1rem);  /* 🔹 4 por fila */
+    }
 }
 
-/* Scroll personalizado */
-.opiniones-comments-grid::-webkit-scrollbar {
-  width: 8px;
+/* 🔹 3 por fila en pantallas medianas */
+@media (max-width: 1091px) {
+    .opiniones-container {
+        justify-content: space-evenly;
+    }
+    .opinion {
+        width: calc(33.33% - 1rem);  /* 🔹 3 por fila */
+        min-height: 120px;
+        font-size: 0.85rem;
+    }
 }
 
-.opiniones-comments-grid::-webkit-scrollbar-thumb {
-  background-color: #ce5540;
-  border-radius: 4px;
+/* 🔹 2 por fila en pantallas pequeñas */
+@media (max-width: 700px) {
+    .opiniones-container {
+        justify-content: center;
+    }
+    .opinion {
+        width: calc(50% - 1rem);  /* 🔹 2 por fila */
+        min-height: 110px;
+        font-size: 0.8rem;
+    }
 }
 
-.opiniones-comments-grid::-webkit-scrollbar-track {
-  background-color: #f9f9f9;
-}
-
-/* Responsividad para Opiniones */
-@media (max-width: 768px) {
-  .opiniones-logo {
-      width: 30vw;
-  }
-
-  .opiniones-comment {
-      font-size: 0.85rem;
-      padding: 12px;
-  }
-
-  .opiniones-comments-grid {
-      gap: 10px;
-      max-height: 60vh;
-  }
-}
-
+/* 🔹 1 por fila en pantallas muy pequeñas */
 @media (max-width: 480px) {
-  .opiniones-logo {
-      width: 40vw;
-  }
-
-  .opiniones-comment {
-      font-size: 0.8rem;
-      padding: 10px;
-  }
-
-  .opiniones-comments-grid {
-      gap: 8px;
-  }
+    .opiniones-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .opinion {
+        width: 80%;  /* 1 por fila */
+        min-height: 100px;
+        font-size: 0.75rem;
+    }
+}
+/* 🔹 Reducimos el tamaño de los post-its en pantallas grandes para que entren todos sin scroll */
+@media (min-width: 1090px) {
+    .opinion {
+        width: calc(25% - 1rem);  /* 🔹 4 por fila */
+        height: 75px; /* 🔹 Más pequeños */
+        font-size: 0.40rem; /* 🔹 Letra más chica */
+    }
+    .pin-image {
+        width: 20px; /* 🔹 Pin más pequeño */
+    }
 }
 
-/* Ajustes globales exclusivos de Opiniones */
-.opiniones-body {
-  margin: 0;
-  padding: 0;
-  font-family: Helvetica, Arial, sans-serif;
+/* 🔹 Para dispositivos aún más pequeños (hasta 484px) */
+@media (max-width: 484px) {
+    .opiniones-container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    .opinion {
+        width: 90%;  /* 🔹 Reducimos el ancho */
+        max-width: 250px;  /* 🔹 No sean demasiado grandes */
+        min-height: 90px; /* 🔹 Reducimos la altura */
+        font-size: 0.7rem;
+        transform: rotate(0deg); /* 🔹 Evitamos demasiada inclinación */
+        margin: 0.5rem 0; /* 🔹 Espaciado entre los post-its */
+    }
+    .pin-image {
+        width: 20px; /* 🔹 Reducimos el tamaño del pin */
+    }
 }
 
-.opiniones-body img {
-  max-width: 100%;
-  height: auto;
+/* 🔹 Para dispositivos aún más pequeños (hasta 320px) */
+@media (max-width: 320px) {
+    .opinion {
+        width: 95%;
+        max-width: 200px;
+        min-height: 80px;
+        font-size: 0.65rem;
+        transform: rotate(0deg);
+        padding: 0.8rem;
+    }
+    .pin-image {
+        width: 18px; /* 🔹 Pin aún más pequeño */
+    }
 }

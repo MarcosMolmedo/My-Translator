@@ -47,13 +47,13 @@
 }
 
 .hero-image img {
-  box-shadow: none !important; /* Asegura que la imagen no tenga sombra */
-  border-radius: 0 !important; /* Asegura que la imagen no tenga bordes curvos */
-  width: 100%; /* La imagen se ajustará al contenedor */
-  max-width: 360px; /* No será más grande de este valor */
+  box-shadow: none !important; 
+  border-radius: 0 !important; 
+  width: 100%; 
+  max-width: 360px; 
   margin-top: 10px;
-  opacity: 0; /* La imagen comienza invisible */
-  animation: fadeIn 4s ease-in forwards; /* Aplica la animación */
+  opacity: 0; 
+  animation: fadeIn 4s ease-in forwards; 
 }
 
 /* Definir la animación */
@@ -193,6 +193,6 @@
 
 @media (min-width: 1151px) and (min-height: 396px) {
   .hero-image img {
-    padding-right: 60px; /* Ajusta este valor según lo que necesites */
+    padding-right: 80px; 
   }
 }
