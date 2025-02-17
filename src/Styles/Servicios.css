@@ -1,115 +1,56 @@
-/* Estilos de la sección de servicios */
-.servicios-hero {
-  width: 100vw;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  background-color: #f9f9f9;
-  margin-top: 2rem; /* 🔹 Separación del header */
-}
-
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-
-.servicios-hero-text {
-  max-width: 800px; /* Más ancho para que el texto se distribuya mejor */
-  text-align: center; /* 🔹 Centrar el texto */
-  color: #444;
-  font-size: 1rem;
-  font-family: Helvetica;
-  font-weight: bold;
-  background: rgba(255, 255, 255, 0.85);
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e8f05c;
-  margin: 0 auto; /* 🔹 Centrar horizontalmente */
- margin-top: 2rem;
-}
-
-.servicios-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
+/* 🔹 Contenedor de la sección de servicios */
+.servicios-page-container {
+  width: 100%;
   padding: 3rem 2rem;
+  background-color: #f9f9f9;
+  display: block; /* 🔥 Evitar conflictos con flex */
+}
+
+/* 🔹 Contenido */
+.servicios-page-content {
+  display: grid !important; /* 🔥 FORZAMOS GRID */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  justify-content: center;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.servicios-card {
+/* 🔹 Tarjetas */
+.servicios-page-card {
   background: #fff;
   border-radius: 12px;
-  padding: 1rem;
+  padding: 1.5rem;
   text-align: left;
-  width: calc(25% - 2rem);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #e8f05c; /* Se define grosor, estilo y color */
+  border: 1px solid #e8f05c;
 }
 
-.servicios-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
+/* 🔹 Diseño Responsive */
 
-.servicios-section-title {
-  font-size: 1.2rem;
-  color: #444;
-  margin-bottom: 2rem;
-  text-align:left;
-}
-
-.servicios-list {
-  list-style: none;
-  padding: 0;
-}
-
-.servicios-list li {
-  font-size: 0.9rem;
-  color: #555;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.servicios-list li:last-child {
-  border-bottom: none;
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .servicios-card {
-    width: calc(50% - 2rem);
+/* ✅ 1 FILA en pantallas grandes (+1035px) */
+@media (min-width: 1035px) {
+  .servicios-page-content {
+      display: grid !important;
+      grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media (max-width: 768px) {
-  .servicios-content {
-    flex-direction: column;
-    align-items: center;
-  }
-  .servicios-card {
-    width: 100%;
+/* ✅ 2 FILAS en pantallas medianas (730px - 1034px) */
+@media (max-width: 1034px) and (min-width: 730px) {
+  .servicios-page-content {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 425px) {
-  .servicios-hero {
-    height: 40vh;
-  }
-  .servicios-hero-text {
-    font-size: 0.85rem;
+/* ✅ 1 FILA en pantallas pequeñas (-730px) */
+@media (max-width: 729px) {
+  .servicios-page-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
   }
 }
 

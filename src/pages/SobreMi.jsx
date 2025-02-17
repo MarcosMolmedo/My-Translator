@@ -1,27 +1,31 @@
+import React from "react";
 import "../Styles/SobreMi.css";
-import YohaTranslations from "../assets/images/YohaTranslations.png";
 
 const SobreMi = () => {
   return (
     <section id="sobre-mi" className="sobre-mi">
       <div className="container">
-        <h2>Sobre mí</h2>
         <div className="about-content">
           <img
-            src={YohaTranslations}
+            src="/YohaSobreMi3.png" 
             alt="Yohana Malvasio"
             className="about-image"
           />
           <div className="about-text">
             <p>
-              Hola, soy <strong>Yohana Malvasio</strong>, traductora jurada con experiencia en traducciones de
-              documentos legales, académicos y personales. Mi objetivo es ayudarte a que tus documentos
-              sean aceptados sin problemas en Países Bajos y en otros países. Trabajo con dedicación y
-              precisión para ofrecerte un servicio de alta calidad.
+              Hola, soy <strong>Yohana Malvasio</strong>, traductora jurada de español a inglés, 
+              reconocida en los Países Bajos por mi profesionalismo y eficiencia. 
+              Me especializo en la traducción de documentos legales, académicos y personales, 
+              asegurando el más alto nivel de precisión, confidencialidad y cumplimiento con los requisitos oficiales.
             </p>
             <p>
-              Además, soy apasionada por los idiomas y disfruto conectando culturas a través de la
-              comunicación. Si necesitas una traducción rápida y confiable, ¡estoy aquí para ayudarte!
+              Mi objetivo es facilitar que tus documentos sean aceptados sin inconvenientes 
+              tanto en los Países Bajos como en otros países. Trabajo con dedicación y 
+              atención al detalle para ofrecerte un servicio de alta calidad.
+            </p>
+            <p>
+              Apasionada por los idiomas, disfruto conectando culturas a través de la comunicación. 
+              Si necesitas una traducción rápida, precisa y confiable, ¡estoy aquí para ayudarte!
             </p>
             <a
               href="https://www.instagram.com/my_translator_nl?igsh=MXVwem5heXh6d2RtbQ=="
