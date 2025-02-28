@@ -1,11 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/perfect_circular_logo.png" type="image/png" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Translator</title>
+    <link rel="icon" href="/perfect_circular_logo.png" type="image/png" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PY62SR7WHQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-PY62SR7WHQ', {
+        send_page_view: false
+      });
+
+      // Asegurar que React registre los cambios de página en Google Analytics
+      window.addEventListener('DOMContentLoaded', () => {
+        gtag('event', 'page_view', { page_path: window.location.pathname });
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>

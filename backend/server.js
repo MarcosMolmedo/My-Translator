@@ -1,17 +1,21 @@
-const express = require('express');
-const multer = require('multer');
-const nodemailer = require('nodemailer');
-const cors = require('cors');
-const fs = require('fs');
-require('dotenv').config();
+const express = require("express");
+const multer = require("multer");
+const nodemailer = require("nodemailer");
+const cors = require("cors");
+const fs = require("fs");
+const path = require("path");
+require("dotenv").config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// 📌 Servir archivos estáticos de React desde la carpeta "dist"
+app.use(express.static(path.join(__dirname, "dist")));
+
 // 📌 Verificar si la carpeta "uploads/" existe, si no, crearla automáticamente
-const uploadDir = 'uploads/';
+const uploadDir = "uploads/";
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true });
 }
@@ -28,7 +32,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // 📌 Ruta para manejar el formulario y enviar el correo
-app.post('/send-email', upload.single('archivo'), async (req, res) => {
+app.post("/send-email", upload.single("archivo"), async (req, res) => {
     const { nombre, email, idioma, paisEmisor, apostillado, retiroUtrecht, envioPostNL, tiempoEntrega, comentario } = req.body;
     const archivo = req.file;
 
@@ -47,13 +51,11 @@ app.post('/send-email', upload.single('archivo'), async (req, res) => {
     }
 
     if (tiempoEntrega) emailBody += `⏳ Tiempo de Entrega: ${tiempoEntrega}\n`;
-
-    // 📌 Agregar comentario si el usuario escribió algo
     if (comentario) emailBody += `📝 Comentario del cliente: ${comentario}\n`;
 
     // 📌 Configuración de Nodemailer
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
+        service: "gmail",
         auth: {
             user: process.env.EMAIL_USER,
             pass: process.env.EMAIL_PASS,
@@ -64,25 +66,29 @@ app.post('/send-email', upload.single('archivo'), async (req, res) => {
     const mailOptions = {
         from: email,
         to: process.env.EMAIL_USER,
-        subject: 'Nueva Solicitud de Cotización',
+        subject: "Nueva Solicitud de Cotización",
         text: emailBody,
-        attachments: archivo
-            ? [{ filename: archivo.originalname, path: archivo.path }]
-            : [],
+        attachments: archivo ? [{ filename: archivo.originalname, path: archivo.path }] : [],
     };
 
     try {
         await transporter.sendMail(mailOptions);
         console.log(`✅ Correo enviado por ${nombre} (${email})`);
-        res.status(200).json({ message: 'Correo enviado exitosamente' });
+        res.status(200).json({ message: "Correo enviado exitosamente" });
     } catch (error) {
-        console.error('❌ Error al enviar el correo:', error);
-        res.status(500).json({ error: 'Error al enviar el correo' });
+        console.error("❌ Error al enviar el correo:", error);
+        res.status(500).json({ error: "Error al enviar el correo" });
     }
 });
 
-// 📌 Iniciar el servidor en el puerto 3000
-const PORT = process.env.PORT || 3000;
+// 📌 Redirigir todas las rutas de React al "index.html"
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
+
+// 📌 Iniciar el servidor en el puerto 4000
+const PORT = process.env.PORT || 4000;
+
 app.listen(PORT, () => {
     console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
 });
