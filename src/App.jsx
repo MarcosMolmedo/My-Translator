@@ -22,7 +22,7 @@ function App() {
             <Route path="/servicios" element={<Servicios />} /> 
             <Route path="/opiniones" element={<Opiniones />} />
             <Route path="/preguntasfrecuentes" element={<PreguntasFrecuentes />} />
-            <Route path="/cotizaciones" element={<Cotizaciones />} />
+            <Route path="/cotizaciones" element ={<Cotizaciones />} />
             <Route path="/contacto" element={<Contacto />} />
           </Routes>
         </main>

@@ -1,56 +1,75 @@
-/* 🔹 Contenedor de la sección de servicios */
+/* 🔹 Contenedor general */
 .servicios-page-container {
   width: 100%;
   padding: 3rem 2rem;
   background-color: #f9f9f9;
-  display: block; /* 🔥 Evitar conflictos con flex */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* 🔹 Contenido */
-.servicios-page-content {
-  display: grid !important; /* 🔥 FORZAMOS GRID */
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  justify-content: center;
+/* 🔹 Contenedor del carrusel */
+.servicios-carousel {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  position: relative;
+  justify-content: center;
 }
 
 /* 🔹 Tarjetas */
 .servicios-page-card {
   background: #fff;
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 2rem;  /* 🔥 Se agregó más padding para evitar el problema */
   text-align: left;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid #e8f05c;
+  min-width: 100%;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: 0;
+  transform: translateX(100%);
+  position: absolute;
 }
 
-/* 🔹 Diseño Responsive */
+/* 🔹 Tarjeta activa */
+.servicios-page-card.active {
+  opacity: 1;
+  transform: translateX(0);
+  position: relative;
+}
 
-/* ✅ 1 FILA en pantallas grandes (+1035px) */
-@media (min-width: 1035px) {
-  .servicios-page-content {
-      display: grid !important;
-      grid-template-columns: repeat(4, 1fr);
+/* 🔹 Tarjetas inactivas (ocultas) */
+.servicios-page-card.inactive {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+/* 🔹 Estilos Responsivos */
+
+/* ✅ En pantallas mayores a 1031px: Mostrar todas en una fila */
+@media (min-width: 1031px) {
+  .servicios-carousel {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .servicios-page-card {
+    position: static;
+    opacity: 1;
+    transform: none;
+    min-width: calc(25% - 2rem);
   }
 }
 
-/* ✅ 2 FILAS en pantallas medianas (730px - 1034px) */
-@media (max-width: 1034px) and (min-width: 730px) {
-  .servicios-page-content {
-      display: grid !important;
-      grid-template-columns: repeat(2, 1fr);
+/* ✅ En pantallas menores a 1031px: Mostrar una sola a la vez con animación */
+@media (max-width: 1030px) {
+  .servicios-carousel {
+    position: relative;
+  }
+
+  .servicios-page-card {
+    min-width: 100%;
   }
 }
-
-/* ✅ 1 FILA en pantallas pequeñas (-730px) */
-@media (max-width: 729px) {
-  .servicios-page-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-  }
-}
-

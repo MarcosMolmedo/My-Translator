@@ -1,4 +1,3 @@
-/* Hero Section - Estilos Base */
 .hero {
   display: flex;
   justify-content: space-between;
@@ -7,7 +6,6 @@
   color: #444444;
   padding: var(--padding-large);
   text-align: left;
-  font-family: Helvetica, sans-serif;
 }
 
 .hero-content {
@@ -17,125 +15,30 @@
   padding-left: 5%;
 }
 
-.hero-content h2,
-.hero-description,
-.hero-content .cta-button {
-  margin-left: 0;
-  display: block;
-}
-
-.hero-content h2 {
-  font-size: Helvetica(--title-large);
-  margin-bottom: 20px;
-  white-space: nowrap;
-}
-
-.hero-description {
-  font-size: var(--subtitle-large);
-  margin-bottom: 20px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Imagen de la hero section */
-.hero-image {
-  background: none !important; 
-  padding: 0 !important; 
-  border-radius: 0 !important; 
-  box-shadow: none !important; 
-}
-
 .hero-image img {
-  box-shadow: none !important; 
-  border-radius: 0 !important; 
-  width: 100%; 
-  max-width: 360px; 
+  width: 100%;
+  max-width: 360px;
   margin-top: 10px;
   opacity: 0; 
   animation: fadeIn 4s ease-in forwards; 
 }
 
-/* Definir la animación */
+/* Animación */
 @keyframes fadeIn {
   from {
-      opacity: 0; 
+    opacity: 0; 
   }
   to {
-      opacity: 1;
+    opacity: 1;
   }
 }
 
-/* Botón CTA */
-.hero-content .cta-button {
-  background-color: #e8f05c;
-  color: #444444;
-  padding: 10px 20px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 204, 255, 0.5);
-  animation: heartbeat 1.2s ease-in-out infinite;
-  width: auto;
-  text-align: center;
-  font-family: Helvetica, sans-serif;
-}
-
-/* Cambio de color en hover */
-.hero-content .cta-button:hover {
-  background-color: #00ccff;
-}
-
-/* Corrección para evitar el botón grande en móviles */
-@media (max-width: 767px) {
-  .hero-content .cta-button {
-    max-width: 200px;
-    padding: 10px 15px;
-    margin: auto;
-    display: block;
-  }
-}
-
-/* Mantener el diseño con imagen a la derecha hasta 1163px */
-@media (max-width: 1163px) and (min-width: 770px) {
-  .hero {
-    flex-direction: row;
-  }
-
-  .hero-content {
-    flex-basis: 60%;
-    max-width: 70%;
-    text-align: left;
-  }
-
-  .hero-image {
-    flex-basis: 40%;
-  }
-}
-
-/* Ajuste para dispositivos menores a 805px */
-@media (max-width: 805px) {
-  .hero-content {
-    max-width: 100%;
-    text-align: center;
-  }
-
-  .hero-description {
-    font-size: 0.85rem; 
-    white-space: nowrap; 
-    text-overflow: ellipsis;
-    max-width: 100%;
-    text-align: center;
-  }
-}
-
-/* En móviles menores a 767px, los textos van arriba de la imagen */
+/* Responsive para Hero */
 @media (max-width: 767px) {
   .hero {
     flex-direction: column;
     text-align: center;
-    padding: var(--padding-small);
+    padding: 20px;
   }
 
   .hero-content {
@@ -143,56 +46,7 @@
     text-align: center;
   }
 
-  .hero-content h2 {
-    font-size: var(--title-small);
-  }
-
-  .hero-description {
-    font-size: 0.8rem; 
-  }
-
   .hero-image img {
-    width: 60%;
-  }
-}
-
-@media (max-width: 417px) {
-  .hero-content h2 {
-    font-size: var(--title-xsmall);
-    line-height: 1.2;
-    margin-bottom: 10px;
-  }
-
-  .hero-description {
-    font-size: 0.75rem;
-    margin-bottom: 10px;
-  }
-
-  .hero {
-    padding: var(--padding-xsmall);
-  }
-
-  .hero-content .cta-button {
-    padding: 8px 18px;
-    font-size: 0.85rem;
-  }
-}
-/* Tamaño del botón en pantallas grandes */
-@media (min-width: 767px) {
-  .hero-content .cta-button {
-      max-width: 180px; 
-  }
-}
-
-/* Tamaño del botón en dispositivos medianos (entre 767px y 1163px) */
-@media (max-width: 1163px) and (min-width: 767px) {
-  .hero-content .cta-button {
-      max-width: 170px; 
-  }
-}
-
-@media (min-width: 1151px) and (min-height: 396px) {
-  .hero-image img {
-    padding-right: 80px; 
+    width: 80%;
   }
 }
