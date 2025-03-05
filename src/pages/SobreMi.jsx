@@ -7,7 +7,7 @@ const SobreMi = () => {
       <div className="container">
         <div className="about-content">
           <img
-            src="/YohaSobreMi3.png" 
+            src="/MalvasioYohana1.png" 
             alt="Yohana Malvasio"
             className="about-image"
           />

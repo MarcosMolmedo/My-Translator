@@ -1,21 +1,32 @@
+/* 🔹 Ajuste del footer */
 .footer {
   background-color: #3e4ae9;
   color: white;
   text-align: center;
-  padding: 18px;
-  position: relative;
+  padding: 8px 15px; /* Reduce el padding vertical */
+  width: 100%;
+  position: relative; /* Evita solapamientos */
+  bottom: 0;
+  left: 0;
+  margin-top: auto;
+  font-size: 0.55rem; /* Hace el texto más compacto */
+  line-height: 1.1; /* Reduce el espaciado entre líneas */
 }
 
+/* 🔹 Asegurar que el texto del footer tenga prioridad */
 .footer p {
-  margin: 0;
-  font-size: 0.9rem;
+  margin: 0 !important;
+  font-size: 0.9rem !important;
+  color: white !important;
 }
 
+/* 🔹 Dirección del footer */
 .footer .address {
   font-size: 0.8rem;
-  margin-top: 3px; 
+  margin-top: 3px;
 }
 
+/* 🔹 Redes sociales */
 .social-links {
   display: flex;
   justify-content: center;
@@ -36,41 +47,26 @@
   opacity: 0.8;
 }
 
+/* 🔹 Sello del desarrollador */
 .developer-seal {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
   font-size: 0.7rem;
   color: #cccccc;
   display: flex;
   align-items: center;
   gap: 5px;
 }
-
 .developer-seal img {
-  width: 20px;
-  height: 20px;
+  width: 16px;  /* Ajusta el tamaño de la imagen */
+  height: 16px; /* Mantiene la proporción */
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .developer-seal img:hover {
-  transform: scale(1.2);
+  transform: scale(1.2); /* Efecto de hover */
   opacity: 0.9;
 }
 
-.developer-seal span {
-  font-size: 0.5rem;
-}
-
-.developer-seal a {
-  text-decoration: none;
-}
-
-.developer-seal a:hover {
-  text-decoration: underline;
-}
-
-/* Ajustes para pantallas pequeñas */
+/* 🔹 Ajustes para pantallas pequeñas */
 @media (max-width: 426px) {
   .footer {
     padding: 10px;
@@ -79,7 +75,7 @@
 
   .footer p,
   .footer .address {
-    font-size: 0.7rem;
+    font-size: 0.7rem !important;
     line-height: 1.2;
   }
 
@@ -96,7 +92,6 @@
   .developer-seal {
     font-size: 0.6rem;
     gap: 3px;
-    position: static;
     margin-top: 10px;
   }
 

@@ -1,4 +1,4 @@
-/* Reset y estructura general */
+/* 🚀 Asegurar que el footer se mantenga siempre abajo */
 html, body {
   height: 100%;
   margin: 0;
@@ -9,28 +9,28 @@ html, body {
   flex-direction: column;
 }
 
-/* Contenedor principal del sitio */
+/* 📌 Contenedor principal de la aplicación */
 #root {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Mantiene el footer abajo */
+  min-height: 100vh;
 }
 
-/* Contenedor de contenido */
+/* 📌 Contenedor del contenido principal */
 .app-container {
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Empuja el footer hacia abajo */
+  flex-grow: 1;
 }
 
-/* Main Content para expandir el espacio */
+/* 📌 Sección principal (empuja el footer hacia abajo) */
 .main-content {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
-/* Footer siempre abajo */
+/* 📌 Footer fijo abajo en todas las resoluciones */
 .footer {
   background-color: #3e4ae9;
   color: white;
@@ -38,4 +38,12 @@ html, body {
   padding: 15px;
   width: 100%;
   margin-top: auto; /* Empuja el footer al fondo */
+  padding: 10px 0;
 }
+
+@media screen and (max-width: 425px) {
+  .container {
+    padding: 0 10px; /* ✅ Agrega padding lateral en móviles */
+  }
+}
+
