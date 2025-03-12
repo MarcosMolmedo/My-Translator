@@ -78,8 +78,8 @@
   }
   
   .btn-enviar {
-    background-color: #e8f05c !important; /* Forzar color */
-    color: #444;
+    background-color: #e91e63 !important; /* Forzar color */
+    color: white;
     padding: 0.75rem;
     font-size: 1rem;
     font-weight: bold;
