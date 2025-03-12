@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../Styles/Servicios.css";
 
 const serviciosData = [
@@ -34,28 +34,11 @@ const serviciosData = [
 ];
 
 const Servicios = () => {
-  const [index, setIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-
-  useEffect(() => {
-    if (!isHovered) {
-      const interval = setInterval(() => {
-        setIndex((prevIndex) => (prevIndex + 1) % serviciosData.length);
-      }, 3000);
-      return () => clearInterval(interval);
-    }
-  }, [isHovered]);
-
   return (
     <div className="servicios-page-container">
-      <div className="servicios-carousel">
+      <div className="servicios-grid">
         {serviciosData.map((servicio, i) => (
-          <div
-            key={i}
-            className={`servicios-page-card ${i === index ? "active" : "inactive"}`}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
+          <div key={i} className="servicios-page-card">
             <h2 className="servicios-page-title">{servicio.title}</h2>
             <ul className="servicios-page-list">
               {servicio.items.map((item, idx) => (

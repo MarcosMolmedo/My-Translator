@@ -13,12 +13,17 @@
 
 /* Contenedor sin márgenes ni restricciones */
 .container {
+  max-width: 1200px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  text-align: center;
   width: 100%;
-  padding: 0 20px;
+ 
   margin: 0;
+  padding: 0 1rem;
+
 }
 
 /* Logo y título */

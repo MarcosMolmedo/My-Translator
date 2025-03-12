@@ -1,75 +1,55 @@
 /* 🔹 Contenedor general */
 .servicios-page-container {
   width: 100%;
-  padding: 3rem 2rem;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: #f9f9f9;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* 🔹 Contenedor del carrusel */
-.servicios-carousel {
-  display: flex;
-  overflow: hidden;
-  width: 100%;
+/* 🔹 Contenedor del grid */
+.servicios-grid {
+  display: grid;
+  gap: 2rem;
   max-width: 1200px;
-  position: relative;
-  justify-content: center;
+  width: 100%;
 }
 
 /* 🔹 Tarjetas */
 .servicios-page-card {
   background: #fff;
   border-radius: 12px;
-  padding: 2rem;  /* 🔥 Se agregó más padding para evitar el problema */
+  padding: 2rem;
   text-align: left;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   border: 1px solid #e8f05c;
-  min-width: 100%;
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-  opacity: 0;
-  transform: translateX(100%);
-  position: absolute;
 }
 
-/* 🔹 Tarjeta activa */
-.servicios-page-card.active {
-  opacity: 1;
-  transform: translateX(0);
-  position: relative;
-}
+/* 🔹 RESPONSIVE DESIGN */
 
-/* 🔹 Tarjetas inactivas (ocultas) */
-.servicios-page-card.inactive {
-  opacity: 0;
-  transform: translateX(-100%);
-}
-
-/* 🔹 Estilos Responsivos */
-
-/* ✅ En pantallas mayores a 1031px: Mostrar todas en una fila */
-@media (min-width: 1031px) {
-  .servicios-carousel {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .servicios-page-card {
-    position: static;
-    opacity: 1;
-    transform: none;
-    min-width: calc(25% - 2rem);
+/* ✅ En pantallas mayores a 1110px: Mostrar en una sola fila */
+@media (min-width: 1111px) {
+  .servicios-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 tarjetas en una fila */
   }
 }
 
-/* ✅ En pantallas menores a 1031px: Mostrar una sola a la vez con animación */
-@media (max-width: 1030px) {
-  .servicios-carousel {
-    position: relative;
+/* ✅ En pantallas entre 750px y 1110px: Mostrar en 2 filas de 2 columnas */
+@media (max-width: 1110px) and (min-width: 750px) {
+  .servicios-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    padding-right: 30px;
+    padding-left: 30px;
   }
+}
 
-  .servicios-page-card {
-    min-width: 100%;
+/* ✅ En pantallas menores a 750px: Mostrar en una sola columna */
+@media (max-width: 749px) {
+  .servicios-grid {
+    grid-template-columns: 1fr; /* 1 sola columna */
+    padding-right: 30px;
+    padding-left: 30px;
   }
 }
