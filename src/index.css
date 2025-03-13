@@ -1,11 +1,15 @@
 /* Reset y estilos globales */
-body {
-  margin:  0;
+
+html, body {
+  height: 100%;
+  margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden; /* ✅ Evita scroll horizontal */
+  overflow-y: auto; /* ✅ Permite desplazamiento si hay más contenido */
 }
-
 /* Contenedor principal */
 .container {
   max-width: 1200px;

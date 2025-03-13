@@ -21,13 +21,13 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center right; /* ✅ Mantiene la persona visible en todas las pantallas */
+  object-position: center right; /* ✅ Mantiene a la persona visible */
 }
 
-/* 🔹 TEXTO FIJO ENCIMA DE LA IMAGEN 🔹 */
+/* 🔹 TEXTO ENCIMA DE LA IMAGEN 🔹 */
 .hero-content {
   position: absolute;
-  top: 15%; /* Mantiene el texto en la parte superior */
+  top: 15%;
   left: 10%;
   text-align: left;
   width: 80%;
@@ -38,27 +38,24 @@
   padding: 0;
 }
 
-/* 🔹 ESTILO DEL TÍTULO Y DESCRIPCIÓN 🔹 */
+/* 🔹 TÍTULOS 🔹 */
 .hero-content h2 {
   font-size: 2rem;
   font-weight: bold;
-  white-space: nowrap; /* ✅ Mantiene el título en una sola línea */
-  overflow: hidden;
-  text-overflow: ellipsis;
   max-width: 100%;
+  text-wrap: balance; /* ✅ Intenta mantener el texto en una sola línea */
 }
 
 .hero-description {
   font-size: 1.1rem;
   font-weight: normal;
-  white-space: nowrap; /* ✅ Evita que el texto se divida en varias líneas */
-  overflow: hidden;
-  text-overflow: ellipsis;
   max-width: 100%;
+  text-wrap: balance; /* ✅ Mantiene la frase completa */
 }
-/* 🔹 BOTÓN - Ajuste de tamaño 🔹 */
+
+/* 🔹 BOTÓN 🔹 */
 .cta-button {
-  display: inline-block; /* ✅ Evita que ocupe todo el ancho */
+  display: inline-block;
   background-color: #e91e63;
   color: white;
   padding: 12px 24px;
@@ -67,25 +64,11 @@
   font-weight: bold;
   font-size: 1rem;
   transition: background-color 0.3s ease-in-out;
-  max-width: 200px; /* ✅ Limita el ancho del botón */
+  max-width: 200px; /* ✅ Mantiene el ancho fijo */
   text-align: center;
-  width: auto; /* ✅ Evita que se estire */
-  margin: 0 auto; /* ✅ Lo centra horizontalmente */
+  width: auto;
+  margin: 10px auto; /* ✅ Centra el botón */
 }
-
-.cta-button:hover {
-  background-color: #d81b60;
-}
-
-/* 🔹 RESPONSIVE 🔹 */
-@media (max-width: 767px) {
-  .cta-button {
-    font-size: 0.9rem;
-    padding: 10px 20px;
-    max-width: 180px; /* ✅ Ajuste adicional para móviles */
-  }
-}
-
 
 .cta-button:hover {
   background-color: #d81b60;
@@ -99,23 +82,21 @@
     width: 90%;
   }
 
-  .hero-content h2 {
-    font-size: 1.8rem;
-    white-space: normal; /* ✅ Permite que el título se divida si es necesario */
-  }
-
+  .hero-content h2,
   .hero-description {
-    font-size: 1rem;
-    white-space: normal; /* ✅ Permite que la segunda línea sea visible */
+    font-size: 1.8rem;
+    white-space: normal; /* ✅ Permite que el texto se divida si es necesario */
+    text-align: center;
   }
 
   .cta-button {
-    font-size: 0.9rem;
-    padding: 10px 20px;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
   }
 
   .hero-image img {
-    object-position: center center; /* ✅ Centra mejor la imagen en pantallas medianas */
+    object-position: center center; /* ✅ Evita cortar la persona */
   }
 }
 
@@ -129,27 +110,24 @@
     top: 5%;
     left: 5%;
     width: 90%;
+    text-align: center;
   }
 
   .hero-content h2 {
     font-size: 1.5rem;
-    white-space: normal; /* ✅ Permite que el título se divida si es necesario */
     text-align: center;
   }
 
   .hero-description {
     font-size: 0.9rem;
-    white-space: normal; /* ✅ Permite que la segunda línea se vea completa */
     text-align: center;
   }
 
   .cta-button {
-    display: block;
-    margin: 10px auto;
-    text-align: center;
+    max-width: 180px; /* ✅ Evita que el botón se deforme */
   }
 
   .hero-image img {
-    object-position: center center; /* ✅ Mantiene a la persona visible sin recorte */
+    object-position: center center; /* ✅ Asegura que la imagen cubra bien sin cortar */
   }
 }

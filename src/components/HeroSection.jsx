@@ -8,9 +8,9 @@ const HeroSection = () => {
       <div className="hero-content">
         <h2>Traducciones Juradas en Los Países Bajos</h2>
         <p className="hero-description">
-          Convierte tus documentos de forma rápida, precisa y efectiva.
+        Traducí tus documentos de forma rápida, precisa y efectiva.
         </p>
-        <Link to="/contacto" className="cta-button">Contáctame</Link> {}
+        <Link to="/contacto" className="cta-button">Contactame</Link> {}
       </div>
       <div className="hero-image">
         <img src="/Central1.png" alt="Yohana Malvasio" />

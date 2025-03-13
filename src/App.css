@@ -1,54 +1,48 @@
-/* 🚀 Asegurar que el footer se mantenga siempre abajo */
+
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 
-
-
-/* 📌 Contenedor principal de la aplicación */
+/* Contenedor principal */
 #root {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100vh; /* Asegura que ocupe toda la altura */
 }
 
-/* 📌 Contenedor del contenido principal */
+/* Contenedor de contenido */
+/* Contenedor principal */
 .app-container {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  min-height: calc(100vh - 50px); /* ✅ Ajuste sin deformar diseño */
+  justify-content: space-between; /* ✅ Asegura que el footer quede abajo */
 }
 
-
+/* Contenido principal */
 .main-content {
-  flex-grow: 1;
+  flex-grow: 1; /* ✅ Empuja el footer sin deformar */
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* ✅ Empuja el contenido correctamente */
-  min-height: 100%;
 }
-/* 📌 Footer fijo abajo en todas las resoluciones */
+
+/* Footer fijo */
 .footer {
   background-color: #3e4ae9;
   color: white;
   text-align: center;
-  padding: 15px;
+  
   width: 100%;
-  margin-top: auto; /* Empuja el footer al fondo */
-  padding: 10px 0;
+  position: absolute; /* Lo fija en la parte inferior */
+  bottom: 0;
+  left: 0;
+  font-size: 0.55rem;
+  line-height: 1.1;
 }
-
-
-@media screen and (max-width: 425px) {
-  .container {
-    padding: 0 10px; /* ✅ Agrega padding lateral en móviles */
-  }
-}
-

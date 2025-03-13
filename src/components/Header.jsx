@@ -39,7 +39,7 @@ const Header = () => {
             <li><Link to="/sobre-mi" onClick={closeMenu}>Sobre mí</Link></li>
             <li><Link to="/servicios" onClick={closeMenu}>Servicios</Link></li>
             <li><Link to="/cotizaciones" onClick={closeMenu}>Cotizaciones</Link></li>
-            <li><Link to="/preguntasfrecuentes" onClick={closeMenu}>Preguntas frecuentes</Link></li>
+            <li><Link to="/preguntasfrecuentes" onClick={closeMenu}>Preguntas Frecuentes</Link></li>
             <li><Link to="/opiniones" onClick={closeMenu}>Opiniones</Link></li>
           </ul>
         </nav>

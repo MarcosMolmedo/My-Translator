@@ -101,7 +101,7 @@ const Cotizaciones = () => {
 
   return (
     <div className="cotizaciones-container">
-      <h1>Solicita tu Cotización</h1>
+      <h1>Solicitá tu Cotización</h1>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         
         <div className="form-group">
@@ -116,9 +116,9 @@ const Cotizaciones = () => {
         </div>
 
         <div className="form-group">
-          <label>¿A qué idioma deseas traducir el documento?</label>
+          <label>¿A qué idioma deseás traducir el documento?</label>
           <select id="idioma" name="idioma" value={formData.idioma} onChange={handleChange} required>
-            <option value="">Selecciona una opción</option>
+            <option value="">Seleccioná una opción</option>
             <option value="es-en">Español - Inglés</option>
             <option value="en-es">Inglés - Español</option>
           </select>
@@ -127,7 +127,7 @@ const Cotizaciones = () => {
         <div className="form-group">
           <label>País emisor del documento:</label>
           <select id="paisEmisor" name="paisEmisor" value={formData.paisEmisor} onChange={handleChange} required>
-            <option value="">Selecciona un país</option>
+            <option value="">Seleccioná un país</option>
             <option value="Argentina">Argentina</option>
             <option value="Uruguay">Uruguay</option>
             <option value="Chile">Chile</option>
@@ -148,7 +148,7 @@ const Cotizaciones = () => {
         </div>
 
         <div className="form-group">
-          <label>¿Cuándo debes presentar el documento?</label>
+          <label>¿Cuándo necesitás que esté lista tu traducción?</label>
           <div className="radio-group">
             <label><input type="radio" name="tiempoEntrega" value="Menos de 5 días hábiles" onChange={handleChange} required /> Menos de 5 días hábiles (urgente)</label>
             <label><input type="radio" name="tiempoEntrega" value="Más de 5 días hábiles" onChange={handleChange} required /> Más de 5 días hábiles</label>
@@ -156,7 +156,7 @@ const Cotizaciones = () => {
         </div>
 
         <div className="form-group">
-          <label>¿Quieres retirar el documento en Utrecht Terwijde?</label>
+          <label>¿Vas a retirar tu traducción en Utrecht Terwijde?</label>
           <div className="radio-group">
             <label><input type="radio" name="retiroUtrecht" value="Sí" onChange={handleChange} required /> Sí</label>
             <label><input type="radio" name="retiroUtrecht" value="No" onChange={handleChange} required /> No</label>
@@ -164,7 +164,7 @@ const Cotizaciones = () => {
         </div>
 
         <div className="form-group">
-          <label>¿Deseas que te envíe la traducción por PostNL?</label>
+          <label>¿Deseás que te envíe la traducción por PostNL?</label>
           <div className="radio-group">
             <label><input type="radio" name="envioPostNL" value="Sí" onChange={handleChange} required disabled={formData.retiroUtrecht === 'Sí'} /> Sí</label>
             <label><input type="radio" name="envioPostNL" value="No" onChange={handleChange} required checked={formData.retiroUtrecht === 'Sí'} /> No</label>
@@ -177,7 +177,7 @@ const Cotizaciones = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="archivo">Cargar Documento (obligatorio):</label>
+          <label htmlFor="archivo">Cargá una copia de tu documento por favor (obligatorio):</label>
           <input type="file" id="archivo" name="archivo" onChange={handleFileChange} accept=".pdf,.doc,.docx,.jpg,.png" required />
           {archivoError && <p className="error">{archivoError}</p>}
         </div>

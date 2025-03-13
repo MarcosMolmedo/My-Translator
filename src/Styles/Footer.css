@@ -3,14 +3,19 @@
   background-color: #3e4ae9;
   color: white;
   text-align: center;
-  padding: 8px 15px; /* Reduce el padding vertical */
+  padding: 8px 15px;
   width: 100%;
-  position: relative; /* Evita solapamientos */
+  position: relative;
   bottom: 0;
   left: 0;
-  margin-top: auto;
-  font-size: 0.55rem; /* Hace el texto más compacto */
-  line-height: 1.1; /* Reduce el espaciado entre líneas */
+  margin-top: auto; /* ✅ Empuja el footer al fondo */
+  font-size: 0.7rem;
+  line-height: 1.2;
+}
+/* 🔹 Eliminar márgenes innecesarios en el contenido del footer */
+.footer-content {
+  padding: 0;
+  margin: 0;
 }
 
 /* 🔹 Asegurar que el texto del footer tenga prioridad */
@@ -34,6 +39,8 @@
   margin: 10px 0 0 0;
   padding: 0;
   gap: 15px;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .social-links li a img {
@@ -69,7 +76,7 @@
 /* 🔹 Ajustes para pantallas pequeñas */
 @media (max-width: 426px) {
   .footer {
-    padding: 10px;
+    padding: 0;
     background-color: #4a58f0; 
   }
 

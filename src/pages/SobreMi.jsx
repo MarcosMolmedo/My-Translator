@@ -10,19 +10,13 @@ const SobreMi = () => {
         </div>
         <div className="sobre-mi-texto">
           <p>
-            Hola, soy <strong>Yohana Malvasio</strong>, traductora jurada de español a inglés, 
-            reconocida en los Países Bajos por mi profesionalismo y eficiencia. 
-            Me especializo en la traducción de documentos legales, académicos y personales, 
-            asegurando el más alto nivel de precisión, confidencialidad y cumplimiento con los requisitos oficiales.
+            Hola, soy <strong>Yohana Malvasio</strong>, traductora jurada en Países Bajos. Estoy habilitada para traducir documentos del español a inglés y del inglés al español. Me especializo en la traducción de documentos legales, académicos y personales, asegurando el más alto nivel de precisión, confidencialidad y cumplimiento con los requisitos oficiales.
           </p>
           <p>
-            Mi objetivo es facilitar que tus documentos sean aceptados sin inconvenientes 
-            tanto en los Países Bajos como en otros países. Trabajo con dedicación y 
-            atención al detalle para ofrecerte un servicio de alta calidad.
+          Mi objetivo es facilitar que tus documentos sean aceptados sin inconvenientes tanto en los Países Bajos como en otros países. Trabajo con dedicación y atención al detalle para ofrecerte un servicio de alta calidad.
           </p>
           <p>
-            Apasionada por los idiomas, disfruto conectando culturas a través de la comunicación. 
-            Si necesitas una traducción rápida, precisa y confiable, ¡estoy aquí para ayudarte!
+          Apasionada por los idiomas, disfruto conectando culturas a través de la comunicación. Si necesitás una traducción rápida, precisa y confiable, ¡estoy aquí para ayudarte!
           </p>
           <a
             href="https://www.instagram.com/my_translator_nl?igsh=MXVwem5heXh6d2RtbQ=="
