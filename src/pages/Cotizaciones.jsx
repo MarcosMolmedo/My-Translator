@@ -60,18 +60,15 @@ const Cotizaciones = () => {
     setCargando(true);
     setMensaje('');
 
-    const data = new FormData();
-    Object.entries(formData).forEach(([key, value]) => {
-      if (value) {
-        data.append(key, value);
-      }
+    const formData = new FormData();
+    formData.append("nombre", "Ejemplo");
+    formData.append("email", "ejemplo@email.com");
+    formData.append("comentario", "Esto es una prueba");
+    
+    const response = await fetch("https://us-central1-my-translator-8c7e0.cloudfunctions.net/sendEmail", {
+        method: "POST",
+        body: formData, // ✅ Envío correcto de archivos y texto
     });
-
-    try {
-      const response = await fetch('http://localhost:3000/send-email', {
-        method: 'POST',
-        body: data,
-      });
 
       if (response.ok) {
         setMensaje('¡Cotización enviada exitosamente!');
