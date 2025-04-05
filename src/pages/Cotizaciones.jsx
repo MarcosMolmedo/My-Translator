@@ -62,7 +62,9 @@ const Cotizaciones = () => {
 
     const data = new FormData();
     Object.entries(formData).forEach(([key, value]) => {
-      if (value) {
+      if (key === 'archivo' && value) {
+        data.append('archivo', value);
+      } else {
         data.append(key, value);
       }
     });
@@ -103,7 +105,6 @@ const Cotizaciones = () => {
     <div className="cotizaciones-container">
       <h1>Solicitá tu Cotización</h1>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
-        
         <div className="form-group">
           <label htmlFor="nombre">Nombre:</label>
           <input type="text" id="nombre" name="nombre" value={formData.nombre} onChange={handleChange} required placeholder="Tu nombre" />
@@ -182,15 +183,14 @@ const Cotizaciones = () => {
           {archivoError && <p className="error">{archivoError}</p>}
         </div>
 
-        <button type="submit" className="btn-enviar" disabled={cargando}>{cargando ? "Enviando..." : "Enviar"}
+        <button type="submit" className="btn-enviar" disabled={cargando}>
+          {cargando ? "Enviando..." : "Enviar"}
         </button>
       </form>
 
-        {/* 📌 MENSAJE DE ÉXITO O ERROR */}
-        {mensaje && <p className="message">{mensaje}</p>}
+      {mensaje && <p className="message">{mensaje}</p>}
     </div>
   );
 };
 
 export default Cotizaciones;
-

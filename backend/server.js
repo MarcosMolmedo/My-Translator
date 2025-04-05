@@ -5,16 +5,20 @@ const dotenv = require('dotenv');
 const fs = require('fs');
 const sgMail = require('@sendgrid/mail');
 
+// Cargar variables de entorno
 dotenv.config();
+
 const app = express();
-app.use(cors());
+
+// 🔥 Configuración de CORS y body-parser
+app.use(cors({ origin: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Configuración SendGrid
+// Configuración de SendGrid
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-// Configuración Multer
+// Configuración de subida de archivos con Multer
 const uploadDir = 'uploads/';
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 
@@ -24,6 +28,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+// Endpoint de envío de cotización
 app.post('/send-email', upload.single('archivo'), async (req, res) => {
   const { nombre, email, idioma, paisEmisor, apostillado, retiroUtrecht, envioPostNL, tiempoEntrega, comentario } = req.body;
   const archivo = req.file;
@@ -62,6 +67,7 @@ app.post('/send-email', upload.single('archivo'), async (req, res) => {
   }
 });
 
+// Servidor local
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);

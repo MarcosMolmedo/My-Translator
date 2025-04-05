@@ -181,7 +181,7 @@ const PreguntasFrecuentes = () => {
           <ul>
             <li><strong>Si la usás en los Países Bajos, no requiere certificación extra.</strong> </li>
             <li><strong>Podés presentarla directamente en la entidad que la pida.</strong> </li>
-            <li><strong>Si la institución requiere certificación extra, mejor confirmarlo antes con la entidad u organización en la que vas a presentar la traducción.</strong> </li>
+            <li><strong>Si la institución requiere certificación extra, mejor confirmarlo antes con la entidad u organización en la que vas a presentar la traducción. </strong> </li>
           </ul>
         </div>
       ),
