@@ -103,7 +103,7 @@
 /* Ajuste para dispositivos pequeños */
 @media (max-width: 767px) {
   .hero {
-    height: 55vh;
+    height: 400px;
   }
 
   .hero-content {

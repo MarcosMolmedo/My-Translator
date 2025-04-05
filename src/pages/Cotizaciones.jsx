@@ -70,10 +70,11 @@ const Cotizaciones = () => {
     });
 
     try {
-      const response = await fetch('http://localhost:3000/send-email', {
-        method: 'POST',
-        body: data,
+      const response = await fetch("https://us-central1-my-translator-8c7e0.cloudfunctions.net/sendEmail", {
+        method: "POST",
+        body: formData
       });
+      
 
       if (response.ok) {
         setMensaje('¡Cotización enviada exitosamente!');

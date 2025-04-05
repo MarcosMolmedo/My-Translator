@@ -9,6 +9,7 @@ html, body {
   flex-direction: column;
   overflow-x: hidden; /* ✅ Evita scroll horizontal */
   overflow-y: auto; /* ✅ Permite desplazamiento si hay más contenido */
+ 
 }
 /* Contenedor principal */
 .container {
@@ -24,6 +25,7 @@ img {
 }
 @media screen and (max-width: 425px) {
   .container {
+    background: #4a58f0;
     padding: 0 10px; /* ✅ Agrega padding lateral en móviles */
   }
 }
