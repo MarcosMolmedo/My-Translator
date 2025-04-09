@@ -70,10 +70,12 @@ const Cotizaciones = () => {
     });
 
     try {
-      const response = await fetch("https://us-central1-my-translator-8c7e0.cloudfunctions.net/sendEmail", {
+      const response = await fetch('https://my-translator.onrender.com/send-email', {
         method: "POST",
-        body: formData
+        body: data // ✅ Este es el FormData correcto que construiste
       });
+      
+      
       
 
       if (response.ok) {
