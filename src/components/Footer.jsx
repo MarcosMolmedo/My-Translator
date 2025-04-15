@@ -35,7 +35,7 @@ const Footer = () => {
           </li>
         </ul>
         <div className="developer-seal">
-          <span>@Devoloded by Marcos M Olmedo</span>
+          <span>@Devoloped by Marcos M Olmedo</span>
           <a href="https://www.linkedin.com/in/marcos-manuel-olmedo/" target="_blank" rel="noopener noreferrer">
             <img src={MarcosLogo} alt="Logo Marcos M Olmedo" />
           </a>

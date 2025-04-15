@@ -31,6 +31,7 @@ const Header = () => {
         >
           &#9776;
         </div>
+        
         <nav className={`nav ${isMenuOpen ? "open" : ""}`}>
           {/* Botón de cierre "X" */}
           <div className="close-menu" onClick={closeMenu}>&times;</div>

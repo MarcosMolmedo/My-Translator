@@ -20,10 +20,12 @@
   justify-content: space-between;
   text-align: center;
   width: 100%;
- 
-  margin: 0;
+  margin: 0 auto; /* ✅ CENTRA el contenedor */
   padding: 0 1rem;
-
+}
+.header .container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Logo y título */
@@ -174,3 +176,4 @@
     font-size: 1.2rem; 
   } 
 }
+
