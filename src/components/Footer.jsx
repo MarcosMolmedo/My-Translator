@@ -35,11 +35,33 @@ const Footer = () => {
           </li>
         </ul>
         <div className="developer-seal">
-          <span>@Devoloped by Marcos M Olmedo</span>
-          <a href="https://www.linkedin.com/in/marcos-manuel-olmedo/" target="_blank" rel="noopener noreferrer">
-            <img src={MarcosLogo} alt="Logo Marcos M Olmedo" />
-          </a>
-        </div>
+  <span>
+    Photos by{" "}
+    <a 
+      href="https://www.murchstudio.com/" 
+      target="_blank" 
+      rel="noopener noreferrer"
+    >
+      Beatrice Murch 📷
+    </a>
+  </span>
+
+  <span style={{ margin: "0 10px" }}>|</span>
+
+  <span>
+    Developed by{" "}
+    <a
+      href="https://www.linkedin.com/in/marcos-manuel-olmedo/"
+      target="_blank"
+      rel="noopener noreferrer"
+      title="Perfil de LinkedIn de Marcos M. Olmedo"
+    >
+      Marcos M Olmedo 💻
+    </a>
+  </span>
+</div>
+
+
       </div>
     </footer>
   );

@@ -56,23 +56,25 @@
 }
 
 /* 🔹 Sello del desarrollador */
+
+/* 🔹 Contenedor general con espaciado */
 .developer-seal {
-  font-size: 0.7rem;
-  color: #cccccc;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-.developer-seal img {
-  width: 16px;  /* Ajusta el tamaño de la imagen */
-  height: 16px; /* Mantiene la proporción */
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  padding-top: 15px; /* ✅ esto separa todo del contenido superior */
 }
 
-.developer-seal img:hover {
-  transform: scale(1.2); /* Efecto de hover */
-  opacity: 0.9;
+/* 🔹 Estilos de los enlaces del sello */
+.developer-seal a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
+
+.developer-seal a:hover {
+  color: #cccccc;
+  text-decoration: underline;
+}
+
+
 
 /* 🔹 Ajustes para pantallas pequeñas */
 @media (max-width: 426px) {
