@@ -24,7 +24,7 @@ const Footer = () => {
             </a>
           </li>
           <li>
-            <a href="mailto:malvasioyohana@gmail.com" target="_blank" rel="noopener noreferrer">
+            <a href="mailto:info@malvasioyohana.nl" target="_blank" rel="noopener noreferrer">
               <img src={GmailIcon} alt="Gmail" />
             </a>
           </li>
