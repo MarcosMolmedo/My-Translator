@@ -9,6 +9,12 @@
   box-sizing: border-box;
   position: relative;
 }
+.sobre-mi-wrapper {
+  min-height: calc(100vh - 160px); /* Ajustá si tu header/footer tienen otro alto */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /* ✅ Contenedor principal */
 .sobre-mi-content {

@@ -8,6 +8,9 @@
   justify-content: center;
   align-items: center;
 }
+.servicios-page-container {
+  min-height: 75vh; /* ✅ Fuerza una altura mínima como en Opiniones */
+}
 
 /* 🔹 Contenedor del grid */
 .servicios-grid {

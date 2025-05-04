@@ -8,7 +8,12 @@
   padding: 20px;
   flex-wrap: wrap;
 }
-
+.contact-wrapper {
+  min-height: calc(100vh - 160px); /* Ajustá si tu header/footer tienen otro alto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* Imagen de la izquierda con efecto de aparición */
 .contact-sticker {
   width: 300px;

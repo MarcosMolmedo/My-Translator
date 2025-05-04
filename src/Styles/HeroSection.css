@@ -7,6 +7,12 @@
   align-items: center;
   justify-content: center;
 }
+.hero-wrapper {
+  min-height: calc(100vh - 160px); /* Ajustá este valor si tu header/footer tienen otro alto */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 /* IMAGEN */
 .hero-image {
