@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import '../Styles/Cotizaciones.css';
+import ContadorCircular from '../components/ContadorCircular';
+
 
 const Cotizaciones = () => {
   const [formData, setFormData] = useState({
@@ -108,6 +110,8 @@ const Cotizaciones = () => {
     <div className="cotizaciones-container">
       <h1>Solicitá tu Cotización</h1>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
+  <fieldset disabled={cargando} style={{ border: 'none', padding: 0, margin: 0 }}>
+
         <div className="form-group">
           <label htmlFor="nombre">Nombre:</label>
           <input type="text" id="nombre" name="nombre" value={formData.nombre} onChange={handleChange} required placeholder="Tu nombre" />
@@ -187,8 +191,11 @@ const Cotizaciones = () => {
         </div>
 
         <button type="submit" className="btn-enviar" disabled={cargando}>
-          {cargando ? "Enviando..." : "Enviar"}
-        </button>
+  {cargando ? "Enviando..." : "Enviar"}
+</button>
+</fieldset>
+
+{cargando && <ContadorCircular duracion={35} />}
       </form>
 
       {mensaje && <p className="message">{mensaje}</p>}
