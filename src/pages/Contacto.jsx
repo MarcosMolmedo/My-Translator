@@ -28,7 +28,7 @@ const Contacto = () => {
             <a href="https://www.instagram.com/my_translator_nl?igsh=MXVwem5heXh6d2RtbQ==" target="_blank" rel="noopener noreferrer">
               <img src={instagramcontacto} alt="Instagram" className="contact-icon" />
             </a>
-            <a href="mailto:malvasioyohana@gmail.com" target="_blank" rel="noopener noreferrer">
+            <a href="mailto:info@malvasioyohana.nl" target="_blank" rel="noopener noreferrer">
               <img src={gmailcontacto} alt="Gmail" className="contact-icon" />
             </a>
             <a href="https://wa.me/31620325639" target="_blank" rel="noopener noreferrer">
