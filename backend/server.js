@@ -86,7 +86,9 @@ app.post('/send-email', upload.single('archivo'), async (req, res) => {
     const [resp] = await sgMail.send(msg);
     if (archivo?.path) fs.unlink(archivo.path, () => {});
     console.log('✅ SendGrid OK:', resp?.statusCode);
-    return res.status(200).json({ message: 'Correo enviado' });
+    return res.status(200).json({ ok: true });
+
+
   } catch (err) {
     if (archivo?.path) fs.unlink(archivo.path, () => {});
 
@@ -115,7 +117,8 @@ app.post('/send-email', upload.single('archivo'), async (req, res) => {
         };
         const info = await smtpTransport.sendMail(mailOptions);
         console.log('✅ Fallback SMTP OK:', info?.messageId || '');
-        return res.status(200).json({ message: 'Correo enviado (fallback SMTP)' });
+      return res.status(200).json({ ok: true, via: 'smtp' });
+
       } catch (e2) {
         console.error('❌ Fallback SMTP error:', e2?.message);
         return res.status(500).json({ error: 'Error al enviar correo', detail, fallback: e2?.message || 'fallback failed' });
