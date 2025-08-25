@@ -16,7 +16,7 @@ app.use(cors({ origin: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// SendGrid (principal)
+// --- SendGrid (principal) ---
 if (!process.env.SENDGRID_API_KEY) console.error('❌ Falta SENDGRID_API_KEY');
 if (!process.env.EMAIL_FROM || !process.env.EMAIL_TO) console.error('❌ Falta EMAIL_FROM o EMAIL_TO');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -24,31 +24,46 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 // Healthcheck
 app.get('/health', (_req, res) => res.json({ ok: true }));
 
-// Multer (usa /tmp en producción de Render)
-const uploadRoot = process.env.NODE_ENV === 'production' ? '/tmp/uploads' : path.join(__dirname, 'uploads');
+// --- Multer (usa /tmp en Render) ---
+const uploadRoot =
+  process.env.NODE_ENV === 'production' ? '/tmp/uploads' : path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadRoot)) fs.mkdirSync(uploadRoot, { recursive: true });
 
 const storage = multer.diskStorage({
   destination: (_, __, cb) => cb(null, uploadRoot),
-  filename: (_, file, cb) => cb(null, `${Date.now()}-${file.originalname}`)
+  filename: (_, file, cb) => cb(null, `${Date.now()}-${file.originalname}`),
 });
 const upload = multer({ storage });
 
-// ======= Fallback SMTP (Brevo) =======
+// --- Fallback SMTP (Brevo) ---
 const fallbackEnabled = !!(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
 const smtpTransport = fallbackEnabled
   ? nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT) || 587,
       secure: false,
-      auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }
+      auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
     })
   : null;
 
-// ======= Endpoint principal =======
+// --- Endpoint principal ---
 app.post('/send-email', upload.single('archivo'), async (req, res) => {
-  const { nombre, email, idioma, paisEmisor, apostillado, retiroUtrecht, envioPostNL, tiempoEntrega, comentario } = req.body;
+  const {
+    nombre,
+    email,
+    idioma,
+    paisEmisor,
+    apostillado,
+    retiroUtrecht,
+    envioPostNL,
+    tiempoEntrega,
+    comentario,
+  } = req.body;
   const archivo = req.file;
+
+  const cleanup = () => {
+    if (archivo?.path) fs.unlink(archivo.path, () => {});
+  };
 
   let body = `Nueva solicitud de cotización:\n\n`;
   if (nombre) body += `👤 Nombre: ${nombre}\n`;
@@ -73,28 +88,26 @@ app.post('/send-email', upload.single('archivo'), async (req, res) => {
     subject: 'Nueva Solicitud de Cotización',
     text: body,
     attachments: archivo
-      ? [{
-          content: fs.readFileSync(archivo.path).toString('base64'),
-          filename: archivo.originalname,
-          type: archivo.mimetype,
-          disposition: 'attachment'
-        }]
-      : []
+      ? [
+          {
+            content: fs.readFileSync(archivo.path).toString('base64'),
+            filename: archivo.originalname,
+            type: archivo.mimetype,
+            disposition: 'attachment',
+          },
+        ]
+      : [],
   };
 
   try {
     const [resp] = await sgMail.send(msg);
-    if (archivo?.path) fs.unlink(archivo.path, () => {});
     console.log('✅ SendGrid OK:', resp?.statusCode);
+    cleanup();
     return res.status(200).json({ ok: true });
-
-
   } catch (err) {
-    if (archivo?.path) fs.unlink(archivo.path, () => {});
-
     const detail =
       (err?.response?.body?.errors && Array.isArray(err.response.body.errors)
-        ? err.response.body.errors.map(e => e.message).join(' | ')
+        ? err.response.body.errors.map((e) => e.message).join(' | ')
         : null) ||
       err?.message ||
       'Unknown error';
@@ -102,7 +115,7 @@ app.post('/send-email', upload.single('archivo'), async (req, res) => {
     console.error('❌ SendGrid error:', err?.code, detail);
     if (err?.response?.body) console.error('Body:', JSON.stringify(err.response.body));
 
-    // ===== Fallback SMTP sólo si es "Maximum credits exceeded" =====
+    // Fallback SMTP solo cuando se acabaron créditos de SendGrid
     if (fallbackEnabled && /maximum credits exceeded/i.test(detail || '')) {
       try {
         const mailOptions = {
@@ -112,20 +125,30 @@ app.post('/send-email', upload.single('archivo'), async (req, res) => {
           subject: 'Nueva Solicitud de Cotización (fallback)',
           text: body,
           attachments: archivo
-            ? [{ filename: archivo.originalname, path: archivo.path, contentType: archivo.mimetype }]
-            : []
+            ? [
+                {
+                  filename: archivo.originalname,
+                  path: archivo.path,
+                  contentType: archivo.mimetype,
+                },
+              ]
+            : [],
         };
         const info = await smtpTransport.sendMail(mailOptions);
         console.log('✅ Fallback SMTP OK:', info?.messageId || '');
-      return res.status(200).json({ ok: true, via: 'smtp' });
-
+        cleanup();
+        return res.status(200).json({ ok: true, via: 'smtp' });
       } catch (e2) {
         console.error('❌ Fallback SMTP error:', e2?.message);
-        return res.status(500).json({ error: 'Error al enviar correo', detail, fallback: e2?.message || 'fallback failed' });
+        cleanup();
+        return res
+          .status(500)
+          .json({ error: 'Error al enviar correo', detail, fallback: e2?.message || 'fallback failed' });
       }
     }
 
     // Otros errores → 500 con detalle
+    cleanup();
     return res.status(500).json({ error: 'Error al enviar correo', detail });
   }
 });
@@ -133,3 +156,4 @@ app.post('/send-email', upload.single('archivo'), async (req, res) => {
 // Server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`));
+
