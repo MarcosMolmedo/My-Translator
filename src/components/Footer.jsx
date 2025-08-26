@@ -49,7 +49,7 @@ const Footer = () => {
   <span style={{ margin: "0 10px" }}>|</span>
 
   <span>
-    Developed by{" "}
+    Developer by{" "}
     <a
       href="https://www.linkedin.com/in/marcos-manuel-olmedo/"
       target="_blank"
