@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import '../Styles/Cotizaciones.css';
 import ContadorCircular from '../components/ContadorCircular';
 
-
-
-
 const API_URL = 'https://my-translator-backend.onrender.com/send-email';
 
 // Límite total en MB
@@ -103,9 +100,12 @@ const Cotizaciones = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // DEBUG: ver que realmente tengamos archivos antes de enviar
+    console.log('DEBUG archivos:', formData.archivos.map(f => ({ name: f.name, size: f.size })));
+
     if (emailError) return;
 
-    // Validaciones de archivos
+    // Validaciones de archivos (JS, no nativas)
     if (formData.archivos.length === 0) {
       setArchivosError('Debes adjuntar al menos un documento.');
       return;
@@ -129,8 +129,13 @@ const Cotizaciones = () => {
       if (key !== 'archivos') data.append(key, value);
     });
 
-    // Archivos (clave 'archivos' repetida, uno por cada file)
+    // Archivos (clave 'archivos' repetida)
     formData.archivos.forEach((f) => data.append('archivos', f));
+
+    // DEBUG: ver el FormData real
+    for (const [k, v] of data.entries()) {
+      console.log('FD:', k, v instanceof File ? `${v.name} (${v.size})` : v);
+    }
 
     try {
       const resp = await fetch(API_URL, { method: 'POST', body: data });
@@ -167,7 +172,9 @@ const Cotizaciones = () => {
   return (
     <div className="cotizaciones-container">
       <h1>Solicitá tu Cotización</h1>
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
+
+      {/* noValidate: evita que el navegador bloquee por validación nativa */}
+      <form onSubmit={handleSubmit} encType="multipart/form-data" noValidate>
         <fieldset disabled={cargando} style={{ border: 'none', padding: 0, margin: 0 }}>
           <div className="form-group">
             <label htmlFor="nombre">Nombre:</label>
@@ -302,7 +309,6 @@ const Cotizaciones = () => {
               multiple
               onChange={handleFilesChange}
               accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
-              required
             />
 
             {/* Lista + quitar */}
