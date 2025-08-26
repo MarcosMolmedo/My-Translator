@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import '../Styles/Cotizaciones.css';
 import ContadorCircular from '../components/ContadorCircular';
 
+
+
+
 const API_URL = 'https://my-translator-backend.onrender.com/send-email';
 
-// Límite total en MB (
+// Límite total en MB
 const MAX_TOTAL_MB = 20;
 const MAX_TOTAL_BYTES = MAX_TOTAL_MB * 1024 * 1024;
 
@@ -19,13 +22,15 @@ const Cotizaciones = () => {
     retiroUtrecht: '',
     envioPostNL: 'No',
     comentario: '',
-    archivos: [], // 
+    archivos: [], // array de File
   });
 
   const [mensaje, setMensaje] = useState('');
   const [cargando, setCargando] = useState(false);
   const [emailError, setEmailError] = useState('');
   const [archivosError, setArchivosError] = useState('');
+
+  const getTotalBytes = (files) => files.reduce((acc, f) => acc + (f?.size || 0), 0);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,31 +51,53 @@ const Cotizaciones = () => {
     }
   };
 
+  // === Archivos múltiples: acumular, deduplicar y validar ===
   const handleFilesChange = (e) => {
     const incoming = Array.from(e.target.files || []);
-
-    // Validación mínima de cantidad
     if (incoming.length === 0) {
       setArchivosError('Debes adjuntar al menos un documento.');
-      setFormData((prev) => ({ ...prev, archivos: [] }));
       return;
     }
-    if (incoming.length > 5) {
+
+    // merge con los ya seleccionados
+    let merged = [...formData.archivos, ...incoming];
+
+    // dedup por name+size+lastModified
+    const seen = new Set();
+    merged = merged.filter((f) => {
+      const key = `${f.name}-${f.size}-${f.lastModified}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+
+    // tope 5
+    if (merged.length > 5) {
       setArchivosError('Puedes adjuntar hasta 5 archivos.');
-      setFormData((prev) => ({ ...prev, archivos: incoming.slice(0, 5) }));
-      return;
+      merged = merged.slice(0, 5);
+    } else {
+      setArchivosError('');
     }
 
-    // Validación de peso total
-    const totalBytes = incoming.reduce((acc, f) => acc + (f.size || 0), 0);
+    // validar peso total
+    const totalBytes = getTotalBytes(merged);
     if (totalBytes > MAX_TOTAL_BYTES) {
-      setArchivosError(`El peso total supera ${MAX_TOTAL_MB} MB. Reduce el tamaño o cantidad de archivos.`);
-      setFormData((prev) => ({ ...prev, archivos: [] }));
+      setArchivosError(`El peso total supera ${MAX_TOTAL_MB} MB. Reduce tamaño o cantidad de archivos.`);
+      e.target.value = null; // reset para permitir re-selección
       return;
     }
 
+    setFormData((prev) => ({ ...prev, archivos: merged }));
+    e.target.value = null; // permite volver a elegir los mismos archivos si hace falta
+  };
+
+  const handleRemoveFile = (index) => {
+    setFormData((prev) => {
+      const next = [...prev.archivos];
+      next.splice(index, 1);
+      return { ...prev, archivos: next };
+    });
     setArchivosError('');
-    setFormData((prev) => ({ ...prev, archivos: incoming }));
   };
 
   const handleSubmit = async (e) => {
@@ -87,8 +114,7 @@ const Cotizaciones = () => {
       setArchivosError('Puedes adjuntar hasta 5 archivos.');
       return;
     }
-    const totalBytes = formData.archivos.reduce((acc, f) => acc + (f.size || 0), 0);
-    if (totalBytes > MAX_TOTAL_BYTES) {
+    if (getTotalBytes(formData.archivos) > MAX_TOTAL_BYTES) {
       setArchivosError(`El peso total supera ${MAX_TOTAL_MB} MB. Reduce el tamaño o cantidad de archivos.`);
       return;
     }
@@ -128,6 +154,7 @@ const Cotizaciones = () => {
         });
         const fileInput = document.getElementById('archivos');
         if (fileInput) fileInput.value = '';
+        setArchivosError('');
       }
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
@@ -277,12 +304,31 @@ const Cotizaciones = () => {
               accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
               required
             />
-            {formData.archivos?.length > 0 && (
-              <small>
-                {formData.archivos.length} archivo(s) seleccionado(s) — tamaño total:&nbsp;
-                {((formData.archivos.reduce((a, f) => a + (f.size || 0), 0)) / (1024 * 1024)).toFixed(2)} MB
-              </small>
+
+            {/* Lista + quitar */}
+            {formData.archivos.length > 0 && (
+              <>
+                <ul style={{ marginTop: 8, paddingLeft: 18 }}>
+                  {formData.archivos.map((f, i) => (
+                    <li key={`${f.name}-${f.size}-${f.lastModified}`} style={{ marginBottom: 4 }}>
+                      {f.name} — {(f.size / (1024 * 1024)).toFixed(2)} MB{' '}
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveFile(i)}
+                        className="btn-link"
+                        style={{ marginLeft: 8 }}
+                      >
+                        Quitar
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+                <small>
+                  Total:&nbsp;{(getTotalBytes(formData.archivos) / (1024 * 1024)).toFixed(2)} MB
+                </small>
+              </>
             )}
+
             {archivosError && <p className="error">{archivosError}</p>}
           </div>
 
