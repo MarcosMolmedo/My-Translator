@@ -4,6 +4,10 @@ import ContadorCircular from '../components/ContadorCircular';
 
 const API_URL = 'https://my-translator-backend.onrender.com/send-email';
 
+// Límite total en MB (
+const MAX_TOTAL_MB = 20;
+const MAX_TOTAL_BYTES = MAX_TOTAL_MB * 1024 * 1024;
+
 const Cotizaciones = () => {
   const [formData, setFormData] = useState({
     nombre: '',
@@ -15,13 +19,13 @@ const Cotizaciones = () => {
     retiroUtrecht: '',
     envioPostNL: 'No',
     comentario: '',
-    archivo: null,
+    archivos: [], // 
   });
 
   const [mensaje, setMensaje] = useState('');
   const [cargando, setCargando] = useState(false);
   const [emailError, setEmailError] = useState('');
-  const [archivoError, setArchivoError] = useState('');
+  const [archivosError, setArchivosError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,28 +39,57 @@ const Cotizaciones = () => {
       setFormData((prev) => ({
         ...prev,
         retiroUtrecht: value,
-        envioPostNL: 'No',
+        envioPostNL: 'No', // Si retira en Utrecht, no se ofrece envío
       }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setArchivoError('');
-      setFormData((prev) => ({ ...prev, archivo: file }));
-    } else {
-      setArchivoError('Debes adjuntar un documento.');
+  const handleFilesChange = (e) => {
+    const incoming = Array.from(e.target.files || []);
+
+    // Validación mínima de cantidad
+    if (incoming.length === 0) {
+      setArchivosError('Debes adjuntar al menos un documento.');
+      setFormData((prev) => ({ ...prev, archivos: [] }));
+      return;
     }
+    if (incoming.length > 5) {
+      setArchivosError('Puedes adjuntar hasta 5 archivos.');
+      setFormData((prev) => ({ ...prev, archivos: incoming.slice(0, 5) }));
+      return;
+    }
+
+    // Validación de peso total
+    const totalBytes = incoming.reduce((acc, f) => acc + (f.size || 0), 0);
+    if (totalBytes > MAX_TOTAL_BYTES) {
+      setArchivosError(`El peso total supera ${MAX_TOTAL_MB} MB. Reduce el tamaño o cantidad de archivos.`);
+      setFormData((prev) => ({ ...prev, archivos: [] }));
+      return;
+    }
+
+    setArchivosError('');
+    setFormData((prev) => ({ ...prev, archivos: incoming }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (emailError || archivoError || !formData.archivo) {
-      setArchivoError(!formData.archivo ? 'Debes adjuntar un documento.' : '');
+    if (emailError) return;
+
+    // Validaciones de archivos
+    if (formData.archivos.length === 0) {
+      setArchivosError('Debes adjuntar al menos un documento.');
+      return;
+    }
+    if (formData.archivos.length > 5) {
+      setArchivosError('Puedes adjuntar hasta 5 archivos.');
+      return;
+    }
+    const totalBytes = formData.archivos.reduce((acc, f) => acc + (f.size || 0), 0);
+    if (totalBytes > MAX_TOTAL_BYTES) {
+      setArchivosError(`El peso total supera ${MAX_TOTAL_MB} MB. Reduce el tamaño o cantidad de archivos.`);
       return;
     }
 
@@ -64,20 +97,21 @@ const Cotizaciones = () => {
     setMensaje('');
 
     const data = new FormData();
+
+    // Campos de texto
     Object.entries(formData).forEach(([key, value]) => {
-      if (key === 'archivo' && value) data.append('archivo', value);
-      else data.append(key, value);
+      if (key !== 'archivos') data.append(key, value);
     });
+
+    // Archivos (clave 'archivos' repetida, uno por cada file)
+    formData.archivos.forEach((f) => data.append('archivos', f));
 
     try {
       const resp = await fetch(API_URL, { method: 'POST', body: data });
       const json = await resp.json().catch(() => ({}));
-
       if (!resp.ok) {
         console.error('Backend error:', json);
-        setMensaje(
-          `Hubo un error al enviar la cotización: ${json.detail || json.error || resp.statusText}`
-        );
+        setMensaje(`Hubo un error al enviar la cotización: ${json.detail || json.error || resp.statusText}`);
       } else {
         setMensaje('¡Cotización enviada exitosamente!');
         setFormData({
@@ -90,9 +124,9 @@ const Cotizaciones = () => {
           retiroUtrecht: '',
           envioPostNL: 'No',
           comentario: '',
-          archivo: null,
+          archivos: [],
         });
-        const fileInput = document.getElementById('archivo');
+        const fileInput = document.getElementById('archivos');
         if (fileInput) fileInput.value = '';
       }
     } catch (error) {
@@ -159,7 +193,7 @@ const Cotizaciones = () => {
               <option value="Chile">Chile</option>
               <option value="México">México</option>
               <option value="España">España</option>
-              <option value="Combinacion">Combinacion de dos paises</option>
+              <option value="Combinacion">Combinación de dos países</option>
               <option value="Otro">Otro país</option>
             </select>
           </div>
@@ -229,17 +263,27 @@ const Cotizaciones = () => {
             />
           </div>
 
+          {/* === Archivos múltiples === */}
           <div className="form-group">
-            <label htmlFor="archivo">Cargá una copia de tu documento por favor (obligatorio):</label>
+            <label htmlFor="archivos">
+              Cargá hasta 5 documentos (al menos 1 es obligatorio). Peso total máx: {MAX_TOTAL_MB} MB
+            </label>
             <input
               type="file"
-              id="archivo"
-              name="archivo"
-              onChange={handleFileChange}
-              accept=".pdf,.doc,.docx,.jpg,.png"
+              id="archivos"
+              name="archivos"
+              multiple
+              onChange={handleFilesChange}
+              accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
               required
             />
-            {archivoError && <p className="error">{archivoError}</p>}
+            {formData.archivos?.length > 0 && (
+              <small>
+                {formData.archivos.length} archivo(s) seleccionado(s) — tamaño total:&nbsp;
+                {((formData.archivos.reduce((a, f) => a + (f.size || 0), 0)) / (1024 * 1024)).toFixed(2)} MB
+              </small>
+            )}
+            {archivosError && <p className="error">{archivosError}</p>}
           </div>
 
           <button type="submit" className="btn-enviar" disabled={cargando}>
