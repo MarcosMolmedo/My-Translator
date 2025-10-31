@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import '../Styles/Cotizaciones.css';
 import ContadorCircular from '../components/ContadorCircular';
 
-const API_URL = 'https://my-translator-backend.onrender.com/send-email';
+const API_URL = 'http://localhost:3000/send-email';
+
 
 // Límite total en MB
 const MAX_TOTAL_MB = 20;
