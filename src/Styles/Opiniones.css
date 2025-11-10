@@ -1,148 +1,195 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    width: 100%;
+/* 🌟 Sección Opiniones (BEM) */
+
+section.opiniones,
+section.opiniones * {
+  box-sizing: border-box; /* aislamos la sección de box-sizing raros de otros CSS */
 }
 
-/* 🟡 Contenedor Principal */
-.opiniones-container {
-    position: relative;
-    width: 100vw;
-    min-height: 75vh; 
-    background: linear-gradient(to right, #fafafa, #eaeaea);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start; 
-    padding: 2rem 1rem;
-    gap: 1rem;
+section.opiniones {
+  position: relative;
+  width: 100%;
+  padding: 5rem 1.5rem 5rem;
+  margin: 0;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.22),
+      rgba(255, 255, 255, 0.22)
+    ),
+    url("../assets/images/fondoopiniones.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-/* 🟡 Estilos base para los post-its */
-.opinion {
-    background: #e8f05c;
-    padding: 1rem;
-    text-align: center;
-    font-size: 1rem;
-    font-family: "Helvetica", sans-serif;
-    font-weight: bold;
-    color: #444;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top: 2rem; /* Espacio para el pin */
-    transition: transform 0.3s ease;
-    max-width: 100%;
+/* Contenedor interno centrado */
+.opiniones__overlay {
+  width: 100%;
 }
 
-/* 🔹 Efecto hover */
-.opinion:hover {
-    transform: scale(1.15) rotate(0deg); /* Aumenta el tamaño 15% */
-    transition: transform 0.3s ease-in-out;
-    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4); /* Acentúa la sombra */
+.opiniones__content {
+  max-width: 1200px;
+  margin: 0 auto; /* centra todo el bloque */
+  padding: 0;
 }
 
-/* 🔹 Imagen del pin */
-.pin-image {
-    width: 30px;
-    position: absolute;
-    top: -10px;
+/* 🧩 GRID con FLEXBOX – siempre centrado y responsive */
+.opiniones__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;         /* 🔹 centra las tarjetas horizontalmente */
+  gap: 4rem 3rem;                  /* row-gap, column-gap */
 }
 
-/* 🔹 Formato del texto */
-.opinion-text {
-    font-size: 1rem;
-    font-style: italic;
+/* Tarjeta */
+.opiniones__card {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 1.25rem;
+  border: 1px solid #d5df7f;       /* borde color icono */
+  padding: 3.5rem 1.75rem 1.75rem;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  /* 🔹 layout responsive:
+     - min 280px
+     - ideal ~360px
+     - se encoge si hace falta */
+  flex: 1 1 320px;
+  max-width: 360px;
 }
 
-/* 🟡 Formas irregulares de los post-its */
-.postit-1 { width: 140px; height: 130px; border-radius: 5px 15px 10px 20px; font-size: 0.75rem; }
-.postit-2 { width: 140px; height: 130px; border-radius: 10px 5px 20px 15px; font-size: 0.75rem; }
-.postit-3 { width: 140px; height: 120px; border-radius: 15px 20px 5px 10px; font-size: 0.75rem; }
-.postit-4 { width: 150px; height: 130px; border-radius: 10px 15px 5px 20px; font-size: 0.75rem; }
-.postit-5 { width: 150px; height: 140px; border-radius: 20px 10px 15px 5px; font-size: 0.75rem; }
-.postit-6 { width: 150px; height: 100px; border-radius: 5px 10px 20px 15px; font-size: 0.75rem; }
-.postit-7 { width: 140px; height: 140px; border-radius: 10px 20px 5px 15px; font-size: 0.75rem; }
-.postit-8 { width: 145px; height: 150px; border-radius: 15px 5px 10px 20px; font-size: 0.75rem; }
+/* Hover sólo escritorio */
+@media (hover: hover) and (pointer: fine) {
+  .opiniones__card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
 
-/* 🟡 🔹 Responsive Design */
-
-/* 🔹 2 filas de 4 post-its en pantallas grandes */
-@media (min-width: 1062px) {
-    .opinion {
-        width: calc(25% - 1rem);  /* 🔹 4 por fila */
-    }
+  .opiniones__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.22);
+  }
 }
 
-/* 🔹 3 por fila en pantallas medianas */
-@media (max-width: 1091px) {
-    .opiniones-container {
-        justify-content: space-evenly;
-    }
-    .opinion {
-        width: calc(33.33% - 1rem);  /* 🔹 3 por fila */
-        min-height: 120px;
-        font-size: 0.85rem;
-    }
+/* Icono redondo */
+.opiniones__avatar {
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.25);
+  z-index: 3;
 }
 
-/* 🔹 2 por fila en pantallas pequeñas */
-@media (max-width: 700px) {
-    .opiniones-container {
-        justify-content: center;
-    }
-    .opinion {
-        width: calc(50% - 1rem);  /* 🔹 2 por fila */
-        min-height: 110px;
-        font-size: 0.8rem;
-        padding: 1rem;
-    }
+.opiniones__avatar-icon {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
 }
 
-/* 🔹 1 por fila en pantallas muy pequeñas */
+/* Texto */
+.opiniones__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.opiniones__nombre {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #264653;
+  margin: 0;
+}
+
+.opiniones__rol {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #6c757d;
+  margin: 0;
+}
+
+.opiniones__fecha {
+  font-size: 0.78rem;
+  color: #8b8b8b;
+  margin: 0;
+}
+
+.opiniones__texto {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #333333;
+}
+
+/* 📱 RESPONSIVE FINO */
+
+/* Tablets / anchos medios */
+@media (max-width: 1024px) {
+  section.opiniones {
+    padding: 4.5rem 1.25rem 4.5rem;
+  }
+
+  .opiniones__grid {
+    gap: 3.5rem 2.5rem;
+  }
+}
+
+/* Móviles grandes */
+@media (max-width: 768px) {
+  section.opiniones {
+    padding: 3.5rem 1rem 4rem;
+  }
+
+  .opiniones__card {
+    flex: 1 1 100%;   /* 🔹 una sola columna */
+    max-width: 500px;
+    padding: 3.25rem 1.5rem 1.75rem;
+  }
+
+  .opiniones__avatar {
+    top: -1.9rem;
+    width: 56px;
+    height: 56px;
+  }
+}
+
+/* Móviles pequeños */
 @media (max-width: 480px) {
-    .opiniones-container {
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem; /* 🔹 Reduce el padding */
-    }
+  section.opiniones {
+    padding: 3rem 0.75rem 3.75rem;
+  }
 
-    /* Ajuste de tamaños para que los post-it sean más adaptables */
-    .opinion {
-        width: 75%;  /* 🔹 Que ocupen el 75% de la pantalla */
-        max-width: 180px;  /* 🔹 No sean demasiado grandes */
-        min-height: 90px; /* 🔹 Reducimos la altura */
-        font-size: 0.75rem;  /* 🔹 Letra más chica */
-        transform: rotate(0deg); /* 🔹 Evitamos inclinaciones exageradas */
-        padding: 0.8rem;
-    }
-}
+  .opiniones__card {
+    max-width: 100%;
+    padding: 3rem 1.25rem 1.5rem;
+  }
 
-/* 🔹 Reducimos el tamaño de los post-its en pantallas grandes para que entren todos sin scroll */
-@media (min-width: 1090px) {
-    .opinion {
-        width: calc(25% - 1rem); 
-        height: 75px; 
-        font-size: 0.40rem; 
-    }
-    .pin-image {
-        width: 20px; 
-    }
-}
+  .opiniones__nombre {
+    font-size: 0.95rem;
+  }
 
-/* 🔹 Para dispositivos aún más pequeños (hasta 320px) */
-@media (max-width: 320px) {
-    .opinion {
-        width: 85%; 
-        max-width: 150px;
-        min-height: 80px;
-        font-size: 0.65rem;
-        padding: 0.5rem;
-    }
-    .pin-image {
-        width: 15px;
-    }
+  .opiniones__rol {
+    font-size: 0.8rem;
+  }
+
+  .opiniones__fecha {
+    font-size: 0.72rem;
+  }
+
+  .opiniones__texto {
+    font-size: 0.85rem;
+  }
+
+  .opiniones__avatar {
+    width: 52px;
+    height: 52px;
+    top: -1.8rem;
+  }
 }
