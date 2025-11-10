@@ -1,179 +1,197 @@
-/* General styles for the header */
+/* ===== BLOQUE HEADER ===== */
+
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background-color: #3e4ae9;
-  padding: 2px 0;
-  color: white;
+  color: #ffffff;
   position: relative;
   z-index: 1000;
-  height: 80px;
 }
 
-/* Contenedor sin márgenes ni restricciones */
-.container {
-  max-width: 1200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
-  width: 100%;
-  margin: 0 auto; /* ✅ CENTRA el contenedor */
-  padding: 0 1rem;
-}
-.header .container {
+/* Contenedor general */
+.header__container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1rem;
+  height: 100px;
+  display: flex;
+  flex-direction: column; /* Logo arriba, menú abajo */
+  align-items: center;
+  justify-content: center;
 }
 
-/* Logo y título */
-.logo-title {
+/* ===== MARCA ===== */
+.header__brand {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: Helvetica, Arial, sans-serif;
   text-decoration: none;
-  color: white;
+  color: #ffffff;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
-.logo-title:hover {
-  color: white;
-}
-
-.logo {
+.header__logo {
   width: 45px;
   height: auto;
   padding-bottom: 5px;
 }
 
-.header h1 {
-  font-size: 1.6rem;
+.header__title {
   margin: 0;
+  font-size: 1.3rem;
 }
 
-/* NAV - MENÚ HORIZONTAL EN PANTALLAS GRANDES */
-.nav {
+/* ===== NAV (DESKTOP) ===== */
+
+.header__nav {
   display: flex;
   align-items: center;
+  margin-top: 10px;
 }
 
-.nav ul {
+.header__nav-list {
+  display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  gap: 20px;
+  gap: 26px;
 }
 
-.nav ul li a {
+.header__nav-item {
+  position: relative;
+  padding: 0 10px;
+}
+
+/* ✅ Barra divisoria entre palabras */
+.header__nav-item + .header__nav-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 18px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Links */
+.header__nav-link {
   text-decoration: none;
-  color: white;
+  color: #ffffff;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.1rem; /* ✅ un poco más grande */
   font-family: Helvetica, Arial, sans-serif;
+  transition: color 0.25s ease-in-out;
 }
 
-.nav ul li a:hover {
-  color: #00ccff;
+/* ✅ Hover amarillo identidad */
+.header__nav-link:hover,
+.header__nav-link:focus {
+  color: #FFD447;
 }
 
-/* MENÚ HAMBURGUESA SOLO EN PANTALLAS MÓVILES */
+/* ===== HAMBURGUESA Y CIERRE (OCULTOS EN DESKTOP) ===== */
+
+.header__hamburger,
+.header__close {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* ===== MOBILE / TABLET ===== */
+
 @media (max-width: 968px) {
-  .nav {
+  .header__container {
+    height: 70px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .header__title {
+    font-size: 1.3rem;
+  }
+
+  .header__hamburger {
+    display: block;
+    font-size: 2rem;
+  }
+
+  .header__nav {
     position: fixed;
     top: 0;
     right: 0;
     width: 70%;
+    max-width: 320px;
     height: 100vh;
     background-color: #3e4ae9;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+    align-items: flex-start;
+    padding-top: 60px;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.25);
+    margin-top: 0;
   }
 
-  .nav.open {
+  .header__nav--open {
     transform: translateX(0);
   }
 
-  /* Botón para cerrar el menú */
-  .close-menu {
+  .header__close {
+    display: block;
     position: absolute;
     top: 15px;
     right: 20px;
     font-size: 2rem;
-    cursor: pointer;
-    color: white;
-    background: none;
-    border: none;
   }
 
-  .nav ul {
-    display: flex;
+  .header__nav-list {
     flex-direction: column;
     width: 100%;
-    padding-top: 50px;
+    gap: 0;
   }
 
-  .nav ul li {
+  .header__nav-item {
     width: 100%;
-    text-align: left;
-    padding: 12px 20px;
-    position: relative;
+    padding: 12px 24px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 0.9rem; 
   }
 
-  .nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 1rem;
-    font-family: Helvetica, Arial, sans-serif;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  /* Quitamos barras verticales en mobile */
+  .header__nav-item + .header__nav-item::before {
+    display: none;
   }
 
-  .nav ul li a:hover {
-    color: #00ccff;
-  }
-
-  /* Agregar un icono de "+" */
-  .nav ul li::after {
-    content: "+";
-    position: absolute;
-    right: 20px;
-    color: white;
-    font-size: 1.2rem;
-  }
-
-  .hamburger {
+  .header__nav-link {
     display: block;
-    font-size: 2rem;
-    cursor: pointer;
-    color: white;
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+
+/* Extra pequeño */
+@media (max-width: 335px) {
+  .header__title {
+    font-size: 1.15rem;
+  }
+}
+/* ===== Centrar título cuando se despliega el menú ===== */
+@media (max-width: 968px) {
+  .header__brand {
+    width: 100%;
+    justify-content: center;     /* ✅ centra logo y título */
+  }
+
+  .header__logo {
+    margin-left: 0;
+  }
+
+  /* Asegura que el botón hamburguesa quede fijo a la derecha */
+  .header__hamburger {
     position: absolute;
-    top: 20px;
     right: 20px;
+    top: 18px;
   }
 }
-
-/* OCULTAR EL BOTÓN HAMBURGUESA Y EL BOTÓN "X" EN PANTALLAS GRANDES */
-@media screen and (min-width: 969px) {
-  .hamburger,
-  .close-menu {
-    display: none !important; 
-  }
-}
-
-/* Ajuste para pantallas menores a 335px */
-@media screen and (max-width: 335px) {
-  .header h1 {
-    font-size: 1.2rem; 
-  } 
-}
-
