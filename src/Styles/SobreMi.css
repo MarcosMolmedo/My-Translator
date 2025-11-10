@@ -1,166 +1,232 @@
-/* ✅ Evita afectar el header */
-.sobre-mi-container {
-  padding: 4rem 5vw; /* Usamos "vw" en lugar de "%" para asegurar uniformidad */
-  background: linear-gradient(to right, #fafafa, #eaeaea);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+/* ====== BLOQUE PRINCIPAL ====== */
+
+.about {
+  background: linear-gradient(to right, #f5f5f5, #ffffff, #f5f5f5);
+  padding: 4rem 6vw;
   box-sizing: border-box;
-  position: relative;
-}
-.sobre-mi-wrapper {
-  min-height: calc(100vh - 160px); /* Ajustá si tu header/footer tienen otro alto */
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
-/* ✅ Contenedor principal */
-.sobre-mi-content {
+/* Tarjeta central */
+
+.about__card {
   max-width: 1200px;
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: space-between;
-  gap: 1rem;
   width: 100%;
-  padding: 0 5vw;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem 3rem;
   box-sizing: border-box;
 }
 
-/* ✅ Imagen y texto ocupan la misma cantidad de espacio */
-.sobre-mi-imagen, .sobre-mi-texto {
-  flex: 1;
-  max-width: 50%;
+/* Contenedor de columnas */
+
+.about__columns {
   display: flex;
-  align-items: center;
+  gap: 2.5rem;
 }
 
-/* ✅ Ajuste de imagen */
-.sobre-mi-imagen {
-  justify-content: center;
+/* Columnas base */
+
+.about__column {
+  display: flex;
+  flex-direction: column;
 }
 
-.sobre-mi-imagen img {
+/* Columna izquierda (más angosta: texto + foto + botón) */
+
+.about__column--profile {
+  flex: 0 0 35%;
+}
+
+/* Columna derecha (más ancha: experiencia + especialización) */
+
+.about__column--details {
+  flex: 1;
+}
+
+/* ====== TIPOGRAFÍA ====== */
+
+.about__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #e53935;
+  margin-bottom: 0.8rem;
+}
+
+.about__subtitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #e53935;
+  margin-bottom: 0.8rem;
+}
+
+.about__subtitle--spaced {
+  margin-top: 1.8rem; 
+}
+
+.about__text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #333333;
+  margin-bottom: 0.9rem;
+}
+
+/* Lista de especialización */
+
+.about__list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+.about__list-item {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #333333;
+  margin-bottom: 0.6rem;
+}
+
+/* ====== IMAGEN ====== */
+
+.about__image-wrapper {
+  margin: 1.25rem 0 0.9rem;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.about__image {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
 }
 
-/* ✅ Ajuste de texto */
-.sobre-mi-texto {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 2rem;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-}
+/* ====== BOTÓN AMARILLO (LinkedIn) ====== */
 
-/* ✅ Botón con estilo del Hero Section */
-.sobre-mi-btn {
-  display: flex;
-  justify-content: center;
+.about__button {
+  display: inline-flex;
   align-items: center;
-  background-color: #e91e63;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 30px;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
   text-decoration: none;
-  font-weight: bold;
-  font-size: 1rem;
-  transition: background-color 0.3s ease-in-out;
-  max-width: 200px;
-  text-align: center;
-  width: auto;
-  margin: 1.5rem auto;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease,
+    transform 0.1s ease;
 }
 
-/* ✅ Hover para cambio de color */
-.sobre-mi-btn:hover {
-  background-color: #d81b60;
+/* Estado normal: amarillo con letras rojas */
+
+.about__button--secondary {
+  background-color: #ffeb3b; /* amarillo */
+  color: #d32f2f; /* rojo texto */
 }
 
-/* 📱 Ajuste para pantallas menores a 460px */
-@media screen and (max-width: 460px) {
-  .sobre-mi-btn {
-    font-size: 0.85rem;
-    padding: 10px 16px;
-    max-width: 280px;
-    width: 90%;
-    text-align: center;
-    margin: 1rem auto;
+/* Hover / focus / active → rojo con letras blancas */
+
+.about__button--secondary:hover,
+.about__button--secondary:focus,
+.about__button--secondary:active {
+  background-color: #e53935;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* ====== RESPONSIVE ====== */
+
+/* Tablets / pantallas medianas */
+
+@media screen and (max-width: 1024px) {
+  .about {
+    padding: 3rem 4vw;
   }
-}
 
-/* 📱 **Corrección Responsiva** */
-@media screen and (max-width: 1240px) {
-  .sobre-mi-container {
-    padding: 4rem 8vw;
+  .about__card {
+    padding: 2rem 1.75rem;
   }
-}
 
-@media screen and (max-width: 900px) {
-  .sobre-mi-content {
+  .about__columns {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 0 5vw;
+    gap: 2rem;
   }
 
-  .sobre-mi-imagen,
-  .sobre-mi-texto {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .sobre-mi-imagen img {
-    height: auto;
-    max-height: 400px;
-  }
-
-  .sobre-mi-texto {
-    padding: 1.5rem;
+  .about__column--profile,
+  .about__column--details {
+    flex: 1 1 100%;
   }
 }
 
-@media screen and (max-width: 600px) {
-  .sobre-mi-container {
-    padding: 2rem 5vw;
+/* Móviles pequeños */
+
+@media screen and (max-width: 640px) {
+  .about {
+    padding: 2.5rem 1.5rem;
   }
 
-  .sobre-mi-texto {
-    text-align: center;
-    font-size: 0.85rem;
+  .about__card {
+    padding: 1.75rem 1.25rem;
   }
 
+  .about__title,
+  .about__subtitle {
+    text-align: left;
+  }
 
- /* 📱 **Corrección para pantallas entre 900px y 1109px** */
-@media screen and (max-width: 1109px) and (min-width: 900px) {
-  .sobre-mi-content {
-    flex-direction: row;
+  .about__text,
+  .about__list-item {
+    font-size: 0.9rem;
+  }
+
+  .about__button {
+    width: 100%;
     justify-content: center;
-    align-items: center;
-  }
-
-  .sobre-mi-imagen {
-    flex: 1;
-    max-width: 45%;
-  }
-
-  .sobre-mi-texto {
-    flex: 1;
-    max-width: 55%;
-  }
-
-  .sobre-mi-imagen img {
-    width: 100%;
-    height: auto;
-    max-height: 450px; /* 🔹 Limita la altura en esta franja */
-    object-fit: cover;
   }
 }
+/* ====== BOTÓN AMARILLO (LinkedIn) ====== */
+.about__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease,
+    transform 0.1s ease;
+  max-width: 100%;
+  box-sizing: border-box;
+  word-break: break-word;
+}
+
+/* Estado normal: amarillo con letras rojas */
+.about__button--secondary {
+  background-color: #ffeb3b;
+  color: #d32f2f;
+}
+
+/* Hover / focus / active → rojo con letras blancas */
+.about__button--secondary:hover,
+.about__button--secondary:focus,
+.about__button--secondary:active {
+  background-color: #e53935;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* ====== RESPONSIVE EXTRA para botones ====== */
+@media screen and (max-width: 480px) {
+  .about__button {
+    width: 100%;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.8rem;
+    border-radius: 12px;
+  }
 }

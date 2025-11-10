@@ -1,126 +1,234 @@
-.cotizaciones-container {
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background:  #eaeaea;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    color: #444444;
-  }
-  
-  /* Hacer el formulario responsive */
-  @media (max-width: 768px) {
-    .cotizaciones-container {
-      padding: 1.5rem;
-      margin: 1rem;
-    }
-  }
-  input,
-select,
-textarea {
-  box-sizing: border-box; /* Asegura que el padding no rompa el diseño */
-  padding-left: 1rem;
-  padding-right: 1rem;
+/* ===== BLOQUE PRINCIPAL ===== */
+
+.cotizaciones {
+  max-width: 640px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #eaeaea;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  color: #444444;
+  box-sizing: border-box;
 }
 
-  .cotizaciones-container h1 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
+/* Responsive container */
+@media (max-width: 768px) {
+  .cotizaciones {
+    margin: 1rem;
+    padding: 1.5rem;
   }
-  
-  .cotizaciones-container form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
-    margin-bottom: 1rem;
-  }
-  
-  /* Mejorar alineación de las preguntas */
-  label {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    display: block;
-  }
-  
-  /* Estilos para inputs y selects */
-  input, select, textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-  }
-  
- 
-  
-  /* Alinear radio buttons en una sola línea */
-  .radio-group {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-  
-  .radio-group label {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  
-  /* Ajuste para botones de selección (radio buttons) */
-  .radio-group input {
-    width: auto;
-    margin: 0;
-  }
-  
-  .btn-enviar {
-    background-color: #e91e63 !important; /* Forzar color */
-    color: white;
-    padding: 0.75rem;
-    font-size: 1rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-    width: 100%; /* Asegura que ocupe todo el ancho */
-  }
-  
-  .btn-enviar:hover {
-    background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
-    transform: scale(1.05);
-  }
-  
-  .btn-enviar:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  .message {
-    margin-top: 1rem;
-    padding: 10px;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 5px;
-  }
-  
-  .message:contains('✅') {
-    color: #155724;
-    background-color: #d4edda;
-    border: 1px solid #c3e6cb;
-  }
-  
-  .message:contains('❌') {
-    color: #721c24;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
-  }
+}
 
-/* estilos para contador circular */
+/* ===== HEADER: título + icono ===== */
+
+.cotizaciones__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.cotizaciones__title {
+  font-size: 1.7rem;
+  font-weight: 600;
+  text-align: center;
+  color: #f0533b; /* tono similar al de tu captura */
+}
+
+.cotizaciones__icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+/* ===== FORMULARIO ===== */
+
+.cotizaciones__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.cotizaciones__fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Agrupaciones de campos */
+.cotizaciones__group {
+  margin-bottom: 1rem;
+}
+
+/* Etiquetas */
+.cotizaciones__label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+  font-size: 0.98rem;
+}
+
+/* Inputs, selects y textarea */
+
+.cotizaciones__input,
+.cotizaciones__select,
+.cotizaciones__textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.75rem 1rem;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: #ffffff;
+}
+
+.cotizaciones__textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Radio group */
+
+.cotizaciones__radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.cotizaciones__radio-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+}
+
+.cotizaciones__radio-option input {
+  width: auto;
+  margin: 0;
+}
+
+/* ===== ARCHIVOS ===== */
+
+.cotizaciones__input--file {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.cotizaciones__file-list {
+  list-style: disc;
+  margin: 0.5rem 0 0.25rem 1.2rem;
+  padding: 0;
+}
+
+.cotizaciones__file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.cotizaciones__file-remove {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  color: #e91e63;
+  text-decoration: underline;
+}
+
+.cotizaciones__file-remove:hover,
+.cotizaciones__file-remove:focus {
+  text-decoration: none;
+  color: #c2185b;
+  outline: none;
+}
+
+.cotizaciones__file-total {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* ===== ERRORES Y MENSAJES ===== */
+
+.cotizaciones__error {
+  color: #d32f2f;
+  font-size: 0.92rem;
+  margin-top: 0.4rem;
+}
+
+.cotizaciones__message {
+  margin-top: 1rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.98rem;
+  text-align: center;
+  background: #f3f7ff;
+  color: #0d47a1;
+  border: 1px solid #e0e7ff;
+}
+
+/* ===== BOTÓN ENVIAR ===== */
+
+.cotizaciones__button {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: #f0533b; /* barra naranja como en la captura */
+  color: #ffffff; /* texto blanco por defecto */
+  transition: background-color 0.2s ease, transform 0.04s ease,
+    opacity 0.2s ease;
+}
+
+.cotizaciones__button:hover:not(:disabled) {
+  background-color: #d84431;
+  transform: scale(1.01);
+}
+
+.cotizaciones__button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.cotizaciones__button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Estado "¡Enviado!" -> mismo fondo, texto amarillo/verde */
+
+.cotizaciones__button--sent {
+  color: #f9ff7a; /* similar a tu texto amarillo de la captura */
+}
+
+/* Aseguramos que el botón se siga viendo igual aunque el fieldset esté disabled */
+fieldset:disabled .cotizaciones__button {
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* ===== ACCESIBILIDAD INPUT FILE ===== */
+
+.cotizaciones input[type="file"]#archivos:focus-visible {
+  outline: 2px solid #e91e63;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ===== CONTADOR CIRCULAR ===== */
+/* (dejamos las clases tal como las tenías, para no romper ContadorCircular) */
 
 .contador-circular-container {
   display: flex;
@@ -151,9 +259,8 @@ textarea {
 
 .tiempo {
   fill: #444;
-  font-size: 1rem; /* Aumentado para mejor visibilidad */
+  font-size: 1rem;
   text-anchor: middle;
- 
   transform: rotate(90deg);
 }
 
@@ -162,78 +269,4 @@ textarea {
   color: #444;
   margin-top: 0.5rem;
   text-align: center;
-}
-fieldset:disabled .btn-enviar {
-  opacity: 1;
-  pointer-events: none;
-}
-
-
-/* === Cotizaciones: Adjuntos múltiples === */
-
-.form-group ul {
-  list-style: disc;
-  margin: 8px 0 4px 18px;
-  padding: 0;
-}
-
-.btn-link {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  font: inherit;
-  color: #e91e63;             /* mismo tono del botón enviar */
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.btn-link:hover,
-.btn-link:focus {
-  text-decoration: none;
-  color: #c2185b;             /* un poco más oscuro en hover/focus */
-  outline: none;
-}
-
-.btn-link:active {
-  opacity: 0.85;
-}
-
-/* Etiquetas pequeñas debajo del input (contador y total) */
-.form-group small {
-  display: block;
-  margin-top: 6px;
-  opacity: 0.85;
-}
-
-/* Mensajes */
-.error {
-  color: #d32f2f;
-  font-size: 0.95rem;
-  margin-top: 6px;
-}
-
-.message {
-  margin-top: 14px;
-  padding: 10px 12px;
-  border-radius: 8px;
-  background: #f3f7ff;
-  color: #0d47a1;
-  border: 1px solid #e0e7ff;
-}
-
-/* Botón enviar (por si querés un micro feedback) */
-.btn-enviar {
-  transition: transform 0.04s ease, opacity 0.2s ease;
-}
-
-.btn-enviar:active {
-  transform: translateY(1px);
-}
-
-/* Input file: mejora foco/accesibilidad */
-input[type="file"]#archivos:focus-visible {
-  outline: 2px solid #e91e63;
-  outline-offset: 2px;
-  border-radius: 6px;
 }

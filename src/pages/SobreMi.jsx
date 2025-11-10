@@ -2,35 +2,78 @@ import React from "react";
 import "../Styles/SobreMi.css";
 
 const SobreMi = () => {
+  const linkedInUrl = "https://www.linkedin.com/in/yohanamalvasio/";
+
   return (
-    <div className="sobre-mi-wrapper">
-      <section className="sobre-mi-container">
-        <div className="sobre-mi-content">
-          <div className="sobre-mi-imagen">
-            <img src="/MalvasioYohana1.png" alt="Yohana Malvasio" />
-          </div>
-          <div className="sobre-mi-texto">
-            <p>
-              Hola, soy <strong>Yohana Malvasio</strong>, traductora jurada en Países Bajos. Estoy habilitada para traducir documentos del español a inglés y del inglés al español. Me especializo en la traducción de documentos legales, académicos y personales, asegurando el más alto nivel de precisión, confidencialidad y cumplimiento con los requisitos oficiales.
+    <section className="about">
+      <div className="about__card">
+        <div className="about__columns">
+          {/* Columna izquierda: Sobre mí + foto + botón */}
+          <div className="about__column about__column--profile">
+            <h2 className="about__title">Sobre mí</h2>
+            <p className="about__text">
+              Soy Traductora Pública Nacional de Inglés, egresada de la
+              Universidad Nacional de Córdoba, con más de 20 años de experiencia
+              en traducción, edición, revisión e interpretación.
             </p>
-            <p>
-              Mi objetivo es facilitar que tus documentos sean aceptados sin inconvenientes tanto en los Países Bajos como en otros países. Trabajo con dedicación y atención al detalle para ofrecerte un servicio de alta calidad.
-            </p>
-            <p>
-              Apasionada por los idiomas, disfruto conectando culturas a través de la comunicación. Si necesitás una traducción rápida, precisa y confiable, ¡estoy aquí para ayudarte!
-            </p>
+
+            <div className="about__image-wrapper">
+              <img
+                src="/sobremi3.0.png"
+                alt="Yohana Malvasio trabajando"
+                className="about__image"
+              />
+            </div>
+
             <a
-              href="https://www.instagram.com/my_translator_nl?igsh=MXVwem5heXh6d2RtbQ=="
+              href={linkedInUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="sobre-mi-btn"
+              className="about__button about__button--secondary"
             >
-              Sígueme en Instagram
+              Conocer más en LinkedIn
             </a>
           </div>
+
+          {/* Columna derecha: Experiencia + Especialización */}
+          <div className="about__column about__column--details">
+            <h3 className="about__subtitle">Experiencia</h3>
+            <p className="about__text">
+              Actualmente me desempeño como Quality Employee en KH Chemicals
+              (Países Bajos), y anteriormente trabajé en TransPerfect como
+              Language Quality Lead, Internal Linguist &amp; Quality Manager y
+              Project Coordinator.
+            </p>
+
+            <h3 className="about__subtitle about__subtitle--spaced">
+              Especialización
+            </h3>
+            <p className="about__text">
+              A lo largo de mi carrera he trabajado con proyectos de gran
+              diversidad y complejidad, especialmente en:
+            </p>
+            <ul className="about__list">
+              <li className="about__list-item">
+                Medicina y farmacéutica: estudios clínicos, protocolos, informes
+                médicos y certificados.
+              </li>
+              <li className="about__list-item">
+                Jurídico y comercial: contratos, resoluciones, políticas de
+                privacidad, acuerdos e inversión.
+              </li>
+              <li className="about__list-item">
+                Tecnología: manuales agrotech, big data aplicado a la
+                agricultura, maquinaria y dispositivos.
+              </li>
+              <li className="about__list-item">
+                Otros proyectos: SOPs, manuales técnicos, contenidos
+                gastronómicos, blogs y postulaciones.
+              </li>
+            </ul>
+          </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 

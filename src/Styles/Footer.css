@@ -1,112 +1,138 @@
-/* 🔹 Ajuste del footer */
+/* 🔹 Bloque principal del footer */
 .footer {
   background-color: #3e4ae9;
-  color: white;
+  color: #ffffff;
   text-align: center;
-  padding: 8px 15px;
-  padding-top: 30px;
+  padding: 10px 12px 8px;
   width: 100%;
   position: relative;
   bottom: 0;
   left: 0;
-  margin-top: auto; /* ✅ Empuja el footer al fondo */
-  font-size: 0.7rem;
-  line-height: 1.2;
+  margin-top: auto; 
+  line-height: 1.4;
 }
-/* 🔹 Eliminar márgenes innecesarios en el contenido del footer */
-.footer-content {
-  padding: 0;
+
+/* 🔹 Contenedor interno para limitar ancho */
+.footer__content {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* 🔹 Textos generales del footer */
+.footer__text {
   margin: 0;
 }
 
-/* 🔹 Asegurar que el texto del footer tenga prioridad */
-.footer p {
-  margin: 0 !important;
-  font-size: 0.9rem !important;
-  color: white !important;
+/* Texto principal (derechos reservados) */
+.footer__text--main {
+  font-size: 0.85rem;
 }
 
-/* 🔹 Dirección del footer */
-.footer .address {
-  font-size: 0.8rem;
+/* Dirección */
+.footer__address {
   margin-top: 3px;
+  font-size: 0.8rem;
 }
 
-/* 🔹 Redes sociales */
-.social-links {
+/* 🔹 Lista de redes sociales */
+.footer__social-list {
   display: flex;
   justify-content: center;
+  align-items: center;
   list-style: none;
-  margin: 10px 0 0 0;
   padding: 0;
-  gap: 15px;
-  margin-bottom: 0;
-  padding-bottom: 0;
+  margin: 8px 0 0 0;
+  gap: 14px;
 }
 
-.social-links li a img {
-  width: 32px;
-  height: 32px;
+.footer__social-item {
+  display: inline-flex;
+}
+
+.footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer__social-icon {
+  width: 28px;
+  height: 28px;
+  display: block;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.social-links li a img:hover {
-  transform: scale(1.1);
-  opacity: 0.8;
+.footer__social-link:hover .footer__social-icon {
+  transform: scale(1.05);
+  opacity: 0.85;
 }
 
-/* 🔹 Sello del desarrollador */
-
-/* 🔹 Contenedor general con espaciado */
-.developer-seal {
-  padding-top: 15px; /* ✅ esto separa todo del contenido superior */
+/* 🔹 Sello del desarrollador / créditos */
+.footer__developer {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 0.75rem;
 }
 
-/* 🔹 Estilos de los enlaces del sello */
-.developer-seal a {
-  color: white;
+.footer__developer-text {
+  margin: 0;
+}
+
+.footer__developer-link {
+  color: #ffffff;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
 }
 
-.developer-seal a:hover {
-  color: #cccccc;
+.footer__developer-link:hover {
+  color: #e0e0e0;
   text-decoration: underline;
 }
 
+.footer__divider {
+  opacity: 0.7;
+  margin: 0 6px;
+}
 
-
-/* 🔹 Ajustes para pantallas pequeñas */
+/* 🔹 Ajustes responsivos para pantallas pequeñas */
 @media (max-width: 426px) {
   .footer {
-    padding-top: 20px;
-    background-color: #4a58f0; 
+    padding: 8px 10px 6px; 
+    font-size: 0.7rem;
+    background-color: #4a58f0;
   }
 
-  .footer p,
-  .footer .address {
-    font-size: 0.7rem !important;
-    line-height: 1.2;
+  .footer__text--main {
+    font-size: 0.75rem;
   }
 
-  .social-links {
-    flex-direction: row; 
-    gap: 8px;
+  .footer__address {
+    font-size: 0.7rem;
   }
 
-  .social-links li a img {
-    width: 24px;
-    height: 24px;
+  .footer__social-list {
+    gap: 10px;
+    margin-top: 6px;
   }
 
-  .developer-seal {
-    font-size: 0.6rem;
+  .footer__social-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* Evita que se “deforme” el bloque de créditos en mobile */
+  .footer__developer {
+    font-size: 0.65rem;
     gap: 3px;
-    margin-top: 10px;
+    margin-top: 8px;
+    flex-direction: column; 
   }
 
-  .developer-seal img {
-    width: 16px;
-    height: 16px;
+  .footer__divider {
+    display: none; 
   }
 }

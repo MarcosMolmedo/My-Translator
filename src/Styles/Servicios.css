@@ -1,58 +1,177 @@
-/* 🔹 Contenedor general */
-.servicios-page-container {
+/* ===============================
+   🔸 BLOQUE PRINCIPAL (BEM)
+   =============================== */
+
+.services {
   width: 100%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: #f9f9f9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.servicios-page-container {
-  min-height: 75vh; /* ✅ Fuerza una altura mínima como en Opiniones */
+  background-color: #ffffff;
 }
 
-/* 🔹 Contenedor del grid */
-.servicios-grid {
-  display: grid;
-  gap: 2rem;
+.services__container {
   max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 16px;
+  min-height: 75vh;
+  display: flex;
+  align-items: stretch;
+}
+
+/* ===============================
+   🔸 GRID RESPONSIVE
+   =============================== */
+
+.services__grid {
+  display: grid;
   width: 100%;
+  gap: 2rem;
 }
 
-/* 🔹 Tarjetas */
-.servicios-page-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 2rem;
-  text-align: left;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e8f05c;
-}
-
-/* 🔹 RESPONSIVE DESIGN */
-
-/* ✅ En pantallas mayores a 1110px: Mostrar en una sola fila */
+/* Desktop: 4 columnas */
 @media (min-width: 1111px) {
-  .servicios-grid {
-    grid-template-columns: repeat(4, 1fr); /* 4 tarjetas en una fila */
+  .services__grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
-/* ✅ En pantallas entre 750px y 1110px: Mostrar en 2 filas de 2 columnas */
+/* Tablet: 2 columnas */
 @media (max-width: 1110px) and (min-width: 750px) {
-  .servicios-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
-    padding-right: 30px;
-    padding-left: 30px;
+  .services__grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding-inline: 30px;
   }
 }
 
-/* ✅ En pantallas menores a 750px: Mostrar en una sola columna */
+/* Mobile: 1 columna */
 @media (max-width: 749px) {
-  .servicios-grid {
-    grid-template-columns: 1fr; /* 1 sola columna */
-    padding-right: 30px;
-    padding-left: 30px;
+  .services__grid {
+    grid-template-columns: 1fr;
+    padding-inline: 30px;
+  }
+}
+
+/* ===============================
+   🔸 TARJETAS
+   =============================== */
+
+.services__card {
+  background-color: #f15a3b;
+  border-radius: 16px;
+  padding: 24px 24px 70px; /* más espacio inferior para iconos grandes */
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.services__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* ===============================
+   🔸 TÍTULO DE CADA TARJETA
+   =============================== */
+
+.services__card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+/* ===============================
+   🔸 LISTA DE SERVICIOS
+   =============================== */
+
+.services__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.services__list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.4;
+}
+
+.services__bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #c7ff5e;
+  margin-top: 0.45rem;
+  flex-shrink: 0;
+}
+
+.services__item-text {
+  font-size: 0.95rem;
+}
+
+/* ===============================
+   🔸 ICONOS (TOP o BOTTOM)
+   =============================== */
+
+.services__icon-wrapper {
+  position: absolute;
+  right: 18px;
+}
+
+.services__icon-wrapper--bottom {
+  bottom: 18px;
+}
+
+.services__icon-wrapper--top {
+  top: 18px;
+}
+
+/* ✅ ICONOS GRANDES + COLOR DORADO */
+.services__icon {
+  width: 80px;
+  height: auto;
+  opacity: 0.9;
+  filter: brightness(1) saturate(1) sepia(0.4) hue-rotate(10deg);
+  /* 👆 mantiene el tono dorado cálido */
+  transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* Dorado principal */
+.services__icon {
+  filter: brightness(0) saturate(100%) invert(91%) sepia(45%) saturate(519%) hue-rotate(16deg) brightness(100%) contrast(92%);
+}
+
+/* Hover sutil */
+.services__card:hover .services__icon {
+  transform: scale(1.05);
+  opacity: 1;
+  filter: brightness(1.1) saturate(110%) sepia(0.4) hue-rotate(10deg);
+}
+
+/* ===============================
+   🔸 RESPONSIVE
+   =============================== */
+
+@media (max-width: 480px) {
+  .services__card {
+    padding: 20px 18px 60px;
+  }
+
+  .services__card-title {
+    font-size: 1.15rem;
+  }
+
+  .services__item-text {
+    font-size: 0.9rem;
+  }
+
+  .services__icon {
+    width: 48px;
   }
 }
