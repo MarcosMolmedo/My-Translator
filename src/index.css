@@ -1,21 +1,21 @@
 /* Reset y estilos globales */
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden; /* ✅ Evita scroll horizontal */
-  overflow-y: auto; /* ✅ Permite desplazamiento si hay más contenido */
- 
+  overflow-x: hidden; /* Evita scroll horizontal */
+  overflow-y: auto;   /* Permite desplazamiento vertical */
+  
 }
+
 /* Contenedor principal */
 .container {
   max-width: 1200px;
   margin: 10px 10px;
-  padding:  20px 20px;
+  padding: 20px 20px;
 }
 
 /* Estilos generales de imágenes */
@@ -23,9 +23,10 @@ img {
   max-width: 100%;
   height: auto;
 }
+
 @media screen and (max-width: 425px) {
   .container {
     background: #4a58f0;
-    padding: 0 10px; /* ✅ Agrega padding lateral en móviles */
+    padding: 0 10px; /* Agrega padding lateral en móviles */
   }
 }

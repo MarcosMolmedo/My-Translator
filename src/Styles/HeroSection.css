@@ -1,139 +1,228 @@
+/* ===== HERO (BEM) ===== */
+
 .hero {
   position: relative;
   width: 100%;
-  height: 70vh;
+  min-height: clamp(460px, 75vh, 780px);
   overflow: hidden;
+
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.hero-wrapper {
-  min-height: calc(100vh - 160px); /* Ajustá este valor si tu header/footer tienen otro alto */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+
+  color: #ffffff;
+  text-align: center;
+
+  animation: fadeInHero 1.2s ease-out;
 }
 
-/* IMAGEN */
-.hero-image {
-  width: 100%;
-  height: 100%;
+/* Overlay para que el texto destaque sobre la foto */
+.hero::before {
+  content: "";
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.35) 45%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
 }
 
-.hero-image img {
+/* Fondo */
+
+.hero__background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero__background-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center right; /* ✅ Mantiene a la persona visible */
+  object-position: center center;
 }
 
-/* 🔹 TEXTO ENCIMA DE LA IMAGEN 🔹 */
-.hero-content {
-  position: absolute;
-  top: 15%;
-  left: 10%;
-  text-align: left;
-  width: 80%;
-  max-width: 800px;
-  color: white;
-  z-index: 10;
-  background: none;
-  padding: 0;
+/* Contenido */
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 3rem 1.5rem;
+  display: flex;
+  justify-content: center;
 }
 
-/* 🔹 TÍTULOS 🔹 */
-.hero-content h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  max-width: 100%;
-  text-wrap: balance; /* ✅ Intenta mantener el texto en una sola línea */
+.hero__content-box {
+  max-width: 900px;
 }
 
-.hero-description {
-  font-size: 1.1rem;
-  font-weight: normal;
-  max-width: 100%;
-  text-wrap: balance; /* ✅ Mantiene la frase completa */
+/* Título y subtítulo */
+
+.hero__title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2rem, 3.3vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
 }
 
-/* 🔹 BOTÓN 🔹 */
-.cta-button {
+.hero__subtitle {
+  margin: 0 0 1.75rem;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.5;
+  font-weight: 600;
+  opacity: 0.98;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Botón CTA — estilo tipo Sobre mí */
+
+.hero__cta {
   display: inline-block;
-  background-color: #e91e63;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 30px;
+  background-color: #e8f05c; /* amarillo */
+  color: #ce5540;           /* texto rojo */
+  padding: 12px 36px;
+  border-radius: 999px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1rem;
-  transition: background-color 0.3s ease-in-out;
-  max-width: 200px; /* ✅ Mantiene el ancho fijo */
-  text-align: center;
-  width: auto;
-  margin: 10px auto; /* ✅ Centra el botón */
+  letter-spacing: 0.02em;
+  border: none;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
-.cta-button:hover {
-  background-color: #d81b60;
+.hero__cta:hover {
+  background-color: #ce5540; /* rojo */
+  color: #ffffff;            /* texto blanco */
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* 🔹 RESPONSIVE 🔹 */
+/* ===== RESPONSIVE GENERAL ===== */
+
 @media (max-width: 1024px) {
-  .hero-content {
-    top: 10%;
-    left: 5%;
-    width: 90%;
+  .hero {
+    min-height: 75vh;
   }
 
-  .hero-content h2,
-  .hero-description {
-    font-size: 1.8rem;
-    white-space: normal; /* ✅ Permite que el texto se divida si es necesario */
-    text-align: center;
-  }
-
-  .cta-button {
-    display: block;
-    margin: 10px auto;
-    text-align: center;
-  }
-
-  .hero-image img {
-    object-position: center center; /* ✅ Evita cortar la persona */
+  .hero__content {
+    padding: 3rem 2rem;
   }
 }
 
-/* Ajuste para dispositivos pequeños */
-@media (max-width: 767px) {
+/* Menos de 770px: bloque un poco MÁS ABAJO pero con margen claro */
+@media (max-width: 770px) {
   .hero {
-    height: 400px;
+    min-height: 100vh;
+    align-items: flex-start;
   }
 
-  .hero-content {
-    top: 5%;
-    left: 5%;
-    width: 90%;
-    text-align: center;
+  .hero__content {
+    padding-top: 6.5rem; /* ⬅️ antes 5rem; ahora más abajo */
+    padding-bottom: 2.5rem;
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+}
+
+/* ===== AJUSTES DE TÍTULO Y SUBTÍTULO SEGÚN ANCHO ===== */
+
+/* Desde 760px: intentamos mantenerlos en una sola línea */
+@media (min-width: 760px) {
+  .hero__title {
+    white-space: nowrap;
+    font-size: 2.2rem;
   }
 
-  .hero-content h2 {
-    font-size: 1.5rem;
-    text-align: center;
+  .hero__subtitle {
+    white-space: nowrap;
+    font-size: 1.05rem;
+  }
+}
+
+/* Pantallas muy grandes: agrandamos un poco el título */
+@media (min-width: 1100px) {
+  .hero__title {
+    font-size: 2.8rem;
   }
 
-  .hero-description {
+  .hero__subtitle {
+    font-size: 1.15rem;
+  }
+}
+
+/* En móviles muy pequeños (< 480px) dejamos que se partan en 2 líneas
+   para que no se corten fuera de pantalla */
+@media (max-width: 480px) {
+  .hero__title {
+    font-size: 1.6rem;
+    white-space: normal;
+  }
+
+  .hero__subtitle {
+    font-size: 0.95rem;
+    white-space: normal;
+  }
+}
+
+/* ===== Animación suave ===== */
+
+@keyframes fadeInHero {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Ajuste fino: mantener título en una línea pero más pequeño abajo de 700px ===== */
+@media (max-width: 700px) and (min-width: 560px) {
+  .hero__title {
+    font-size: 1.7rem;
+    white-space: nowrap;
+  }
+
+  .hero__subtitle {
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+}
+
+
+/* ===== Centramos contenido nuevamente en móviles ===== */
+@media (max-width: 770px) {
+  .hero {
+    align-items: center; /* ⬅️ vuelve a centrar verticalmente */
+  }
+
+  .hero__content {
+    padding-top: 0; /* ⬅️ quitamos el margen superior extra */
+    padding-bottom: 0;
+  }
+}
+
+/* ===== Título más pequeño en pantallas menores a 570px ===== */
+@media (max-width: 570px) and (min-width: 430px) {
+  .hero__title {
+    font-size: 1.7rem; /* ⬅️ reduce apenas para que no salte de línea */
+    white-space: nowrap; /* ⬅️ mantiene en una sola línea */
+  }
+
+  .hero__subtitle {
     font-size: 0.9rem;
-    text-align: center;
-  }
-
-  .cta-button {
-    max-width: 180px; /* ✅ Evita que el botón se deforme */
-  }
-
-  .hero-image img {
-    object-position: center center; /* ✅ Asegura que la imagen cubra bien sin cortar */
+    white-space: nowrap;
   }
 }

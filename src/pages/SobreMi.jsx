@@ -39,10 +39,7 @@ const SobreMi = () => {
           <div className="about__column about__column--details">
             <h3 className="about__subtitle">Experiencia</h3>
             <p className="about__text">
-              Actualmente me desempeño como Quality Employee en KH Chemicals
-              (Países Bajos), y anteriormente trabajé en TransPerfect como
-              Language Quality Lead, Internal Linguist &amp; Quality Manager y
-              Project Coordinator.
+              Comencé mi carrera profesional enseñando inglés y español y ofreciendo traducciones, guiada por una profunda pasión por los idiomas. Cuando me mudé a Países Bajos, esa misma pasión me llevó a formar parte de TransPerfect, donde perfeccioné mi mirada sobre la calidad lingüística. En el 2024, obtuve mi matrícula como traductora jurada en los Países Bajos, tras haber jurado ante la Corte de Utrecht, y desde entonces ofrezco servicios de traducción jurada en este país.
             </p>
 
             <h3 className="about__subtitle about__subtitle--spaced">
