@@ -16,22 +16,16 @@
   animation: fadeInHero 1.2s ease-out;
 }
 
-/* Overlay para que el texto destaque sobre la foto */
+/* Overlay BASE (desktop/tablet) — ⬅️ TU GRADIENT original */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.55) 0%,
-    rgba(0, 0, 0, 0.35) 45%,
-    rgba(0, 0, 0, 0.65) 100%
-  );
+  z-index: 1; /* overlay debajo del contenido */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
 }
 
 /* Fondo */
-
 .hero__background {
   position: absolute;
   inset: 0;
@@ -45,23 +39,19 @@
   object-position: center center;
 }
 
-/* Contenido */
-
+/* Contenido (encima del overlay) */
 .hero__content {
   position: relative;
-  z-index: 2;
+  z-index: 3; /* texto SIEMPRE por encima del overlay */
   max-width: 900px;
   padding: 3rem 1.5rem;
   display: flex;
   justify-content: center;
 }
 
-.hero__content-box {
-  max-width: 900px;
-}
+.hero__content-box { max-width: 900px; }
 
-/* Título y subtítulo */
-
+/* Título y subtítulo (tus sombras originales) */
 .hero__title {
   margin: 0 0 0.75rem;
   font-size: clamp(2rem, 3.3vw, 3rem);
@@ -79,9 +69,11 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-/* Botón CTA — estilo tipo Sobre mí */
-
+/* Botón CTA — siempre por encima del texto y overlay */
 .hero__cta {
+  position: relative;
+  z-index: 4; /* botón en la capa superior */
+
   display: inline-block;
   background-color: #e8f05c; /* amarillo */
   color: #ce5540;           /* texto rojo */
@@ -94,11 +86,8 @@
   border: none;
 
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.2s ease,
-    color 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+              background-color 0.2s ease, color 0.2s ease;
 }
 
 .hero__cta:hover {
@@ -111,118 +100,125 @@
 /* ===== RESPONSIVE GENERAL ===== */
 
 @media (max-width: 1024px) {
-  .hero {
-    min-height: 75vh;
-  }
-
-  .hero__content {
-    padding: 3rem 2rem;
-  }
+  .hero { min-height: 75vh; }
+  .hero__content { padding: 3rem 2rem; }
 }
 
-/* Menos de 770px: bloque un poco MÁS ABAJO pero con margen claro */
+/* Centramos en móviles (como quedamos) */
 @media (max-width: 770px) {
-  .hero {
-    min-height: 100vh;
-    align-items: flex-start;
-  }
-
-  .hero__content {
-    padding-top: 6.5rem; /* ⬅️ antes 5rem; ahora más abajo */
-    padding-bottom: 2.5rem;
-    padding-left: 1.75rem;
-    padding-right: 1.75rem;
-  }
+  .hero { align-items: center; }
+  .hero__content { padding-top: 0; padding-bottom: 0; }
 }
 
-/* ===== AJUSTES DE TÍTULO Y SUBTÍTULO SEGÚN ANCHO ===== */
-
-/* Desde 760px: intentamos mantenerlos en una sola línea */
-@media (min-width: 760px) {
-  .hero__title {
-    white-space: nowrap;
-    font-size: 2.2rem;
-  }
-
-  .hero__subtitle {
-    white-space: nowrap;
-    font-size: 1.05rem;
-  }
+/* Ajuste fino: 700→560 mantener 1 línea bajando tamaño */
+@media (max-width: 700px) and (min-width: 560px) {
+  .hero__title    { font-size: 1.7rem; white-space: nowrap; }
+  .hero__subtitle { font-size: 0.95rem; white-space: nowrap; }
 }
 
-/* Pantallas muy grandes: agrandamos un poco el título */
-@media (min-width: 1100px) {
-  .hero__title {
-    font-size: 2.8rem;
-  }
-
-  .hero__subtitle {
-    font-size: 1.15rem;
-  }
+/* Título más pequeño en 570→430 para no cortar */
+@media (max-width: 570px) and (min-width: 430px) {
+  .hero__title    { font-size: 1.85rem; line-height: 1.28; }
+  .hero__subtitle { font-size: 0.98rem; }
 }
 
-/* En móviles muy pequeños (< 480px) dejamos que se partan en 2 líneas
-   para que no se corten fuera de pantalla */
+/* Teléfonos muy chicos: permitir saltos limpios */
 @media (max-width: 480px) {
-  .hero__title {
-    font-size: 1.6rem;
-    white-space: normal;
+  .hero__title    { font-size: 1.6rem; white-space: normal; }
+  .hero__subtitle { font-size: 0.95rem; white-space: normal; }
+}
+
+/* Escritorio grande: 1 línea (tu pedido) */
+@media (min-width: 1000px) {
+  .hero__title    { white-space: nowrap; font-size: 2.6rem; }
+  .hero__subtitle { white-space: nowrap; font-size: 1.1rem; }
+}
+
+/* ===== SOLO MOBILE (≤ 625px) =====
+   Degradé AMARILLO sobre la FOTO (no sobre el texto)
+   para legibilidad del subítulo como en tu mock. */
+@media (max-width: 625px) {
+  /* El amarillo va en ::after de la imagen de fondo */
+  .hero__background { position: absolute; inset: 0; z-index: 0; }
+
+  .hero__background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1; /* encima de la foto, debajo del contenido */
+    pointer-events: none;
+    background:
+      /* leve contraste para el texto */
+      linear-gradient(to bottom, rgba(0,0,0,0.16), rgba(0,0,0,0.24)),
+      /* degradé amarillo #e8f05c */
+      linear-gradient(
+        to bottom,
+        rgba(232,240,92,0.00) 0%,
+        rgba(232,240,92,0.30) 55%,
+        rgba(232,240,92,0.42) 100%
+      );
   }
 
-  .hero__subtitle {
-    font-size: 0.95rem;
-    white-space: normal;
+  /* Foto clara y encuadre superior */
+  .hero__background-image {
+    object-position: center top;
+    filter: brightness(1.06) contrast(0.98);
   }
+
+  /* Composición del bloque como el mock */
+  .hero__content {
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    padding: 0 1.2rem;
+    z-index: 3; /* sobre el overlay amarillo */
+  }
+
+  .hero__content-box {
+    max-width: 24rem; /* ancho seguro */
+    margin: 0 auto;
+  }
+
+  /* Permitir saltos: no cortar en mobile */
+  .hero__title    { white-space: normal; font-size: 2.05rem; line-height: 1.28; }
+  .hero__subtitle { white-space: normal; font-size: 1.05rem; line-height: 1.45; }
+
+  .hero__cta { z-index: 4; margin-top: .8rem; }
 }
 
 /* ===== Animación suave ===== */
-
 @keyframes fadeInHero {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* === FIX DEFINITIVO: eliminar el brillo/luz bajo el footer === */
+@media (max-width: 625px) {
+  .hero__background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    /* ajustamos el degradé para que se desvanezca ANTES del borde inferior */
+    background:
+      linear-gradient(to bottom, rgba(0,0,0,0.16), rgba(0,0,0,0.24)),
+      linear-gradient(
+        to bottom,
+        rgba(232,240,92,0.00) 0%,   /* transparente arriba */
+        rgba(232,240,92,0.28) 55%,  /* amarillo intermedio */
+        rgba(232,240,92,0.20) 80%,  /* se empieza a apagar */
+        rgba(232,240,92,0.00) 95%   /* completamente apagado antes del footer */
+      );
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  /* aseguramos que el fondo del footer opaque cualquier resto */
+  footer,
+  .footer {
+    background-color: #3e4ae9; /* tu color principal violeta */
+    position: relative;
+    z-index: 5;
   }
 }
 
-/* ===== Ajuste fino: mantener título en una línea pero más pequeño abajo de 700px ===== */
-@media (max-width: 700px) and (min-width: 560px) {
-  .hero__title {
-    font-size: 1.7rem;
-    white-space: nowrap;
-  }
-
-  .hero__subtitle {
-    font-size: 0.95rem;
-    white-space: nowrap;
-  }
-}
-
-
-/* ===== Centramos contenido nuevamente en móviles ===== */
-@media (max-width: 770px) {
-  .hero {
-    align-items: center; /* ⬅️ vuelve a centrar verticalmente */
-  }
-
-  .hero__content {
-    padding-top: 0; /* ⬅️ quitamos el margen superior extra */
-    padding-bottom: 0;
-  }
-}
-
-/* ===== Título más pequeño en pantallas menores a 570px ===== */
-@media (max-width: 570px) and (min-width: 430px) {
-  .hero__title {
-    font-size: 1.7rem; /* ⬅️ reduce apenas para que no salte de línea */
-    white-space: nowrap; /* ⬅️ mantiene en una sola línea */
-  }
-
-  .hero__subtitle {
-    font-size: 0.9rem;
-    white-space: nowrap;
-  }
-}

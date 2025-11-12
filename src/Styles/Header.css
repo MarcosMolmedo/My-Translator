@@ -54,12 +54,12 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 26px;
+
 }
 
 .header__nav-item {
   position: relative;
-  padding: 0 10px;
+  padding: 0 22px;
 }
 
 /* Barra divisoria entre palabras */
@@ -73,7 +73,6 @@
   height: 18px;
   background-color: rgba(255, 255, 255, 0.6);
 }
-
 /* Links */
 .header__nav-link {
   text-decoration: none;
@@ -87,7 +86,7 @@
 /* Hover amarillo identidad */
 .header__nav-link:hover,
 .header__nav-link:focus {
-  color: #FFD447;
+  color: #e8f05c;
 }
 
 /* ===== HAMBURGUESA Y CIERRE (OCULTOS EN DESKTOP) ===== */
