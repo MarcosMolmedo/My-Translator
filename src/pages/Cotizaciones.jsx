@@ -335,34 +335,33 @@ const Cotizaciones = () => {
               </label>
             </div>
           </div>
-
-          <div className="cotizaciones__group">
-            <p className="cotizaciones__label">
-              ¿Cuándo necesitás que esté lista tu traducción?
-            </p>
-            <div className="cotizaciones__radio-group">
-              <label className="cotizaciones__radio-option">
-                <input
-                  type="radio"
-                  name="tiempoEntrega"
-                  value="Menos de 5 días hábiles"
-                  onChange={handleChange}
-                  required
-                />
-                Menos de 5 días hábiles (urgente)
-              </label>
-              <label className="cotizaciones__radio-option">
-                <input
-                  type="radio"
-                  name="tiempoEntrega"
-                  value="Más de 5 días hábiles"
-                  onChange={handleChange}
-                  required
-                />
-                Más de 5 días hábiles
-              </label>
-            </div>
-          </div>
+<div className="cotizaciones__group">
+  <p className="cotizaciones__label">
+    ¿Cuándo necesitás que esté lista tu traducción?
+  </p>
+  <div className="cotizaciones__radio-group">
+    <label className="cotizaciones__radio-option">
+      <input
+        type="radio"
+        name="tiempoEntrega"
+        value="Menos de 3 días hábiles"
+        onChange={handleChange}
+        required
+      />
+      Menos de 3 días hábiles (urgente)
+    </label>
+    <label className="cotizaciones__radio-option">
+      <input
+        type="radio"
+        name="tiempoEntrega"
+        value="Más de 3 días hábiles"
+        onChange={handleChange}
+        required
+      />
+      Más de 3 días hábiles
+    </label>
+  </div>
+</div>
 
           <div className="cotizaciones__group">
             <p className="cotizaciones__label">
