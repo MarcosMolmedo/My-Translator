@@ -1,0 +1,16 @@
+{
+  "projects": {},
+  "targets": {
+    "my-translator-8c7e0": {
+      "hosting": {
+        "malvasioyohana": [
+          "malvasioyohana"
+        ],
+        "my-translator-8c7e0": [
+          "my-translator-8c7e0"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

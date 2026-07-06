@@ -39,20 +39,20 @@ contact: {
 },
 hero: {
   eyebrow: "Sworn Translation · Interpreting · The Netherlands",
-  titleLineOne: "Sworn translations.",
-  titleLineTwo: "That open doors and",
-  titleLineThree: "connect cultures.",
-  text: "Legal documents translated with precision, official validity and personalized service in Spanish - English",
+  titleLineOne: "Sworn translations",
+  titleLineTwo: "that open doors and",
+  titleLineThree: "connect cultures",
+  text: "Official documents translated with precision, legal validity, and personalized service between Spanish and English.",
   primaryCta: "Request a quote",
   secondaryCta: "View services",
   imageAlt: "Modern architecture in the Netherlands representing sworn translation services",
   highlights: [
     "Certified sworn translator",
-    "Spanish, English and Dutch",
+    "Spanish ↔ English",
     "Personalized service",
   ],
-
 },
+
 about: {
   eyebrow: "About",
   title: "Linguistic precision with professional judgement.",

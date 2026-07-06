@@ -39,16 +39,16 @@ contact: {
 
 hero: {
   eyebrow: "Beëdigde vertalingen · Tolkdiensten · Nederland",
-  titleLineOne: "Beëdigde vertalingen.",
-  titleLineTwo: "Die deuren openen en",
-  titleLineThree: "culturen verbinden.",
-  text: "Juridische documenten vertaald met precisie, officiële geldigheid en persoonlijke begeleiding in het Spaans - Engels",
+  titleLineOne: "Beëdigde vertalingen",
+  titleLineTwo: "die deuren openen en",
+  titleLineThree: "culturen verbinden",
+  text: "Officiële documenten vertaald met precisie, rechtsgeldigheid en persoonlijke begeleiding tussen het Spaans en Engels.",
   primaryCta: "Offerte aanvragen",
   secondaryCta: "Bekijk diensten",
   imageAlt: "Moderne architectuur in Nederland als conceptbeeld voor beëdigde vertalingen",
   highlights: [
     "Beëdigd vertaler",
-    "Spaans, Engels en Nederlands",
+    "Spaans ↔ Engels",
     "Persoonlijke begeleiding",
   ],
 },

@@ -3,6 +3,7 @@
     "source": "backend-functions"
   },
   "hosting": {
+    "target": "my-translator-8c7e0",
     "public": "dist",
     "ignore": [
       "firebase.json",

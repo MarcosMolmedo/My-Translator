@@ -39,20 +39,20 @@ contact: {
 
 hero: {
   eyebrow: "Traducción jurada · Interpretación · Países Bajos",
-  titleLineOne: "Traducciones juradas.",
-  titleLineTwo: "Que abren puertas y",
-  titleLineThree: "que conectan culturas.",
-  text: "Documentos legales traducidos con precisión, validez oficial y atención personalizada en español - inglés",
+  titleLineOne: "Traducciones juradas",
+  titleLineTwo: "que abren puertas y",
+  titleLineThree: "conectan culturas",
+  text: "Documentos oficiales traducidos con precisión, validez legal y atención personalizada entre español e inglés.",
   primaryCta: "Solicitar cotización",
   secondaryCta: "Conocer servicios",
   imageAlt: "Arquitectura moderna en los Países Bajos como imagen conceptual para traducciones juradas",
   highlights: [
     "Traductora jurada certificada",
-    "Español - inglés ",
+    "Español ↔ Inglés",
     "Atención personalizada",
   ],
-
 },
+
 about: {
   eyebrow: "Sobre mí",
   title: "Precisión lingüística con criterio profesional.",
