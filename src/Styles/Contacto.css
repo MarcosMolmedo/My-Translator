@@ -1,130 +1,370 @@
-.contact-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  max-width: 900px;
-  margin: 50px auto;
-  padding: 20px;
-  flex-wrap: wrap;
-}
-.contact-wrapper {
-  min-height: calc(100vh - 160px); /* Ajustá si tu header/footer tienen otro alto */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-/* Imagen de la izquierda con efecto de aparición */
-.contact-sticker {
-  width: 300px;
-  height: auto;
-  opacity: 0;
-  animation: fadeIn 4s ease-in forwards;
-  order: -1; 
-}
-
-/* Cuadro de mensaje alineado a la derecha */
-.contact-message {
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  max-width: 450px;
-  text-align: left;
-  flex-basis: 55%;
+.contact {
+  background: #f7f6f3;
+  color: #101735;
   font-family: Helvetica, Arial, sans-serif;
 }
 
-/* Ajuste del título */
-.contact-title {
-  color: #444;
-  font-size: 1.3rem;
-  white-space: nowrap; 
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
-  display: block;
-  text-align: center;
+.contact__container {
+  width: min(100% - 2rem, 1180px);
+  margin: 0 auto;
 }
 
-/* Texto del párrafo */
-.contact-message p {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 10px;
+/* HERO */
+
+.contact__hero {
+  padding: 2rem 0 3.5rem;
 }
 
-.contact-message a {
-  color: #007bff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.contact-message a:hover {
-  text-decoration: underline;
-}
-
-.contact-icons {
+.contact__hero-container {
+  position: relative;
+  min-height: 680px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 15px;
-  margin-top: 15px;
+  overflow: hidden;
+  border-radius: 1.75rem;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(247, 246, 243, 0.98) 0%,
+      rgba(247, 246, 243, 0.94) 30%,
+      rgba(247, 246, 243, 0.72) 48%,
+      rgba(247, 246, 243, 0.18) 72%,
+      rgba(247, 246, 243, 0.02) 100%
+    ),
+    url("/contact-utrecht-window.png");
+  background-size: cover;
+  background-position: center right;
+  box-shadow: 0 30px 90px rgba(7, 19, 47, 0.08);
 }
 
-.contact-icon {
-  width: 40px;
+.contact__content {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+  padding: 3rem 1.4rem;
+}
+
+.contact__eyebrow {
+  margin: 0 0 1rem;
+  color: #3e4ae9;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.contact__title {
+  margin: 0;
+  max-width: 100%;
+
+  color: #07132f;
+
+  font-size: clamp(2.1rem, 4.3vw, 3.8rem);
+
+  font-weight: 800;
+
+  line-height: 1.02;
+
+  letter-spacing: -0.05em;
+
+  white-space: nowrap;
+}
+
+.contact__intro {
+  max-width: 560px;
+  margin: 1.5rem 0 0;
+  color: rgba(16, 23, 53, 0.76);
+  font-size: clamp(1.05rem, 2.5vw, 1.18rem);
+  line-height: 1.65;
+}
+
+.contact__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.contact__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.35rem;
+  padding: 0 1.7rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.contact__button::after {
+  content: "↗";
+  margin-left: 0.65rem;
+  font-size: 0.95rem;
+}
+
+.contact__button:hover {
+  transform: translateY(-2px);
+}
+
+.contact__button--primary {
+  background: #e8f05c;
+  color: #07132f;
+}
+
+.contact__button--primary:hover {
+  background: #ce5540;
+  color: #ffffff;
+}
+
+.contact__button--secondary {
+  background: rgba(255, 255, 255, 0.72);
+  color: #3e4ae9;
+  border: 1px solid rgba(62, 74, 233, 0.16);
+  backdrop-filter: blur(10px);
+}
+
+.contact__button--secondary:hover {
+  color: #ce5540;
+  border-color: rgba(206, 85, 64, 0.35);
+}
+
+/* Ya no mostramos la imagen como <img>; ahora vive como fondo del hero */
+.contact__visual {
+  display: none;
+}
+
+.contact__image {
+  display: none;
+}
+
+/* DETAILS */
+
+.contact__details {
+  padding: 1rem 0 5rem;
+}
+
+.contact__details-container {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.contact__info,
+.contact__card {
+  background: #ffffff;
+  border: 1px solid rgba(7, 19, 47, 0.08);
+  border-radius: 1.5rem;
+  box-shadow: 0 24px 70px rgba(7, 19, 47, 0.06);
+}
+
+.contact__info,
+.contact__card {
+  padding: 2rem;
+}
+
+.contact__section-title,
+.contact__card-title {
+  margin: 0;
+  color: #07132f;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.contact__section-text,
+.contact__card-text {
+  margin: 1rem 0 0;
+  color: rgba(16, 23, 53, 0.72);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.contact__list {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 2rem;
+  font-style: normal;
+}
+
+.contact__item {
+  display: grid;
+  gap: 0.25rem;
+  padding: 1rem;
+  background: #f7f6f3;
+  border-radius: 1rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact__item-label {
+  color: rgba(16, 23, 53, 0.55);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.contact__item-value {
+  color: #101735;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.contact__item:hover .contact__item-value {
+  color: #3e4ae9;
+}
+
+.contact__quick-links {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+.contact__quick-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 3.5rem;
+  padding: 0 1.1rem;
+  background: #f7f6f3;
+  border-radius: 1rem;
+  color: #3e4ae9;
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.contact__quick-link::after {
+  content: "→";
+}
+
+.contact__quick-link:hover {
+  color: #ce5540;
+  transform: translateX(3px);
+}
+
+.contact__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+.contact__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.1rem;
+  height: 3.1rem;
+  background: #ffffff;
+  border: 1px solid rgba(7, 19, 47, 0.1);
+  border-radius: 999px;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.contact__social-link:hover {
+  transform: translateY(-3px);
+  border-color: rgba(206, 85, 64, 0.45);
+}
+
+.contact__social-icon {
+  width: 1.45rem;
   height: auto;
-  transition: transform 0.3s ease-in-out;
 }
 
-.contact-icon:hover {
-  transform: scale(1.1);
-}
-
-/* Animación de aparición */
-@keyframes fadeIn {
-  from {
-      opacity: 0;
-  }
-  to {
-      opacity: 1;
-  }
-}
-
-/* Responsive */
-@media screen and (max-width: 768px) {
-  .contact-container {
-      flex-direction: column;
-      text-align: center;
+@media screen and (min-width: 560px) {
+  .contact__content {
+    padding: 4rem 3rem;
   }
 
-  .contact-sticker {
-      width: 250px;
-      order: -1; 
+  .contact__actions {
+    flex-direction: row;
+    align-items: center;
   }
 
-  .contact-message {
-      max-width: 100%;
-      padding: 20px;
+  .contact__button {
+    width: auto;
   }
 
-  .contact-title {
-      font-size: 1.2rem;
-  }
-
-  .contact-icons {
-      flex-wrap: wrap;
-      gap: 10px;
+  .contact__quick-links {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Ajuste especial para tamaños menores a 437px */
-@media screen and (max-width: 437px) {
-  .contact-title {
-      font-size: 0.8rem;
+@media screen and (min-width: 860px) {
+  .contact__hero {
+    padding: 2rem 0 4rem;
   }
-  .contact-message p {
-      font-size: 0.7rem;
+
+  .contact__hero-container {
+    min-height: 700px;
+  }
+
+  .contact__content {
+    max-width: 620px;
+    padding: 5rem 4rem;
+  }
+
+  .contact__details {
+    padding: 1rem 0 7rem;
+  }
+
+  .contact__details-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .contact__info,
+  .contact__card {
+    padding: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 1180px) {
+  .contact__container {
+    width: min(100% - 3rem, 1340px);
+  }
+
+  .contact__hero-container {
+    min-height: 720px;
+  }
+
+  .contact__content {
+    padding: 5.5rem 4.5rem;
+  }
+
+  .contact__title {
+    max-width: 8.5ch;
+  }
+
+  .contact__details-container {
+    gap: 2rem;
+  }
+
+  .contact__info,
+  .contact__card {
+    padding: 3rem;
+  }
+}
+
+@media screen and (max-width: 559px) {
+  .contact__hero-container {
+    min-height: auto;
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(247, 246, 243, 0.98) 0%,
+        rgba(247, 246, 243, 0.94) 48%,
+        rgba(247, 246, 243, 0.5) 100%
+      ),
+      url("/contact-utrecht-window.png");
+    background-position: center;
+  }
+
+  .contact__button {
+    width: 100%;
   }
 }

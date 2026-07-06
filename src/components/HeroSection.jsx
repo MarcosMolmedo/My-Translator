@@ -1,49 +1,53 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../Styles/HeroSection.css";
 
-const HeroSection = () => {
-  const [isExtraSmallSubtitle, setIsExtraSmallSubtitle] = useState(false);
-
-  useEffect(() => {
-    const checkWidth = () => {
-      // ⬅️ para anchos menores a 760px usamos la versión más corta
-      setIsExtraSmallSubtitle(window.innerWidth < 760);
-    };
-
-    checkWidth(); // al cargar
-    window.addEventListener("resize", checkWidth);
-
-    return () => window.removeEventListener("resize", checkWidth);
-  }, []);
-
-  const subtitleText = isExtraSmallSubtitle
-    ? "Documentos legales traducidos y reconocidos oficialmente."
-    : "Documentos legales traducidos de forma rápida y reconocidos oficialmente.";
+const HeroSection = ({ translations }) => {
+  const hero = translations.hero;
 
   return (
-    <section className="hero">
-      {/* Fondo principal */}
-      <div className="hero__background">
-        <img
-          src="/bannerliso.png"
-          alt="Traducciones juradas en los Países Bajos"
-          className="hero__background-image"
-        />
-      </div>
+    <section className="hero" aria-labelledby="hero-title">
+      <div className="hero__container">
+        <div className="hero__media">
+          <img src="/bannerliso.png" alt={hero.imageAlt} className="hero__image" />
+          <div className="hero__overlay" />
 
-      {/* Contenido centrado */}
-      <div className="hero__content">
-        <div className="hero__content-box">
-          <h1 className="hero__title">
-            Traducciones Juradas en los Países Bajos
-          </h1>
+          <div className="hero__content">
+            <p className="hero__eyebrow">{hero.eyebrow}</p>
 
-          <p className="hero__subtitle">{subtitleText}</p>
+            <h1 className="hero__title" id="hero-title">
+              <span>{hero.titleLineOne}</span>
+              <span>{hero.titleLineTwo}</span>
+              <span>{hero.titleLineThree}</span>
+            </h1>
 
-          <Link to="/contacto" className="hero__cta">
-            Contactame
-          </Link>
+            <span className="hero__title-line" aria-hidden="true" />
+
+            <p className="hero__text">{hero.text}</p>
+
+            <div className="hero__actions">
+              <Link to="/cotizaciones" className="hero__button hero__button--primary">
+                {hero.primaryCta}
+                <span aria-hidden="true">→</span>
+              </Link>
+
+              <Link to="/servicios" className="hero__button hero__button--secondary">
+                {hero.secondaryCta}
+                <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+
+            <div className="hero__highlights" aria-label="Puntos destacados">
+              {hero.highlights.map((item) => (
+                <article className="hero__highlight" key={item}>
+                  <span className="hero__highlight-icon" aria-hidden="true">
+                    ✦
+                  </span>
+                  <p className="hero__highlight-text">{item}</p>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -51,5 +55,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
-

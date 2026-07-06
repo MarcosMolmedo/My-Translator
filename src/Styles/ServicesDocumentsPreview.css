@@ -1,0 +1,113 @@
+.services-documents-preview {
+  width: 100%;
+  background: var(--color-surface);
+  padding: 46px 0 54px;
+}
+
+.services-documents-preview__container {
+  width: min(100%, 1240px);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.services-documents-preview__title {
+  margin: 0 0 26px;
+  color: var(--color-text);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.services-documents-preview__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px 18px;
+}
+
+.services-documents-preview__card {
+  min-height: 96px;
+  padding: 22px;
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  align-items: center;
+  gap: 18px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-background);
+  transition: transform 0.25s ease, border-color 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.services-documents-preview__card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(206, 85, 64, 0.38);
+  background: var(--color-surface-alt);
+}
+
+.services-documents-preview__icon {
+  width: 32px;
+  height: 32px;
+  color: var(--color-accent);
+  stroke-width: 1.55;
+}
+
+.services-documents-preview__card-title {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 0.98rem;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+.services-documents-preview__arrow {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .services-documents-preview__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .services-documents-preview {
+    padding: 38px 0 42px;
+    background: var(--color-background);
+  }
+
+  .services-documents-preview__container {
+    padding: 0;
+  }
+
+  .services-documents-preview__title {
+    padding: 0 18px;
+  }
+
+  .services-documents-preview__grid {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    padding: 0 18px 10px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .services-documents-preview__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .services-documents-preview__card {
+    min-width: 78%;
+    min-height: 108px;
+    grid-template-columns: 34px 1fr;
+    padding: 20px;
+    scroll-snap-align: start;
+    background: var(--color-surface);
+  }
+
+  .services-documents-preview__icon {
+    width: 29px;
+    height: 29px;
+  }
+}

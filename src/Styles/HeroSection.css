@@ -1,224 +1,299 @@
-/* ===== HERO (BEM) ===== */
-
 .hero {
-  position: relative;
   width: 100%;
-  min-height: clamp(460px, 75vh, 780px);
-  overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: #ffffff;
-  text-align: center;
-
-  animation: fadeInHero 1.2s ease-out;
+  background: var(--color-background);
+  padding: 1rem 1rem 3rem;
 }
 
-/* Overlay BASE (desktop/tablet) — ⬅️ TU GRADIENT original */
-.hero::before {
+.hero__container {
+  width: min(100%, 1320px);
+  margin: 0 auto;
+}
+
+.hero__media {
+  position: relative;
+  min-height: 760px;
+  overflow: hidden;
+  background: var(--color-background);
+}
+
+.hero__media::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 1; /* overlay debajo del contenido */
-  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      var(--color-background) 0%,
+      rgba(250, 250, 250, 0.98) 24%,
+      rgba(250, 250, 250, 0.78) 42%,
+      rgba(250, 250, 250, 0.28) 62%,
+      rgba(250, 250, 250, 0) 82%
+    ),
+   linear-gradient(
+  180deg,
+  rgba(250,250,250,.08) 0%,
+  rgba(250,250,250,0) 22%,
+  rgba(250,250,250,.12) 78%,
+  rgba(250,250,250,.32) 92%,
+  rgba(250,250,250,.55) 100%
+);
+    
 }
 
-/* Fondo */
-.hero__background {
+.hero__image {
   position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.hero__background-image {
-  width: 100%;
+  top: 0;
+  right: 0;
+  width: 99%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: center;
+  filter: brightness(1.04) contrast(1.02) saturate(0.96);
 }
 
-/* Contenido (encima del overlay) */
+.hero__overlay {
+  display: none;
+}
+
 .hero__content {
   position: relative;
-  z-index: 3; /* texto SIEMPRE por encima del overlay */
-  max-width: 900px;
-  padding: 3rem 1.5rem;
-  display: flex;
-  justify-content: center;
+  z-index: 2;
+  max-width: 760px;
+  padding: 6.5rem 1.25rem 3rem;
 }
 
-.hero__content-box { max-width: 900px; }
+.hero__eyebrow {
+  margin: 0 0 1.8rem;
+  color: var(--color-primary);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
 
-/* Título y subtítulo (tus sombras originales) */
 .hero__title {
-  margin: 0 0 0.75rem;
-  font-size: clamp(2rem, 3.3vw, 3rem);
-  font-weight: 700;
-  line-height: 1.2;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+  margin: 0;
+  color: var(--color-text);
+  font-size: clamp(3rem, 8.2vw, 5.35rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.06em;
 }
 
-.hero__subtitle {
-  margin: 0 0 1.75rem;
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
-  line-height: 1.5;
-  font-weight: 600;
-  opacity: 0.98;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+.hero__title span {
+  display: block;
 }
 
-/* Botón CTA — siempre por encima del texto y overlay */
-.hero__cta {
-  position: relative;
-  z-index: 4; /* botón en la capa superior */
+.hero__title-line {
+  display: block;
+  width: 48px;
+  height: 1px;
+  margin: 1.6rem 0 0;
+  background: var(--color-text);
+  opacity: 0.6;
+}
 
-  display: inline-block;
-  background-color: #e8f05c; /* amarillo */
-  color: #ce5540;           /* texto rojo */
-  padding: 12px 36px;
+.hero__text {
+  max-width: 530px;
+  margin: 1.55rem 0 0;
+  color: var(--color-text-soft);
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1.75;
+}
+
+.hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.hero__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 52px;
+  padding: 0 1.55rem;
   border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 800;
   text-decoration: none;
-  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease,
+    color 0.2s ease, border-color 0.2s ease;
+}
+
+.hero__button--primary {
+  background: var(--color-primary);
+  color: var(--color-surface);
+  box-shadow: 0 18px 48px rgba(62, 74, 233, 0.22);
+}
+
+.hero__button--secondary {
+  border: 1px solid rgba(35, 35, 35, 0.2);
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--color-text-soft);
+}
+
+.hero__button:hover {
+  transform: translateY(-2px);
+}
+
+.hero__button--primary:hover {
+  background: var(--color-accent);
+  box-shadow: 0 18px 40px rgba(206, 85, 64, 0.22);
+}
+
+.hero__button--secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.hero__highlights {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 4.4rem;
+}
+
+.hero__highlight {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+}
+
+.hero__highlight-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(206, 85, 64, 0.28);
+  border-radius: 16px;
+  color: var(--color-accent);
   font-size: 1rem;
-  letter-spacing: 0.02em;
-  border: none;
-
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-  transition: transform 0.2s ease, box-shadow 0.2s ease,
-              background-color 0.2s ease, color 0.2s ease;
+  background: rgba(255, 255, 255, 0.78);
 }
 
-.hero__cta:hover {
-  background-color: #ce5540; /* rojo */
-  color: #ffffff;            /* texto blanco */
-  transform: translateY(-1px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+.hero__highlight-text {
+  margin: 0;
+  max-width: 150px;
+  color: var(--color-text-soft);
+  font-size: 0.93rem;
+  font-weight: 700;
+  line-height: 1.45;
 }
 
-/* ===== RESPONSIVE GENERAL ===== */
-
-@media (max-width: 1024px) {
-  .hero { min-height: 75vh; }
-  .hero__content { padding: 3rem 2rem; }
-}
-
-/* Centramos en móviles (como quedamos) */
-@media (max-width: 770px) {
-  .hero { align-items: center; }
-  .hero__content { padding-top: 0; padding-bottom: 0; }
-}
-
-/* Ajuste fino: 700→560 mantener 1 línea bajando tamaño */
-@media (max-width: 700px) and (min-width: 560px) {
-  .hero__title    { font-size: 1.7rem; white-space: nowrap; }
-  .hero__subtitle { font-size: 0.95rem; white-space: nowrap; }
-}
-
-/* Título más pequeño en 570→430 para no cortar */
-@media (max-width: 570px) and (min-width: 430px) {
-  .hero__title    { font-size: 1.85rem; line-height: 1.28; }
-  .hero__subtitle { font-size: 0.98rem; }
-}
-
-/* Teléfonos muy chicos: permitir saltos limpios */
-@media (max-width: 480px) {
-  .hero__title    { font-size: 1.6rem; white-space: normal; }
-  .hero__subtitle { font-size: 0.95rem; white-space: normal; }
-}
-
-/* Escritorio grande: 1 línea (tu pedido) */
-@media (min-width: 1000px) {
-  .hero__title    { white-space: nowrap; font-size: 2.6rem; }
-  .hero__subtitle { white-space: nowrap; font-size: 1.1rem; }
-}
-
-/* ===== SOLO MOBILE (≤ 625px) =====
-   Degradé AMARILLO sobre la FOTO (no sobre el texto)
-   para legibilidad del subítulo como en tu mock. */
-@media (max-width: 625px) {
-  /* El amarillo va en ::after de la imagen de fondo */
-  .hero__background { position: absolute; inset: 0; z-index: 0; }
-
-  .hero__background::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1; /* encima de la foto, debajo del contenido */
-    pointer-events: none;
-    background:
-      /* leve contraste para el texto */
-      linear-gradient(to bottom, rgba(0,0,0,0.16), rgba(0,0,0,0.24)),
-      /* degradé amarillo #e8f05c */
-      linear-gradient(
-        to bottom,
-        rgba(232,240,92,0.00) 0%,
-        rgba(232,240,92,0.30) 55%,
-        rgba(232,240,92,0.42) 100%
-      );
+@media (min-width: 640px) {
+  .hero {
+    padding: 1.5rem 1.5rem 3.5rem;
   }
 
-  /* Foto clara y encuadre superior */
-  .hero__background-image {
-    object-position: center top;
-    filter: brightness(1.06) contrast(0.98);
-  }
-
-  /* Composición del bloque como el mock */
   .hero__content {
-    position: absolute;
-    top: 54%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    padding: 0 1.2rem;
-    z-index: 3; /* sobre el overlay amarillo */
+    padding: 6.5rem 2rem 3.5rem;
   }
 
-  .hero__content-box {
-    max-width: 24rem; /* ancho seguro */
-    margin: 0 auto;
+  .hero__actions {
+    flex-direction: row;
   }
 
-  /* Permitir saltos: no cortar en mobile */
-  .hero__title    { white-space: normal; font-size: 2.05rem; line-height: 1.28; }
-  .hero__subtitle { white-space: normal; font-size: 1.05rem; line-height: 1.45; }
+  .hero__button {
+    min-width: 185px;
+  }
 
-  .hero__cta { z-index: 4; margin-top: .8rem; }
+  .hero__highlights {
+    grid-template-columns: repeat(3, max-content);
+    gap: 2.4rem;
+  }
 }
 
-/* ===== Animación suave ===== */
-@keyframes fadeInHero {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+@media (min-width: 1024px) {
+  .hero {
+    padding: 2rem 2rem 4rem;
+  }
+
+  .hero__media {
+    min-height: 800px;
+  }
+
+  .hero__content {
+    padding: 7rem 0 4rem 3.5rem;
+  }
+
+  .hero__title {
+    font-size: clamp(4.35rem, 5.25vw, 5.75rem);
+  }
+
+  .hero__text {
+    font-size: 1.08rem;
+  }
 }
-/* === FIX DEFINITIVO: eliminar el brillo/luz bajo el footer === */
-@media (max-width: 625px) {
-  .hero__background::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    /* ajustamos el degradé para que se desvanezca ANTES del borde inferior */
+
+@media (min-width: 1440px) {
+  .hero__media {
+    min-height: 840px;
+  }
+
+  .hero__content {
+    padding-left: 4.5rem;
+  }
+
+  .hero__title {
+    font-size: 5.9rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .hero {
+    padding: 0.75rem 0.85rem 2.5rem;
+  }
+
+  .hero__media {
+    min-height: 720px;
+    border-radius: 18px;
+  }
+
+  .hero__media::before {
     background:
-      linear-gradient(to bottom, rgba(0,0,0,0.16), rgba(0,0,0,0.24)),
       linear-gradient(
-        to bottom,
-        rgba(232,240,92,0.00) 0%,   /* transparente arriba */
-        rgba(232,240,92,0.28) 55%,  /* amarillo intermedio */
-        rgba(232,240,92,0.20) 80%,  /* se empieza a apagar */
-        rgba(232,240,92,0.00) 95%   /* completamente apagado antes del footer */
+        180deg,
+        rgba(250, 250, 250, 0.98) 0%,
+        rgba(250, 250, 250, 0.9) 32%,
+        rgba(250, 250, 250, 0.72) 58%,
+        rgba(250, 250, 250, 0.98) 100%
       );
   }
 
-  /* aseguramos que el fondo del footer opaque cualquier resto */
-  footer,
-  .footer {
-    background-color: #3e4ae9; /* tu color principal violeta */
-    position: relative;
-    z-index: 5;
+  .hero__image {
+    width: 100%;
+    object-position: center top;
+  }
+
+  .hero__content {
+    padding: 4.2rem 1.25rem 2rem;
+  }
+
+  .hero__eyebrow {
+    margin-bottom: 1.4rem;
+    font-size: 0.68rem;
+  }
+
+  .hero__title {
+    font-size: clamp(2.75rem, 12.5vw, 4rem);
+    letter-spacing: -0.058em;
+  }
+
+  .hero__text {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .hero__highlights {
+    margin-top: 3rem;
   }
 }
-

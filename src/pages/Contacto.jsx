@@ -1,44 +1,156 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../Styles/Contacto.css";
-import banderas from "../assets/images/banderassinfondo.png";
 import linkedincontacto from "../assets/images/linkedincontacto.png";
 import instagramcontacto from "../assets/images/instagramcontacto.png";
 import gmailcontacto from "../assets/images/gmailcontacto.png";
 import whatsappcontacto from "../assets/images/whatsappcontacto.png";
 
-const Contacto = () => {
+const Contacto = ({ translations }) => {
+  const contact = translations.contact;
+
   return (
-    <div className="contact-wrapper">
-      <div className="contact-container">
-        <div className="contact-message">
-          <h3 className="contact-title">¡Gracias por llegar hasta acá y escribirme!</h3>
-          <p>
-            Para agilizar el tiempo de respuesta, te recomiendo primero revisar las 
-            <Link to="/preguntasfrecuentes" className="contact-highlight"> Preguntas Frecuentes</Link> y, en caso de requerir una cotización, 
-            completar el siguiente <Link to="/cotizaciones" className="contact-highlight"> formulario</Link>.
-          </p>
-          <p>
-            Si tu consulta no está contemplada en las Preguntas Frecuentes o aún tienes dudas, no dudes en contactarme a través de los canales oficiales.
-          </p>
-          <div className="contact-icons">
-            <a href="https://www.linkedin.com/in/yohanamalvasio/" target="_blank" rel="noopener noreferrer">
-              <img src={linkedincontacto} alt="LinkedIn" className="contact-icon" />
-            </a>
-            <a href="https://www.instagram.com/my_translator_nl?igsh=MXVwem5heXh6d2RtbQ==" target="_blank" rel="noopener noreferrer">
-              <img src={instagramcontacto} alt="Instagram" className="contact-icon" />
-            </a>
-            <a href="mailto:info@malvasioyohana.nl" target="_blank" rel="noopener noreferrer">
-              <img src={gmailcontacto} alt="Gmail" className="contact-icon" />
-            </a>
-            <a href="https://wa.me/31620325639" target="_blank" rel="noopener noreferrer">
-              <img src={whatsappcontacto} alt="WhatsApp" className="contact-icon" />
-            </a>
+    <main className="contact">
+      <section className="contact__hero" aria-labelledby="contact-title">
+        <div className="contact__container contact__hero-container">
+          <div className="contact__content">
+            <p className="contact__eyebrow">{contact.eyebrow}</p>
+
+            <h1 id="contact-title" className="contact__title">
+              {contact.title}
+            </h1>
+
+            <p className="contact__intro">{contact.intro}</p>
+
+            <div className="contact__actions" aria-label={contact.actionsLabel}>
+              <a
+                href="https://wa.me/31620325639"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact__button contact__button--primary"
+              >
+                {contact.whatsappButton}
+              </a>
+
+              <Link
+                to="/cotizaciones"
+                className="contact__button contact__button--secondary"
+              >
+                {contact.quoteButton}
+              </Link>
+            </div>
+          </div>
+
+   <div className="contact__visual" aria-hidden="true">
+  <img
+    src="/contact-utrecht-window.png"
+    alt=""
+    className="contact__image"
+  />
+</div>
+        </div>
+      </section>
+
+      <section className="contact__details" aria-labelledby="contact-details-title">
+        <div className="contact__container contact__details-container">
+          <div className="contact__info">
+            <p className="contact__eyebrow">{contact.infoEyebrow}</p>
+
+            <h2 id="contact-details-title" className="contact__section-title">
+              {contact.infoTitle}
+            </h2>
+
+            <p className="contact__section-text">{contact.infoText}</p>
+
+            <address className="contact__list">
+              <a href="mailto:info@malvasioyohana.nl" className="contact__item">
+                <span className="contact__item-label">{contact.emailLabel}</span>
+                <span className="contact__item-value">info@malvasioyohana.nl</span>
+              </a>
+
+              <a
+                href="https://wa.me/31620325639"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact__item"
+              >
+                <span className="contact__item-label">{contact.whatsappLabel}</span>
+                <span className="contact__item-value">+31 6 20325639</span>
+              </a>
+
+              <div className="contact__item">
+                <span className="contact__item-label">{contact.locationLabel}</span>
+                <span className="contact__item-value">Utrecht, Nederland</span>
+              </div>
+
+              <div className="contact__item">
+                <span className="contact__item-label">{contact.hoursLabel}</span>
+                <span className="contact__item-value">{contact.hoursValue}</span>
+              </div>
+            </address>
+          </div>
+
+          <div className="contact__card">
+            <h2 className="contact__card-title">{contact.cardTitle}</h2>
+            <p className="contact__card-text">{contact.cardText}</p>
+
+            <div className="contact__quick-links">
+              <Link to="/preguntasfrecuentes" className="contact__quick-link">
+                {contact.faqLink}
+              </Link>
+
+              <Link to="/cotizaciones" className="contact__quick-link">
+                {contact.quoteLink}
+              </Link>
+            </div>
+
+            <div className="contact__social" aria-label={contact.socialLabel}>
+                <a
+                href="https://wa.me/31620325639"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact__social-link"
+                aria-label="WhatsApp"
+              >
+                <img src={whatsappcontacto} alt="" className="contact__social-icon" />
+              </a>
+              
+                <a
+                href="mailto:info@malvasioyohana.nl"
+                className="contact__social-link"
+                aria-label="Email"
+              >
+                <img src={gmailcontacto} alt="" className="contact__social-icon" />
+              </a>
+              
+              <a
+                href="https://www.linkedin.com/in/yohanamalvasio/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact__social-link"
+                aria-label="LinkedIn"
+              >
+                <img src={linkedincontacto} alt="" className="contact__social-icon" />
+              </a>
+
+              <a
+                href="https://www.instagram.com/my_translator_nl?igsh=MXVwem5heXh6d2RtbQ=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact__social-link"
+                aria-label="Instagram"
+              >
+                <img src={instagramcontacto} alt="" className="contact__social-icon" />
+              </a>
+
+        
+
+        
+            </div>
           </div>
         </div>
-        <img src={banderas} alt="Banderas" className="contact-sticker" />
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

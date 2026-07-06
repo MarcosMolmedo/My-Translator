@@ -1,118 +1,97 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "../Styles/Header.css";
 import logo from "../assets/images/perfect_circular_logo.png";
 
-const Header = () => {
+const Header = ({ translations, language, setLanguage }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
-  };
+  const header = translations.header;
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
+  const navLinks = [
+    { label: header.home, path: "/" },
+    { label: header.services, path: "/servicios" },
+    { label: header.about, path: "/sobre-mi" },
+    { label: header.faq, path: "/preguntasfrecuentes" },
+    { label: header.reviews, path: "/opiniones" },
+    { label: header.contact, path: "/contacto" },
+  ];
+
+  const languages = [
+    { code: "es", label: "ES", flag: "🇪🇸", aria: "Cambiar idioma a español" },
+    { code: "nl", label: "NL", flag: "🇳🇱", aria: "Taal wijzigen naar Nederlands" },
+    { code: "en", label: "EN", flag: "🇬🇧", aria: "Change language to English" },
+  ];
+
+  const closeMenu = () => setIsMenuOpen(false);
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+
+  const handleLanguageChange = (code) => {
+    setLanguage(code);
+    closeMenu();
   };
 
   return (
     <header className="header">
       <div className="header__container">
-        <Link
-          to="/"
-          className="header__brand"
-          onClick={closeMenu}
-        >
-          <img
-            src={logo}
-            alt="My Translator Logo"
-            className="header__logo"
-          />
-          <h1 className="header__title">MY Translator</h1>
+        <Link to="/" className="header__logo-link" onClick={closeMenu}>
+          <img src={logo} alt="My Translator" className="header__logo" />
         </Link>
 
-        {/* Botón hamburguesa (solo mobile) */}
         <button
-          className="header__hamburger"
-          onClick={toggleMenu}
+          className={`header__hamburger ${
+            isMenuOpen ? "header__hamburger--open" : ""
+          }`}
           type="button"
-          aria-label="Menú de navegación"
+          onClick={toggleMenu}
+          aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={isMenuOpen}
         >
-          &#9776;
+          <span />
+          <span />
+          <span />
         </button>
 
-        {/* NAV */}
         <nav
-          className={`header__nav ${
-            isMenuOpen ? "header__nav--open" : ""
-          }`}
+          className={`header__nav ${isMenuOpen ? "header__nav--open" : ""}`}
+          aria-label="Navegación principal"
         >
-          {/* Botón cierre (solo mobile) */}
-          <button
-            className="header__close"
-            type="button"
-            onClick={closeMenu}
-            aria-label="Cerrar menú"
-          >
-            &times;
-          </button>
-
           <ul className="header__nav-list">
-            <li className="header__nav-item">
-              <Link
-                to="/"
-                className="header__nav-link"
-                onClick={closeMenu}
-              >
-                Inicio
-              </Link>
-            </li>
-            <li className="header__nav-item">
-              <Link
-                to="/sobre-mi"
-                className="header__nav-link"
-                onClick={closeMenu}
-              >
-                Sobre mí
-              </Link>
-            </li>
-            <li className="header__nav-item">
-              <Link
-                to="/servicios"
-                className="header__nav-link"
-                onClick={closeMenu}
-              >
-                Servicios
-              </Link>
-            </li>
-            <li className="header__nav-item">
-              <Link
-                to="/cotizaciones"
-                className="header__nav-link"
-                onClick={closeMenu}
-              >
-                Cotizaciones
-              </Link>
-            </li>
-            <li className="header__nav-item">
-              <Link
-                to="/preguntasfrecuentes"
-                className="header__nav-link"
-                onClick={closeMenu}
-              >
-                Preguntas Frecuentes
-              </Link>
-            </li>
-            <li className="header__nav-item">
-              <Link
-                to="/opiniones"
-                className="header__nav-link"
-                onClick={closeMenu}
-              >
-                Opiniones
-              </Link>
-            </li>
+            {navLinks.map((link) => (
+              <li className="header__nav-item" key={link.path}>
+                <NavLink
+                  to={link.path}
+                  onClick={closeMenu}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "header__nav-link header__nav-link--active"
+                      : "header__nav-link"
+                  }
+                >
+                  {link.label}
+                </NavLink>
+              </li>
+            ))}
           </ul>
+
+          <div className="header__languages" aria-label="Selector de idioma">
+            {languages.map((item) => (
+              <button
+                key={item.code}
+                type="button"
+                aria-label={item.aria}
+                onClick={() => handleLanguageChange(item.code)}
+                className={`header__language ${
+                  language === item.code ? "header__language--active" : ""
+                }`}
+              >
+                <span className="header__language-flag" aria-hidden="true">
+                  {item.flag}
+                </span>
+                <span className="header__language-code">{item.label}</span>
+              </button>
+            ))}
+          </div>
         </nav>
       </div>
     </header>

@@ -1,232 +1,255 @@
-/* ====== BLOQUE PRINCIPAL ====== */
-
 .about {
-  background: linear-gradient(to right, #f5f5f5, #ffffff, #f5f5f5);
-  padding: 4rem 6vw;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
+  background: var(--color-background);
+  padding: 6rem 1.25rem;
 }
 
-/* Tarjeta central */
-
-.about__card {
-  max-width: 1200px;
-  width: 100%;
-  background: #ffffff;
-  border-radius: 18px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
-  padding: 2.5rem 3rem;
-  box-sizing: border-box;
+.about__container {
+  width: min(100%, 1180px);
+  margin: 0 auto;
 }
 
-/* Contenedor de columnas */
-
-.about__columns {
-  display: flex;
-  gap: 2.5rem;
+.about__intro {
+  max-width: 680px;
+  margin-bottom: 4rem;
 }
 
-/* Columnas base */
-
-.about__column {
-  display: flex;
-  flex-direction: column;
+.about__eyebrow {
+  display: inline-flex;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
-
-/* Columna izquierda (más angosta: texto + foto + botón) */
-
-.about__column--profile {
-  flex: 0 0 35%;
-}
-
-/* Columna derecha (más ancha: experiencia + especialización) */
-
-.about__column--details {
-  flex: 1;
-}
-
-/* ====== TIPOGRAFÍA ====== */
 
 .about__title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #e53935;
-  margin-bottom: 0.8rem;
+  margin: 0;
+  color: var(--color-text);
+  font-size: clamp(2.1rem, 4.8vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+  font-weight: 800;
 }
 
-.about__subtitle {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #e53935;
-  margin-bottom: 0.8rem;
+.about__lead {
+  max-width: 680px;
+  margin: 1.6rem 0 0;
+  color: var(--color-text-muted);
+  font-size: clamp(1.02rem, 1.7vw, 1.22rem);
+  line-height: 1.65;
 }
 
-.about__subtitle--spaced {
-  margin-top: 1.8rem; 
+.about__grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 4rem;
+  align-items: start;
 }
 
-.about__text {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #333333;
-  margin-bottom: 0.9rem;
-}
-
-/* Lista de especialización */
-
-.about__list {
-  list-style: none;
-  padding: 0;
-  margin: 0.5rem 0 0;
-}
-
-.about__list-item {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #333333;
-  margin-bottom: 0.6rem;
-}
-
-/* ====== IMAGEN ====== */
-
-.about__image-wrapper {
-  margin: 1.25rem 0 0.9rem;
-  border-radius: 18px;
+.about__image-card {
+  position: sticky;
+  top: 7rem;
   overflow: hidden;
+  border-radius: 2rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
 }
 
 .about__image {
   display: block;
   width: 100%;
-  height: 100%;
+  min-height: 620px;
   object-fit: cover;
 }
 
-/* ====== BOTÓN AMARILLO (LinkedIn) ====== */
+.about__content {
+  padding-top: 1rem;
+}
+
+.about__heading,
+.about__section-title {
+  margin: 0 0 1.5rem;
+  color: var(--color-text);
+  font-size: clamp(1.9rem, 3.2vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: -0.055em;
+  font-weight: 800;
+}
+
+.about__text {
+  margin: 0 0 1.2rem;
+  color: var(--color-text-soft);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.about__credentials {
+  display: grid;
+  gap: 1rem;
+  margin: 2.5rem 0;
+}
+
+.about__credential {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.2rem;
+  padding: 1.3rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  background: var(--color-surface);
+}
+
+.about__credential-number {
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.about__credential-title {
+  margin: 0 0 0.35rem;
+  color: var(--color-text);
+  font-size: 1rem;
+}
+
+.about__credential-text {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
 
 .about__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  padding: 0.6rem 1.4rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.25s ease, color 0.25s ease,
-    transform 0.1s ease;
-}
-
-/* Estado normal: amarillo con letras rojas */
-
-.about__button--secondary {
-  background-color: #ffeb3b; /* amarillo */
-  color: #d32f2f; /* rojo texto */
-}
-
-/* Hover / focus / active → rojo con letras blancas */
-
-.about__button--secondary:hover,
-.about__button--secondary:focus,
-.about__button--secondary:active {
-  background-color: #e53935;
-  color: #ffffff;
-  transform: translateY(-1px);
-}
-
-/* ====== RESPONSIVE ====== */
-
-/* Tablets / pantallas medianas */
-
-@media screen and (max-width: 1024px) {
-  .about {
-    padding: 3rem 4vw;
-  }
-
-  .about__card {
-    padding: 2rem 1.75rem;
-  }
-
-  .about__columns {
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .about__column--profile,
-  .about__column--details {
-    flex: 1 1 100%;
-  }
-}
-
-/* Móviles pequeños */
-
-@media screen and (max-width: 640px) {
-  .about {
-    padding: 2.5rem 1.5rem;
-  }
-
-  .about__card {
-    padding: 1.75rem 1.25rem;
-  }
-
-  .about__title,
-  .about__subtitle {
-    text-align: left;
-  }
-
-  .about__text,
-  .about__list-item {
-    font-size: 0.9rem;
-  }
-
-  .about__button {
-    width: 100%;
-    justify-content: center;
-  }
-}
-/* ====== BOTÓN AMARILLO (LinkedIn) ====== */
-.about__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  padding: 0.6rem 1.4rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.25s ease, color 0.25s ease,
-    transform 0.1s ease;
-  max-width: 100%;
   box-sizing: border-box;
-  word-break: break-word;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.2rem;
+  padding: 0 1.6rem;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: var(--color-surface);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.25s ease, background-color 0.25s ease;
 }
 
-/* Estado normal: amarillo con letras rojas */
-.about__button--secondary {
-  background-color: #ffeb3b;
-  color: #d32f2f;
+.about__button:hover {
+  background: var(--color-primary);
+  transform: translateY(-2px);
 }
 
-/* Hover / focus / active → rojo con letras blancas */
-.about__button--secondary:hover,
-.about__button--secondary:focus,
-.about__button--secondary:active {
-  background-color: #e53935;
-  color: #ffffff;
-  transform: translateY(-1px);
+.about__specialties {
+  margin-top: 7rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--color-border);
 }
 
-/* ====== RESPONSIVE EXTRA para botones ====== */
-@media screen and (max-width: 480px) {
+.about__specialties-header {
+  max-width: 760px;
+  margin-bottom: 2.5rem;
+}
+
+.about__specialties-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.about__specialty {
+  min-height: 220px;
+  padding: 1.4rem;
+  border-radius: 1.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.about__specialty-title {
+  margin: 0 0 1rem;
+  color: var(--color-text);
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.about__specialty-text {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 1024px) {
+  .about {
+    padding: 5rem 1.25rem;
+  }
+
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about__image-card {
+    position: static;
+  }
+
+  .about__image {
+    min-height: 520px;
+  }
+
+  .about__specialties-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .about {
+    padding: 4rem 1rem;
+  }
+
+  .about__intro {
+    margin-bottom: 3rem;
+  }
+
+  .about__title {
+    font-size: clamp(2.55rem, 13vw, 3.45rem);
+    line-height: 1;
+    letter-spacing: -0.065em;
+  }
+
+  .about__lead {
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  .about__image-card {
+    border-radius: 1.4rem;
+  }
+
+  .about__image {
+    min-height: 420px;
+  }
+
+  .about__credential {
+    grid-template-columns: 1fr;
+  }
+
   .about__button {
     width: 100%;
-    padding: 0.75rem 0.5rem;
-    font-size: 0.8rem;
-    border-radius: 12px;
+    max-width: 100%;
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  .about__specialties {
+    margin-top: 5rem;
+  }
+
+  .about__specialties-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about__specialty {
+    min-height: auto;
   }
 }

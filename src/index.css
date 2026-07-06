@@ -1,32 +1,59 @@
-/* Reset y estilos globales */
+:root {
+  /* Paleta principal */
+  --color-background: #f7f6f3;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f4f1ec;
+
+  --color-primary: #3e4ae9;
+  --color-primary-dark: #101a55;
+  --color-accent: #ce5540;
+  --color-highlight: #e8f05c;
+
+  --color-text: #101735;
+  --color-text-soft: #232323;
+  --color-text-muted: #666666;
+
+  --color-border: rgba(16, 23, 53, 0.1);
+
+  /* Tipografía */
+  --font-family: Arial, sans-serif;
+}
 
 html,
 body {
-  height: 100%;
+  min-height: 100%;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  overflow-x: hidden; /* Evita scroll horizontal */
-  overflow-y: auto;   /* Permite desplazamiento vertical */
-  
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  background: var(--color-background);
+  color: var(--color-text);
+
+  font-family: var(--font-family);
+}
+
+#root {
+  min-height: 100vh;
+  background: var(--color-background);
 }
 
 /* Contenedor principal */
 .container {
   max-width: 1200px;
-  margin: 10px 10px;
-  padding: 20px 20px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-/* Estilos generales de imágenes */
+/* Imágenes */
 img {
+  display: block;
   max-width: 100%;
   height: auto;
 }
 
-@media screen and (max-width: 425px) {
+@media (max-width: 425px) {
   .container {
-    background: #4a58f0;
-    padding: 0 10px; /* Agrega padding lateral en móviles */
+    padding: 0 16px;
   }
 }

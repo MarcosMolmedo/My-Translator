@@ -1,113 +1,84 @@
 import React from "react";
 import "../Styles/Footer.css";
 
-import GmailIcon from "../assets/images/logogmail.png";
-import InstagramIcon from "../assets/images/logoinstagram.png";
-import LinkedInIcon from "../assets/images/logolinkedln.png";
-import WhatsAppIcon from "../assets/images/logowhatsapp.png";
+import logo from "../assets/images/perfect_circular_logo.png";
 
-const Footer = () => {
+const Footer = ({ translations }) => {
+  const footer = translations.footer;
+
   return (
     <footer className="footer">
-      <div className="footer__content">
-        <p className="footer__text footer__text--main">
-          &copy; 2025 Yohana Malvasio - Todos los derechos reservados.
-        </p>
+      <div className="footer__container">
+        <div className="footer__brand">
+          <img className="footer__logo" src={logo} alt={footer.logoAlt} />
 
-        <p className="footer__text footer__address">
-          Operettelaan 175, 3543 BP Utrecht
-        </p>
-
-        <ul className="footer__social-list">
-          <li className="footer__social-item">
-            <a
-              className="footer__social-link"
-              href="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Afsd_profile%3AACoAAB_RFh0BLvW-WtEmr_x2AustxPGMcuMBM4E&keywords=yohana%20malvasio&origin=RICH_QUERY_SUGGESTION&position=0&searchId=83de0f77-5667-4e6c-912d-c57252c4dc65&sid=PSK&spellCorrectionEnabled=false"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                className="footer__social-icon"
-                src={LinkedInIcon}
-                alt="LinkedIn"
-              />
-            </a>
-          </li>
-
-          <li className="footer__social-item">
-            <a
-              className="footer__social-link"
-              href="https://www.instagram.com/my_translator_nl?igsh=MXVwem5heXh6d2RtbQ=="
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                className="footer__social-icon"
-                src={InstagramIcon}
-                alt="Instagram"
-              />
-            </a>
-          </li>
-
-          <li className="footer__social-item">
-            <a
-              className="footer__social-link"
-              href="mailto:info@malvasioyohana.nl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                className="footer__social-icon"
-                src={GmailIcon}
-                alt="Gmail"
-              />
-            </a>
-          </li>
-
-          <li className="footer__social-item">
-            <a
-              className="footer__social-link"
-              href="https://wa.me/31620325639"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                className="footer__social-icon"
-                src={WhatsAppIcon}
-                alt="WhatsApp"
-              />
-            </a>
-          </li>
-        </ul>
-
-        <div className="footer__developer">
-          <span className="footer__developer-text">
-            Photos by{" "}
-            <a
-              className="footer__developer-link"
-              href="https://www.murchstudio.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Beatrice Murch 📷
-            </a>
-          </span>
-
-          <span className="footer__divider">|</span>
-
-          <span className="footer__developer-text">
-            Developer by{" "}
-            <a
-              className="footer__developer-link"
-              href="https://www.linkedin.com/in/marcos-manuel-olmedo/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Perfil de LinkedIn de Marcos M. Olmedo"
-            >
-              Marcos M Olmedo 💻
-            </a>
-          </span>
+          <div>
+            <h2 className="footer__brand-title">{footer.brand}</h2>
+            <p className="footer__brand-text">{footer.description}</p>
+          </div>
         </div>
+
+        <nav className="footer__column" aria-label={footer.quickLinksTitle}>
+          <h3 className="footer__title">{footer.quickLinksTitle}</h3>
+          <ul className="footer__list">
+            {footer.quickLinks.map((link) => (
+              <li key={link.label}>
+                <a className="footer__link" href={link.href}>
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <nav className="footer__column" aria-label={footer.servicesTitle}>
+          <h3 className="footer__title">{footer.servicesTitle}</h3>
+          <ul className="footer__list">
+            {footer.services.map((service) => (
+              <li key={service.label}>
+                <a className="footer__link" href={service.href}>
+                  {service.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="footer__column">
+          <h3 className="footer__title">{footer.contactTitle}</h3>
+          <ul className="footer__list">
+            <li>
+              <a className="footer__link" href={`mailto:${footer.email}`}>
+                {footer.email}
+              </a>
+            </li>
+            <li>
+              <a className="footer__link" href={footer.whatsappHref}>
+                {footer.phone}
+              </a>
+            </li>
+            <li className="footer__muted">{footer.address}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="footer__bottom">
+        <p className="footer__copyright">{footer.copyright}</p>
+
+        <p className="footer__credits">
+          
+      
+          <span className="footer__separator">|</span>
+          {footer.developedBy}{" "}
+          <a
+            className="footer__credit-link"
+            href="https://www.linkedin.com/in/marcos-manuel-olmedo/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Marcos M Olmedo
+          </a>
+        </p>
       </div>
     </footer>
   );
