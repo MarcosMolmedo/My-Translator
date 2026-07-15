@@ -18,12 +18,28 @@ const Header = ({ translations, language, setLanguage }) => {
   ];
 
   const languages = [
-    { code: "es", label: "ES", flag: "🇪🇸", aria: "Cambiar idioma a español" },
-    { code: "nl", label: "NL", flag: "🇳🇱", aria: "Taal wijzigen naar Nederlands" },
-    { code: "en", label: "EN", flag: "🇬🇧", aria: "Change language to English" },
+    {
+      code: "es",
+      label: "ES",
+      flag: "/flag-es.png",
+      aria: "Cambiar idioma a español",
+    },
+    {
+      code: "nl",
+      label: "NL",
+      flag: "/flag-nl.png",
+      aria: "Taal wijzigen naar Nederlands",
+    },
+    {
+      code: "en",
+      label: "EN",
+      flag: "/flag-en.png",
+      aria: "Change language to English",
+    },
   ];
 
   const closeMenu = () => setIsMenuOpen(false);
+
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
   const handleLanguageChange = (code) => {
@@ -85,10 +101,15 @@ const Header = ({ translations, language, setLanguage }) => {
                   language === item.code ? "header__language--active" : ""
                 }`}
               >
-                <span className="header__language-flag" aria-hidden="true">
-                  {item.flag}
+                <img
+                  src={item.flag}
+                  alt={`${item.label} flag`}
+                  className="header__language-flag"
+                />
+
+                <span className="header__language-code">
+                  {item.label}
                 </span>
-                <span className="header__language-code">{item.label}</span>
               </button>
             ))}
           </div>

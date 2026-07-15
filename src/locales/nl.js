@@ -38,7 +38,7 @@ contact: {
 },
 
 hero: {
-  eyebrow: "Beëdigde vertalingen · Tolkdiensten · Nederland",
+  eyebrow: "Beëdigde vertalingen · Nederland",
   titleLineOne: "Beëdigde vertalingen",
   titleLineTwo: "die deuren openen en",
   titleLineThree: "culturen verbinden",
@@ -56,14 +56,15 @@ hero: {
 about: {
   eyebrow: "Over mij",
   title: "Taalkundige precisie met professioneel oordeel.",
-  lead: "Ik ben Yohana Malvasio, beëdigd vertaler en tolk in Nederland. Ik begeleid mensen, gezinnen en professionals die belangrijke documenten helder, zorgvuldig en officieel erkend moeten laten vertalen.",
-  imageAlt: "Yohana Malvasio, beëdigd vertaler in Nederland",
+  lead: "Ik ben Yohana Malvasio, beëdigd vertaler in Nederland. Ik begeleid mensen, gezinnen en professionals die belangrijke documenten helder, zorgvuldig en officieel erkend moeten laten vertalen.",
   storyTitle: "Een loopbaan opgebouwd tussen talen, culturen en belangrijke documenten.",
+  
   story: [
     "Ik ben Nationaal Openbaar Vertaler Engels, afgestudeerd aan de Universidad Nacional de Córdoba, met meer dan 20 jaar ervaring in vertaling, redactie, revisie en tolken.",
     "Mijn professionele loopbaan begon met het geven van Engelse en Spaanse les. Later specialiseerde ik mij in taalkundige projecten met hoge kwaliteitsnormen. Na mijn verhuizing naar Nederland bleef ik mijn professionele ervaring verder ontwikkelen in internationale omgevingen.",
     "In 2024 werd ik in Nederland beëdigd als vertaler, na mijn beëdiging bij de rechtbank in Utrecht. Sindsdien bied ik beëdigde vertalingen aan voor mensen die officieel geldige en zorgvuldig vertaalde documenten nodig hebben.",
   ],
+  
   credentials: [
     {
       number: "01",
@@ -77,7 +78,7 @@ about: {
     },
     {
       number: "03",
-      title: "Spaans, Engels en Nederlands",
+      title: "Spaans en Engels",
       text: "Werkervaring met documenten en multiculturele contexten.",
     },
   ],
@@ -362,7 +363,7 @@ footer: {
   logoAlt: "Logo van My Translator",
   brand: "My Translator",
   description:
-    "Beëdigde vertalingen en professionele tolkdiensten in Nederland, met duidelijke, nauwkeurige en persoonlijke begeleiding.",
+    "Professionele beëdigde vertalingen in Nederland, met een duidelijke, nauwkeurige en persoonlijke dienstverlening.",
 
   quickLinksTitle: "Snelle links",
 quickLinks: [

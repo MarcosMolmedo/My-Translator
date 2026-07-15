@@ -38,7 +38,7 @@ contact: {
 },
 
 hero: {
-  eyebrow: "Traducción jurada · Interpretación · Países Bajos",
+  eyebrow: "Traducción jurada en los Países Bajos",
   titleLineOne: "Traducciones juradas",
   titleLineTwo: "que abren puertas y",
   titleLineThree: "conectan culturas",
@@ -56,7 +56,7 @@ hero: {
 about: {
   eyebrow: "Sobre mí",
   title: "Precisión lingüística con criterio profesional.",
-  lead: "Soy Yohana Malvasio, traductora jurada e intérprete en los Países Bajos. Acompaño a personas, familias y profesionales que necesitan presentar documentos importantes con claridad, precisión y respaldo oficial.",
+  lead: "Soy Yohana Malvasio, traductora jurada en los Países Bajos. Acompaño a personas, familias y profesionales que necesitan traducir documentos importantes con claridad, precisión y respaldo oficial.",
   imageAlt: "Yohana Malvasio, traductora jurada en los Países Bajos",
   storyTitle: "Una trayectoria construida entre idiomas, culturas y documentos importantes.",
   story: [
@@ -77,7 +77,7 @@ about: {
     },
     {
       number: "03",
-      title: "Español, inglés y neerlandés",
+     title: "Español e inglés",
       text: "Trabajo con documentos y contextos multiculturales.",
     },
   ],
@@ -364,7 +364,7 @@ footer: {
   logoAlt: "Logo de My Translator",
   brand: "My Translator",
   description:
-    "Traducciones juradas e interpretaciones profesionales en los Países Bajos, con atención clara, precisa y personalizada.",
+  "Traducciones juradas profesionales en los Países Bajos, con atención clara, precisa y personalizada.",
 
   quickLinksTitle: "Enlaces rápidos",
   quickLinks: [

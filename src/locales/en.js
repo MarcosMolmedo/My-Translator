@@ -38,7 +38,7 @@ contact: {
   socialLabel: "Social media and contact channels",
 },
 hero: {
-  eyebrow: "Sworn Translation · Interpreting · The Netherlands",
+ eyebrow: "Sworn Translations · The Netherlands",
   titleLineOne: "Sworn translations",
   titleLineTwo: "that open doors and",
   titleLineThree: "connect cultures",
@@ -56,7 +56,7 @@ hero: {
 about: {
   eyebrow: "About",
   title: "Linguistic precision with professional judgement.",
-  lead: "I am Yohana Malvasio, a sworn translator and interpreter in the Netherlands. I support individuals, families and professionals who need important documents translated clearly, accurately and with official recognition.",
+  lead: "I am Yohana Malvasio, a sworn translator in the Netherlands. I support individuals, families and professionals who need important documents translated clearly, accurately and with official recognition.",
   imageAlt: "Yohana Malvasio, sworn translator in the Netherlands",
   storyTitle: "A career built between languages, cultures and important documents.",
   story: [
@@ -77,7 +77,7 @@ about: {
     },
     {
       number: "03",
-      title: "Spanish, English and Dutch",
+     title: "Spanish and English",
       text: "Working across documents and multicultural contexts.",
     },
   ],
@@ -358,7 +358,7 @@ footer: {
   logoAlt: "My Translator logo",
   brand: "My Translator",
   description:
-    "Sworn translations and professional interpreting services in the Netherlands, with clear, precise and personal guidance.",
+   "Professional sworn translations in the Netherlands, with clear, precise and personalized service.",
 
   quickLinksTitle: "Quick links",
  quickLinks: [
