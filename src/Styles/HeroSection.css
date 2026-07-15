@@ -89,7 +89,7 @@
 ======================================== */
 
 .hero__title {
-  max-width: 700px;
+  max-width: 730px;
   margin: 0;
   color: var(--color-text);
   font-size: clamp(3rem, 4.7vw, 4.35rem);
@@ -98,30 +98,12 @@
   letter-spacing: -0.052em;
 }
 
-/*
-  Cada span representa una línea definida
-  desde el archivo de traducciones.
-*/
 .hero__title span {
   display: block;
 }
 
-/* Espacio sutil entre cada línea */
 .hero__title span + span {
-  margin-top: 0.06em;
-}
-
-/*
-  La tercera frase es más larga.
-  Se reduce ligeramente para mantener
-  una composición más elegante.
-*/
-.hero__title span:nth-child(3) {
-  max-width: 720px;
-  margin-top: 0.16em;
-  font-size: 0.82em;
-  line-height: 1.04;
-  letter-spacing: -0.045em;
+  margin-top: 0.08em;
 }
 
 .hero__title-line {
@@ -162,12 +144,16 @@
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
+
   min-height: 52px;
   padding: 0 1.55rem;
+
   border-radius: 999px;
+
   font-size: 0.88rem;
   font-weight: 800;
   line-height: 1;
+  text-align: center;
   text-decoration: none;
 
   transition:
@@ -237,6 +223,7 @@
   background: rgba(255, 255, 255, 0.8);
   color: var(--color-accent);
   font-size: 0.95rem;
+
   backdrop-filter: blur(8px);
 }
 
@@ -266,11 +253,6 @@
   .hero__title {
     max-width: 720px;
     font-size: clamp(3.4rem, 6vw, 4.2rem);
-  }
-
-  .hero__title span:nth-child(3) {
-    max-width: 690px;
-    font-size: 0.82em;
   }
 
   .hero__actions {
@@ -315,12 +297,6 @@
     line-height: 0.97;
   }
 
-  .hero__title span:nth-child(3) {
-    max-width: 720px;
-    font-size: 0.8em;
-    line-height: 1.04;
-  }
-
   .hero__text {
     max-width: 510px;
     font-size: 1.02rem;
@@ -348,11 +324,6 @@
   .hero__title {
     max-width: 760px;
     font-size: 4.55rem;
-  }
-
-  .hero__title span:nth-child(3) {
-    max-width: 740px;
-    font-size: 0.8em;
   }
 }
 
@@ -405,32 +376,41 @@
   .hero__content {
     position: relative;
     z-index: 2;
+
     width: 100%;
     max-width: 100%;
     min-width: 0;
-    padding: 4.1rem 1.1rem 2.5rem;
-    overflow: hidden;
+
+    padding: 4rem 1rem 2.5rem;
   }
 
   .hero__eyebrow {
     width: 100%;
     max-width: 100%;
-    margin: 0 0 1.45rem;
+    margin: 0 0 1.25rem;
+
     font-size: 0.63rem;
     line-height: 1.55;
     letter-spacing: 0.16em;
-    overflow-wrap: anywhere;
+
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .hero__title {
     width: 100%;
     max-width: 100%;
     margin: 0;
-    font-size: clamp(2.35rem, 10vw, 2.85rem);
+
+    font-size: clamp(2.15rem, 9.2vw, 2.65rem);
     font-weight: 700;
-    line-height: 0.98;
-    letter-spacing: -0.045em;
-    overflow-wrap: break-word;
+    line-height: 1;
+    letter-spacing: -0.042em;
+
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .hero__title span {
@@ -453,46 +433,53 @@
     width: 100%;
     max-width: 100%;
     margin: 1.4rem 0 0;
+
     color: var(--color-text);
     font-size: 0.94rem;
     font-weight: 600;
     line-height: 1.65;
-    overflow-wrap: break-word;
+
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
-  @media (max-width: 639px) {
   .hero__actions {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+
     width: 100%;
     max-width: 100%;
+
     gap: 0.8rem;
     margin-top: 1.8rem;
   }
 
   .hero__button {
-    width: min(100%, 320px);
-    max-width: 320px;
+    width: 100%;
+    max-width: 100%;
     min-width: 0;
     min-height: 54px;
+
     padding: 0.9rem 1.25rem;
+
     border-radius: 999px;
 
     font-size: 0.88rem;
     line-height: 1.2;
     text-align: center;
     white-space: normal;
-
-    box-sizing: border-box;
-  }
   }
 
   .hero__highlights {
     display: grid;
     grid-template-columns: 1fr;
+
     width: 100%;
     max-width: 100%;
+    min-width: 0;
+
     gap: 1rem;
     margin-top: 3.3rem;
   }
@@ -501,8 +488,11 @@
     display: grid;
     grid-template-columns: 44px minmax(0, 1fr);
     align-items: center;
+
     width: 100%;
     max-width: 100%;
+    min-width: 0;
+
     gap: 0.9rem;
   }
 
@@ -515,10 +505,14 @@
   .hero__highlight-text {
     width: 100%;
     max-width: 100%;
+    min-width: 0;
     margin: 0;
+
     font-size: 0.9rem;
     line-height: 1.4;
-    overflow-wrap: break-word;
+
+    overflow-wrap: normal;
+    word-break: normal;
   }
 }
 
@@ -541,7 +535,7 @@
   }
 
   .hero__title {
-    font-size: clamp(2.15rem, 10vw, 2.55rem);
+    font-size: clamp(2rem, 9vw, 2.35rem);
   }
 
   .hero__text {
@@ -549,8 +543,8 @@
   }
 
   .hero__button {
-    width: min(100%, 290px);
-    max-width: 290px;
+    width: 100%;
+    max-width: 100%;
     min-height: 52px;
     padding-inline: 1rem;
     font-size: 0.85rem;
