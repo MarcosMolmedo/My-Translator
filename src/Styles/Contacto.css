@@ -459,7 +459,7 @@
 
    .contact__title {
     max-width: 100%;
-    font-size: clamp(1.85rem, 8.5vw, 2.35rem);
+    font-size: clamp(1.65rem, 7.5vw, 2.10rem);
     line-height: 1.08;
     letter-spacing: -0.045em;
     white-space: normal;

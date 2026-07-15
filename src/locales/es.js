@@ -37,11 +37,12 @@ contact: {
   socialLabel: "Redes sociales y canales de contacto",
 },
 
+
 hero: {
   eyebrow: "Traducción jurada en los Países Bajos",
   titleLineOne: "Traducciones juradas",
-  titleLineTwo: "que abren puertas y",
-  titleLineThree: "conectan culturas",
+  titleLineTwo: "que conectan culturas",
+  titleLineThree: "",
   text: "Documentos oficiales traducidos con precisión, validez legal y atención personalizada entre español e inglés.",
   primaryCta: "Solicitar cotización",
   secondaryCta: "Conocer servicios",
@@ -52,6 +53,7 @@ hero: {
     "Atención personalizada",
   ],
 },
+
 
 about: {
   eyebrow: "Sobre mí",

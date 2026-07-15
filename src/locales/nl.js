@@ -37,19 +37,20 @@ contact: {
   socialLabel: "Sociale media en contactkanalen",
 },
 
+
 hero: {
   eyebrow: "Beëdigde vertalingen · Nederland",
   titleLineOne: "Beëdigde vertalingen",
-  titleLineTwo: "die deuren openen en",
-  titleLineThree: "culturen verbinden",
-  text: "Officiële documenten vertaald met precisie, rechtsgeldigheid en persoonlijke begeleiding tussen het Spaans en Engels.",
+  titleLineTwo: "die culturen verbinden",
+  titleLineThree: "",
+  text: "Officiële documenten vertaald met precisie, rechtsgeldigheid en persoonlijke service tussen het Spaans en Engels.",
   primaryCta: "Offerte aanvragen",
   secondaryCta: "Bekijk diensten",
   imageAlt: "Moderne architectuur in Nederland als conceptbeeld voor beëdigde vertalingen",
   highlights: [
     "Beëdigd vertaler",
     "Spaans ↔ Engels",
-    "Persoonlijke begeleiding",
+    "Persoonlijke service",
   ],
 },
 

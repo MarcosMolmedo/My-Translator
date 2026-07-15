@@ -37,12 +37,14 @@ contact: {
   quoteLink: "Go to the quote form",
   socialLabel: "Social media and contact channels",
 },
+
+
 hero: {
- eyebrow: "Sworn Translations · The Netherlands",
+  eyebrow: "Sworn Translations · The Netherlands",
   titleLineOne: "Sworn translations",
-  titleLineTwo: "that open doors and",
-  titleLineThree: "connect cultures",
-  text: "Official documents translated with precision, legal validity, and personalized service between Spanish and English.",
+  titleLineTwo: "that connect cultures",
+  titleLineThree: "",
+  text: "Official documents translated with precision, legal validity and personalized service between Spanish and English.",
   primaryCta: "Request a quote",
   secondaryCta: "View services",
   imageAlt: "Modern architecture in the Netherlands representing sworn translation services",
