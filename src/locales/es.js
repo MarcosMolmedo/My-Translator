@@ -395,69 +395,8 @@ footer: {
   copyright: "© 2025 Yohana Malvasio. Todos los derechos reservados.",
   photosBy: "Fotos por",
   developedBy: "Desarrollado por",
-},
-
-
-quoteForm: {
-  title: "Solicitá tu cotización",
-  iconAlt: "Ícono de cotización",
-
-  nameLabel: "Nombre:",
-  namePlaceholder: "Tu nombre",
-
-  emailLabel: "Correo electrónico:",
-  emailPlaceholder: "Tu correo electrónico",
-  emailError: "Correo electrónico inválido",
-
-  languageLabel: "¿A qué idioma deseás traducir el documento?",
-  selectOption: "Seleccioná una opción",
-  spanishEnglish: "Español - Inglés",
-  englishSpanish: "Inglés - Español",
-
-  countryLabel: "País emisor del documento:",
-  selectCountry: "Seleccioná un país",
-  argentina: "Argentina",
-  uruguay: "Uruguay",
-  chile: "Chile",
-  mexico: "México",
-  spain: "España",
-  countryCombination: "Combinación de dos países",
-  otherCountry: "Otro país",
-
-  apostilleLabel: "¿El documento está apostillado?",
-  yes: "Sí",
-  no: "No",
-  dontKnow: "No sé",
-
-  deliveryLabel: "¿Cuándo necesitás que esté lista tu traducción?",
-  urgentDelivery: "Menos de 3 días hábiles (urgente)",
-  normalDelivery: "Más de 3 días hábiles",
-
-  pickupLabel: "¿Vas a retirar tu traducción en Utrecht Terwijde?",
-  postnlLabel: "¿Deseás que te envíe la traducción por PostNL?",
-
-  commentLabel:
-    "Algún comentario que quieras agregar (opcional, máx. 300 caracteres):",
-  commentPlaceholder: "Escribe aquí tu comentario...",
-
-  filesLabel:
-    "Cargá hasta 5 documentos (al menos 1 es obligatorio). Peso total máx:",
-  removeFile: "Quitar",
-  total: "Total:",
-
-  fileRequired: "Debes adjuntar al menos un documento.",
-  fileLimit: "Puedes adjuntar hasta 5 archivos.",
-  fileSizeErrorStart: "El peso total supera",
-  fileSizeErrorEnd: "MB. Reduce tamaño o cantidad de archivos.",
-
-  sending: "Enviando...",
-  sent: "¡Enviado!",
-  submit: "Enviar",
-
-  successMessage: "¡Cotización enviada exitosamente!",
-  connectionError: "Error de conexión. Inténtalo más tarde.",
-  backendError: "Hubo un error al enviar la cotización:",
-},
+      },
+    
 
 faq: {
   eyebrow: "Preguntas frecuentes",
@@ -572,7 +511,7 @@ faq: {
         "También debe abonarse el nuevo envío postal.",
       ],
     },
-    {
+     {
       question: "¿Es necesario certificar la traducción?",
       answerIntro:
         "Si la traducción se presenta en los Países Bajos, normalmente no requiere certificación extra.",
@@ -583,5 +522,196 @@ faq: {
     },
   ],
 },
-};
 
+
+  quoteForm: {
+  eyebrow: "Cotización personalizada",
+  title: "Contame qué documento necesitás traducir.",
+  intro:
+    "Completá el formulario y adjuntá una copia clara de tus documentos. Revisaré personalmente tu solicitud para enviarte una cotización precisa y adaptada a tu situación.",
+
+  trustListLabel: "Beneficios de solicitar una cotización",
+  trustItems: [
+    "Cotización gratuita",
+    "Documentos tratados con confidencialidad",
+    "Atención personal de Yohana",
+  ],
+
+  processEyebrow: "Cómo funciona",
+  processTitle: "Un proceso claro, personal y sin compromiso.",
+  processSteps: [
+    {
+      title: "Adjuntá tus documentos",
+      text: "Podés cargar hasta cinco archivos en PDF, Word o imagen.",
+    },
+    {
+      title: "Reviso tu solicitud",
+      text: "Analizo personalmente el documento, el idioma y el plazo necesario.",
+    },
+    {
+      title: "Recibís tu cotización",
+      text: "Te envío una propuesta clara antes de comenzar el trabajo.",
+    },
+  ],
+
+  privacyTitle: "Tus documentos están protegidos",
+  privacyText:
+    "La información y los archivos enviados se utilizan únicamente para revisar y preparar tu cotización.",
+
+  formEyebrow: "Formulario de cotización",
+  formTitle: "Empecemos por los detalles.",
+  formIntro:
+    "Los campos marcados con un asterisco son obligatorios. Completar el formulario no implica ninguna obligación de contratación.",
+  formLegend: "Datos para solicitar una cotización",
+
+  personalTitle: "Tus datos",
+  personalText:
+    "Necesito estos datos para poder responderte y enviarte la cotización.",
+
+  nameLabel: "Nombre",
+  namePlaceholder: "Tu nombre y apellido",
+
+  emailLabel: "Correo electrónico",
+  emailPlaceholder: "nombre@correo.com",
+
+  documentTitle: "Información del documento",
+  documentText:
+    "Estos datos me permiten evaluar correctamente el tipo de traducción que necesitás.",
+
+  languageLabel: "Dirección de la traducción",
+  selectOption: "Seleccioná una opción",
+  spanishEnglish: "De español a inglés",
+  englishSpanish: "De inglés a español",
+
+  countryLabel: "País emisor del documento",
+  selectCountry: "Seleccioná un país",
+  argentina: "Argentina",
+  uruguay: "Uruguay",
+  chile: "Chile",
+  mexico: "México",
+  spain: "España",
+  countryCombination: "Documentos de dos países",
+  otherCountry: "Otro país",
+
+  countryCombinationDetailLabel:
+    "¿De qué países son los documentos?",
+  countryCombinationPlaceholder:
+    "Por ejemplo: Argentina y Países Bajos",
+
+  otherCountryDetailLabel: "Indicá el país emisor",
+  otherCountryPlaceholder: "Escribí el nombre del país",
+  countryDetailBackendLabel: "Detalle del país emisor",
+
+  apostilleLabel: "¿El documento está apostillado?",
+  apostilleHelp:
+    "No hay problema si todavía no sabés si necesita apostilla.",
+  yes: "Sí",
+  no: "No",
+  dontKnow: "No sé",
+
+  deliveryLabel:
+    "¿Cuándo necesitás que esté lista la traducción?",
+  deliveryHelp:
+    "El plazo definitivo se confirma después de revisar los documentos.",
+
+  urgentDelivery: "Entrega urgente",
+  urgentDeliveryText: "Menos de 3 días hábiles",
+
+  normalDelivery: "Entrega estándar",
+  normalDeliveryText: "Más de 3 días hábiles",
+
+  deliveryMethodTitle: "Forma de entrega",
+  deliveryMethodText:
+    "Elegí cómo querés recibir la traducción jurada impresa.",
+
+  pickupOption: "Retiro en Utrecht Terwijde",
+  pickupOptionText:
+    "Coordinaremos previamente el día y el horario de retiro.",
+
+  postnlOption: "Envío por PostNL",
+  postnlOptionText:
+    "La traducción se enviará por correo a la dirección acordada.",
+
+  commentLabel: "Información adicional",
+  optional: "Opcional",
+  commentPlaceholder:
+    "Podés contarme dónde presentarás el documento, si tenés una fecha específica o cualquier otro detalle importante.",
+
+  filesTitle: "Adjuntá tus documentos",
+  filesText:
+    "Necesito al menos un archivo para poder evaluar el contenido y preparar una cotización precisa.",
+
+  dropzoneTitle: "Arrastrá tus documentos hasta aquí",
+  dropzoneText: "o seleccioná los archivos desde tu dispositivo",
+  selectFiles: "Seleccionar documentos",
+  fileFormats:
+    "PDF, DOC, DOCX, JPG o PNG · Máximo {maxFiles} archivos · Peso total máximo {maxMb} MB",
+
+  selectedFiles: "Documentos seleccionados",
+  removeFile: "Quitar",
+
+  consentText:
+    "Al enviar este formulario confirmás que los archivos pueden ser revisados únicamente con el propósito de preparar tu cotización.",
+
+  submit: "Solicitar cotización",
+  sending: "Enviando solicitud...",
+  sent: "Solicitud enviada",
+
+  freeQuote: "Cotización gratuita",
+  noCommitment: "Sin compromiso",
+  responseTime: "Respuesta normalmente dentro de 24 horas hábiles",
+
+  successTitle: "Recibí correctamente tu solicitud.",
+  successText:
+    "Revisaré personalmente tus documentos y me pondré en contacto con vos lo antes posible.",
+
+  backendError:
+    "No fue posible enviar la solicitud. Revisá los datos e intentá nuevamente.",
+  connectionError:
+    "No pudimos conectar con el servidor. Intentá nuevamente dentro de unos minutos.",
+
+  validation: {
+    nameRequired: "Ingresá tu nombre.",
+    nameTooShort: "El nombre debe tener al menos 2 caracteres.",
+
+    emailRequired: "Ingresá tu correo electrónico.",
+    emailInvalid: "Ingresá un correo electrónico válido.",
+
+    languageRequired:
+      "Seleccioná la dirección de la traducción.",
+
+    countryRequired:
+      "Seleccioná el país emisor del documento.",
+
+    countryDetailRequired:
+      "Indicá el país o los países correspondientes.",
+
+    apostilleRequired:
+      "Seleccioná una opción sobre la apostilla.",
+
+    deliveryTimeRequired:
+      "Seleccioná el plazo aproximado de entrega.",
+
+    deliveryMethodRequired:
+      "Seleccioná una forma de entrega.",
+
+    fileRequired:
+      "Adjuntá al menos un documento para solicitar la cotización.",
+
+    fileLimit:
+      "Podés adjuntar un máximo de {maxFiles} archivos.",
+
+    fileSize:
+      "El peso total de los documentos no puede superar {maxMb} MB.",
+
+    fileType:
+      "No pudimos agregar estos archivos porque su formato no es compatible: {files}.",
+
+    fileSizeRejected:
+      "No pudimos agregar estos archivos porque el total superaría {maxMb} MB: {files}.",
+
+    formError:
+      "Revisá los campos señalados antes de enviar la solicitud.",
+  },
+},
+};

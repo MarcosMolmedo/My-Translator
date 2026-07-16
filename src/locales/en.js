@@ -393,69 +393,6 @@ footer: {
 },
 
 
-quoteForm: {
-  title: "Request your quote",
-  iconAlt: "Quote icon",
-
-  nameLabel: "Name:",
-  namePlaceholder: "Your name",
-
-  emailLabel: "Email address:",
-  emailPlaceholder: "Your email address",
-  emailError: "Invalid email address",
-
-  languageLabel: "Which language do you need the document translated into?",
-  selectOption: "Select an option",
-  spanishEnglish: "Spanish - English",
-  englishSpanish: "English - Spanish",
-
-  countryLabel: "Country that issued the document:",
-  selectCountry: "Select a country",
-  argentina: "Argentina",
-  uruguay: "Uruguay",
-  chile: "Chile",
-  mexico: "Mexico",
-  spain: "Spain",
-  countryCombination: "Combination of two countries",
-  otherCountry: "Other country",
-
-  apostilleLabel: "Is the document apostilled?",
-  yes: "Yes",
-  no: "No",
-  dontKnow: "I don’t know",
-
-  deliveryLabel: "When do you need your translation ready?",
-  urgentDelivery: "Less than 3 business days (urgent)",
-  normalDelivery: "More than 3 business days",
-
-  pickupLabel: "Will you pick up your translation in Utrecht Terwijde?",
-  postnlLabel: "Would you like the translation sent by PostNL?",
-
-  commentLabel:
-    "Any comment you would like to add? (optional, max. 300 characters):",
-  commentPlaceholder: "Write your comment here...",
-
-  filesLabel:
-    "Upload up to 5 documents (at least 1 is required). Maximum total size:",
-  removeFile: "Remove",
-  total: "Total:",
-
-  fileRequired: "You must attach at least one document.",
-  fileLimit: "You can attach up to 5 files.",
-  fileSizeErrorStart: "The total size exceeds",
-  fileSizeErrorEnd: "MB. Please reduce the size or number of files.",
-
-  sending: "Sending...",
-  sent: "Sent!",
-  submit: "Send",
-
-  successMessage: "Your quote request has been sent successfully!",
-  connectionError: "Connection error. Please try again later.",
-  backendError: "There was an error sending the quote request:",
-},
-
-
-
 faq: {
   eyebrow: "Frequently asked questions",
   title: "Everything you need to know before requesting a translation.",
@@ -569,6 +506,7 @@ faq: {
         "The new postal delivery must also be paid.",
       ],
     },
+
     {
       question: "Does the translation need extra certification?",
       answerIntro:
@@ -582,4 +520,192 @@ faq: {
 },
 
 
+quoteForm: {
+  eyebrow: "Personalised quotation",
+  title: "Tell me which document you need translated.",
+  intro:
+    "Complete the form and attach a clear copy of your documents. I will personally review your request and prepare an accurate quotation tailored to your situation.",
+
+  trustListLabel: "Benefits of requesting a quotation",
+  trustItems: [
+    "Free quotation",
+    "Confidential document handling",
+    "Personal assistance from Yohana",
+  ],
+
+  processEyebrow: "How it works",
+  processTitle: "A clear, personal and non-binding process.",
+  processSteps: [
+    {
+      title: "Upload your documents",
+      text: "You can attach up to five PDF, Word or image files.",
+    },
+    {
+      title: "I review your request",
+      text: "I personally assess the document, language combination and required timeframe.",
+    },
+    {
+      title: "Receive your quotation",
+      text: "You receive a clear proposal before any work begins.",
+    },
+  ],
+
+  privacyTitle: "Your documents are protected",
+  privacyText:
+    "The information and files you submit are used only to review your request and prepare your quotation.",
+
+  formEyebrow: "Quotation form",
+  formTitle: "Let’s start with the details.",
+  formIntro:
+    "Fields marked with an asterisk are required. Completing this form does not commit you to purchasing the service.",
+  formLegend: "Information required to request a quotation",
+
+  personalTitle: "Your details",
+  personalText:
+    "I need this information to contact you and send your quotation.",
+
+  nameLabel: "Name",
+  namePlaceholder: "Your full name",
+
+  emailLabel: "Email address",
+  emailPlaceholder: "name@email.com",
+
+  documentTitle: "Document information",
+  documentText:
+    "These details allow me to assess the type of translation you need accurately.",
+
+  languageLabel: "Translation direction",
+  selectOption: "Select an option",
+  spanishEnglish: "From Spanish into English",
+  englishSpanish: "From English into Spanish",
+
+  countryLabel: "Country that issued the document",
+  selectCountry: "Select a country",
+  argentina: "Argentina",
+  uruguay: "Uruguay",
+  chile: "Chile",
+  mexico: "Mexico",
+  spain: "Spain",
+  countryCombination: "Documents from two countries",
+  otherCountry: "Another country",
+
+  countryCombinationDetailLabel:
+    "Which countries issued the documents?",
+  countryCombinationPlaceholder:
+    "For example: Argentina and the Netherlands",
+
+  otherCountryDetailLabel: "Enter the issuing country",
+  otherCountryPlaceholder: "Enter the country name",
+  countryDetailBackendLabel: "Issuing country details",
+
+  apostilleLabel: "Does the document have an apostille?",
+  apostilleHelp:
+    "It is not a problem if you are not yet sure whether an apostille is required.",
+  yes: "Yes",
+  no: "No",
+  dontKnow: "I don’t know",
+
+  deliveryLabel:
+    "When do you need the translation to be ready?",
+  deliveryHelp:
+    "The final delivery date will be confirmed after the documents have been reviewed.",
+
+  urgentDelivery: "Urgent delivery",
+  urgentDeliveryText: "Fewer than 3 working days",
+
+  normalDelivery: "Standard delivery",
+  normalDeliveryText: "More than 3 working days",
+
+  deliveryMethodTitle: "Delivery method",
+  deliveryMethodText:
+    "Choose how you would like to receive the printed sworn translation.",
+
+  pickupOption: "Collection in Utrecht Terwijde",
+  pickupOptionText:
+    "We will arrange the collection date and time in advance.",
+
+  postnlOption: "Delivery by PostNL",
+  postnlOptionText:
+    "The translation will be sent by post to the agreed address.",
+
+  commentLabel: "Additional information",
+  optional: "Optional",
+  commentPlaceholder:
+    "You can tell me where the document will be submitted, whether you have a specific deadline or any other relevant details.",
+
+  filesTitle: "Attach your documents",
+  filesText:
+    "I need at least one file to assess the content and prepare an accurate quotation.",
+
+  dropzoneTitle: "Drag your documents here",
+  dropzoneText: "or select the files from your device",
+  selectFiles: "Select documents",
+  fileFormats:
+    "PDF, DOC, DOCX, JPG or PNG · Maximum {maxFiles} files · Maximum total size {maxMb} MB",
+
+  selectedFiles: "Selected documents",
+  removeFile: "Remove",
+
+  consentText:
+    "By submitting this form, you confirm that the files may be reviewed solely for the purpose of preparing your quotation.",
+
+  submit: "Request a quotation",
+  sending: "Sending request...",
+  sent: "Request sent",
+
+  freeQuote: "Free quotation",
+  noCommitment: "No obligation",
+  responseTime: "Reply normally within 24 working hours",
+
+  successTitle: "Your request has been received.",
+  successText:
+    "I will personally review your documents and contact you as soon as possible.",
+
+  backendError:
+    "The request could not be sent. Please review your details and try again.",
+  connectionError:
+    "We could not connect to the server. Please try again in a few minutes.",
+
+  validation: {
+    nameRequired: "Enter your name.",
+    nameTooShort: "Your name must contain at least 2 characters.",
+
+    emailRequired: "Enter your email address.",
+    emailInvalid: "Enter a valid email address.",
+
+    languageRequired: "Select the translation direction.",
+
+    countryRequired:
+      "Select the country that issued the document.",
+
+    countryDetailRequired:
+      "Enter the relevant country or countries.",
+
+    apostilleRequired:
+      "Select an option regarding the apostille.",
+
+    deliveryTimeRequired:
+      "Select the approximate delivery timeframe.",
+
+    deliveryMethodRequired: "Select a delivery method.",
+
+    fileRequired:
+      "Attach at least one document to request a quotation.",
+
+    fileLimit:
+      "You can attach a maximum of {maxFiles} files.",
+
+    fileSize:
+      "The total size of the documents cannot exceed {maxMb} MB.",
+
+    fileType:
+      "These files could not be added because their format is not supported: {files}.",
+
+     fileSizeRejected:
+      "These files could not be added because the total size would exceed {maxMb} MB: {files}.",
+
+    formError:
+      "Review the highlighted fields before submitting your request.",
+  },
+},
 };

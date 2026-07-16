@@ -396,68 +396,6 @@ quickLinks: [
   developedBy: "Ontwikkeld door",
 },
 
-quoteForm: {
-  title: "Vraag je offerte aan",
-  iconAlt: "Offerte-icoon",
-
-  nameLabel: "Naam:",
-  namePlaceholder: "Je naam",
-
-  emailLabel: "E-mailadres:",
-  emailPlaceholder: "Je e-mailadres",
-  emailError: "Ongeldig e-mailadres",
-
-  languageLabel: "Naar welke taal wil je het document laten vertalen?",
-  selectOption: "Selecteer een optie",
-  spanishEnglish: "Spaans - Engels",
-  englishSpanish: "Engels - Spaans",
-
-  countryLabel: "Land waar het document is uitgegeven:",
-  selectCountry: "Selecteer een land",
-  argentina: "Argentinië",
-  uruguay: "Uruguay",
-  chile: "Chili",
-  mexico: "Mexico",
-  spain: "Spanje",
-  countryCombination: "Combinatie van twee landen",
-  otherCountry: "Ander land",
-
-  apostilleLabel: "Is het document voorzien van een apostille?",
-  yes: "Ja",
-  no: "Nee",
-  dontKnow: "Ik weet het niet",
-
-  deliveryLabel: "Wanneer heb je de vertaling nodig?",
-  urgentDelivery: "Binnen 3 werkdagen (spoed)",
-  normalDelivery: "Meer dan 3 werkdagen",
-
-  pickupLabel: "Haal je de vertaling op in Utrecht Terwijde?",
-  postnlLabel: "Wil je de vertaling per PostNL laten verzenden?",
-
-  commentLabel:
-    "Wil je nog iets toevoegen? (optioneel, max. 300 tekens):",
-  commentPlaceholder: "Schrijf hier je opmerking...",
-
-  filesLabel:
-    "Upload maximaal 5 documenten (minimaal 1 is verplicht). Maximale totale grootte:",
-  removeFile: "Verwijderen",
-  total: "Totaal:",
-
-  fileRequired: "Je moet minimaal één document toevoegen.",
-  fileLimit: "Je kunt maximaal 5 bestanden toevoegen.",
-  fileSizeErrorStart: "De totale grootte is groter dan",
-  fileSizeErrorEnd:
-    "MB. Verklein de bestanden of voeg minder bestanden toe.",
-
-  sending: "Verzenden...",
-  sent: "Verzonden!",
-  submit: "Versturen",
-
-  successMessage: "Je offerteaanvraag is succesvol verzonden!",
-  connectionError: "Verbindingsfout. Probeer het later opnieuw.",
-  backendError: "Er is een fout opgetreden bij het verzenden van de offerteaanvraag:",
-},
-
 
 faq: {
   eyebrow: "Veelgestelde vragen",
@@ -484,6 +422,7 @@ faq: {
         "Voor spoedvertalingen kan een toeslag gelden.",
       ],
     },
+    
     {
       question: "Heeft mijn document een apostille nodig?",
       answerIntro: "Dat hangt af van het type document en waar het wordt ingediend.",
@@ -582,5 +521,202 @@ faq: {
       ],
     },
   ],
+},
+
+
+  quoteForm: {
+  eyebrow: "Persoonlijke offerte",
+  title: "Vertel mij welk document u wilt laten vertalen.",
+  intro:
+    "Vul het formulier in en voeg een duidelijke kopie van uw documenten toe. Ik beoordeel uw aanvraag persoonlijk en maak een nauwkeurige offerte die aansluit bij uw situatie.",
+
+  trustListLabel: "Voordelen van een offerteaanvraag",
+  trustItems: [
+    "Gratis offerte",
+    "Vertrouwelijke verwerking van documenten",
+    "Persoonlijk contact met Yohana",
+  ],
+
+  processEyebrow: "Hoe het werkt",
+  processTitle:
+    "Een duidelijk, persoonlijk en vrijblijvend proces.",
+  processSteps: [
+    {
+      title: "Upload uw documenten",
+      text: "U kunt maximaal vijf PDF-, Word- of afbeeldingsbestanden toevoegen.",
+    },
+    {
+      title: "Ik beoordeel uw aanvraag",
+      text: "Ik bekijk persoonlijk het document, de talencombinatie en de gewenste termijn.",
+    },
+    {
+      title: "U ontvangt een offerte",
+      text: "Voordat ik begin, ontvangt u een duidelijke en transparante prijsopgave.",
+    },
+  ],
+
+  privacyTitle: "Uw documenten zijn beschermd",
+  privacyText:
+    "De informatie en bestanden die u verstuurt, worden uitsluitend gebruikt om uw aanvraag te beoordelen en een offerte op te stellen.",
+
+  formEyebrow: "Offerteformulier",
+  formTitle: "Laten we beginnen met de details.",
+  formIntro:
+    "Velden met een sterretje zijn verplicht. Het invullen van dit formulier verplicht u niet om de dienst af te nemen.",
+  formLegend: "Gegevens voor het aanvragen van een offerte",
+
+  personalTitle: "Uw gegevens",
+  personalText:
+    "Ik heb deze informatie nodig om contact met u op te nemen en de offerte toe te sturen.",
+
+  nameLabel: "Naam",
+  namePlaceholder: "Uw volledige naam",
+
+  emailLabel: "E-mailadres",
+  emailPlaceholder: "naam@email.nl",
+
+  documentTitle: "Informatie over het document",
+  documentText:
+    "Met deze gegevens kan ik goed beoordelen welke vertaling u nodig hebt.",
+
+  languageLabel: "Vertaalrichting",
+  selectOption: "Selecteer een optie",
+  spanishEnglish: "Van Spaans naar Engels",
+  englishSpanish: "Van Engels naar Spaans",
+
+  countryLabel: "Land waar het document is afgegeven",
+  selectCountry: "Selecteer een land",
+  argentina: "Argentinië",
+  uruguay: "Uruguay",
+  chile: "Chili",
+  mexico: "Mexico",
+  spain: "Spanje",
+  countryCombination: "Documenten uit twee landen",
+  otherCountry: "Een ander land",
+
+  countryCombinationDetailLabel:
+    "Uit welke landen komen de documenten?",
+  countryCombinationPlaceholder:
+    "Bijvoorbeeld: Argentinië en Nederland",
+
+  otherCountryDetailLabel:
+    "Vul het land van afgifte in",
+  otherCountryPlaceholder: "Vul de naam van het land in",
+  countryDetailBackendLabel:
+    "Aanvullende informatie over het land van afgifte",
+
+  apostilleLabel: "Heeft het document een apostille?",
+  apostilleHelp:
+    "Het is geen probleem als u nog niet weet of een apostille nodig is.",
+  yes: "Ja",
+  no: "Nee",
+  dontKnow: "Weet ik niet",
+
+  deliveryLabel:
+    "Wanneer moet de vertaling klaar zijn?",
+  deliveryHelp:
+    "De definitieve levertijd wordt bevestigd nadat ik de documenten heb beoordeeld.",
+
+  urgentDelivery: "Spoedlevering",
+  urgentDeliveryText: "Binnen 3 werkdagen",
+
+  normalDelivery: "Standaardlevering",
+  normalDeliveryText: "Meer dan 3 werkdagen",
+
+  deliveryMethodTitle: "Wijze van levering",
+  deliveryMethodText:
+    "Kies hoe u de gedrukte beëdigde vertaling wilt ontvangen.",
+
+  pickupOption: "Afhalen in Utrecht Terwijde",
+  pickupOptionText:
+    "De datum en het tijdstip van afhalen worden vooraf afgesproken.",
+
+  postnlOption: "Verzending via PostNL",
+  postnlOptionText:
+    "De vertaling wordt per post naar het afgesproken adres verzonden.",
+
+  commentLabel: "Aanvullende informatie",
+  optional: "Optioneel",
+  commentPlaceholder:
+    "U kunt aangeven waar u het document moet indienen, of u een specifieke deadline hebt of andere belangrijke informatie toevoegen.",
+
+  filesTitle: "Voeg uw documenten toe",
+  filesText:
+    "Ik heb minimaal één bestand nodig om de inhoud te beoordelen en een nauwkeurige offerte te maken.",
+
+  dropzoneTitle: "Sleep uw documenten hierheen",
+  dropzoneText:
+    "of selecteer de bestanden op uw apparaat",
+  selectFiles: "Documenten selecteren",
+  fileFormats:
+    "PDF, DOC, DOCX, JPG of PNG · Maximaal {maxFiles} bestanden · Totale maximale grootte {maxMb} MB",
+
+  selectedFiles: "Geselecteerde documenten",
+  removeFile: "Verwijder",
+
+  consentText:
+    "Door dit formulier te versturen bevestigt u dat de bestanden uitsluitend mogen worden beoordeeld om uw offerte op te stellen.",
+
+  submit: "Offerte aanvragen",
+  sending: "Aanvraag wordt verzonden...",
+  sent: "Aanvraag verzonden",
+
+  freeQuote: "Gratis offerte",
+  noCommitment: "Vrijblijvend",
+  responseTime:
+    "Normaal gesproken reactie binnen 24 werkuren",
+
+  successTitle: "Uw aanvraag is goed ontvangen.",
+  successText:
+    "Ik beoordeel uw documenten persoonlijk en neem zo snel mogelijk contact met u op.",
+
+  backendError:
+    "De aanvraag kon niet worden verzonden. Controleer uw gegevens en probeer het opnieuw.",
+  connectionError:
+    "Er kon geen verbinding met de server worden gemaakt. Probeer het over enkele minuten opnieuw.",
+
+  validation: {
+    nameRequired: "Vul uw naam in.",
+    nameTooShort:
+      "Uw naam moet uit minimaal 2 tekens bestaan.",
+
+    emailRequired: "Vul uw e-mailadres in.",
+    emailInvalid: "Vul een geldig e-mailadres in.",
+
+    languageRequired: "Selecteer de vertaalrichting.",
+
+    countryRequired:
+      "Selecteer het land waar het document is afgegeven.",
+
+    countryDetailRequired:
+      "Vul het betreffende land of de betreffende landen in.",
+
+    apostilleRequired:
+      "Selecteer een optie over de apostille.",
+
+    deliveryTimeRequired:
+      "Selecteer de gewenste levertijd.",
+
+    deliveryMethodRequired:
+      "Selecteer een wijze van levering.",
+
+    fileRequired:
+      "Voeg minimaal één document toe om een offerte aan te vragen.",
+
+    fileLimit:
+      "U kunt maximaal {maxFiles} bestanden toevoegen.",
+
+    fileSize:
+      "De totale grootte van de documenten mag niet groter zijn dan {maxMb} MB.",
+
+    fileType:
+      "Deze bestanden konden niet worden toegevoegd omdat het bestandstype niet wordt ondersteund: {files}.",
+
+    fileSizeRejected:
+      "Deze bestanden konden niet worden toegevoegd omdat de totale grootte dan meer dan {maxMb} MB zou zijn: {files}.",
+
+       formError:
+      "Controleer de gemarkeerde velden voordat je de aanvraag verzendt.",
+  },
 },
 };
