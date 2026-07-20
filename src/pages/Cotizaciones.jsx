@@ -3,10 +3,9 @@ import "../Styles/Cotizaciones.css";
 import ContadorCircular from "../components/ContadorCircular";
 import CotizacionIcon from "../assets/images/cotizacion-icon.png";
 
+
 const API_URL =
-  import.meta.env.MODE === "development"
-    ? "http://localhost:10000/send-email"
-    : "https://my-translator-backend.onrender.com/send-email";
+  "https://europe-west1-my-translator-8c7e0.cloudfunctions.net/sendEmailV2";
 
 const MAX_FILES = 5;
 const MAX_TOTAL_MB = 20;
