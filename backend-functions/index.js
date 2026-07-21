@@ -42,26 +42,8 @@ const ALLOWED_EXTENSIONS = [
    BUSBOY — FORMULARIO MULTIPART EN FIREBASE
 ======================================== */
 
-
 const processMultipartForm = (req) =>
   new Promise((resolve, reject) => {
-    busboy.on("finish", () => {
-  resolve({
-    fields,
-    files,
-  });
-});
-
-busboy.on("error", (error) => {
-  reject(error);
-});
-
-if (req.rawBody) {
-  busboy.end(req.rawBody);
-} else {
-  req.pipe(busboy);
-}
-
     const fields = {};
     const files = [];
     const filePromises = [];
@@ -69,10 +51,10 @@ if (req.rawBody) {
     let totalBytes = 0;
     let fileLimitReached = false;
     let invalidFile = null;
+    let totalLimitReached = false;
 
     const busboy = Busboy({
       headers: req.headers,
-
       limits: {
         files: MAX_FILES,
         fileSize: MAX_TOTAL_BYTES,
@@ -84,88 +66,95 @@ if (req.rawBody) {
       fields[fieldName] = value;
     });
 
-    busboy.on(
-      "file",
-      (fieldName, fileStream, fileInfo) => {
-        const {
-          filename = "",
-          mimeType = "application/octet-stream",
-        } = fileInfo;
+    busboy.on("file", (fieldName, fileStream, fileInfo) => {
+      const {
+        filename = "",
+        mimeType = "application/octet-stream",
+      } = fileInfo;
 
-        if (
-          fieldName !== "archivos" &&
-          fieldName !== "archivo"
-        ) {
-          fileStream.resume();
-          return;
-        }
-
-        const extension = path
-          .extname(filename)
-          .toLowerCase();
-
-        if (!ALLOWED_EXTENSIONS.includes(extension)) {
-          invalidFile = filename;
-          fileStream.resume();
-          return;
-        }
-
-        const chunks = [];
-        let fileSize = 0;
-        let individualLimitReached = false;
-
-        const filePromise = new Promise(
-          (resolveFile, rejectFile) => {
-            fileStream.on("data", (chunk) => {
-              fileSize += chunk.length;
-              totalBytes += chunk.length;
-
-              if (totalBytes > MAX_TOTAL_BYTES) {
-                rejectFile(
-                  new Error("TOTAL_FILE_SIZE_LIMIT")
-                );
-                fileStream.resume();
-                return;
-              }
-
-              chunks.push(chunk);
-            });
-
-            fileStream.on("limit", () => {
-              individualLimitReached = true;
-              fileLimitReached = true;
-            });
-
-            fileStream.on("end", () => {
-              if (individualLimitReached) {
-                resolveFile();
-                return;
-              }
-
-              files.push({
-                fieldname: fieldName,
-                originalname: filename,
-                mimetype: mimeType,
-                size: fileSize,
-                buffer: Buffer.concat(chunks),
-              });
-
-              resolveFile();
-            });
-
-            fileStream.on("error", rejectFile);
-          }
-        );
-
-        filePromises.push(filePromise);
+      if (
+        fieldName !== "archivos" &&
+        fieldName !== "archivo"
+      ) {
+        fileStream.resume();
+        return;
       }
-    );
+
+      const extension = path
+        .extname(filename)
+        .toLowerCase();
+
+      if (!ALLOWED_EXTENSIONS.includes(extension)) {
+        invalidFile = filename;
+        fileStream.resume();
+        return;
+      }
+
+      const chunks = [];
+      let fileSize = 0;
+      let individualLimitReached = false;
+
+      const filePromise = new Promise(
+        (resolveFile, rejectFile) => {
+          fileStream.on("data", (chunk) => {
+            if (totalLimitReached) {
+              return;
+            }
+
+            fileSize += chunk.length;
+            totalBytes += chunk.length;
+
+            if (totalBytes > MAX_TOTAL_BYTES) {
+              totalLimitReached = true;
+              rejectFile(
+                new Error("TOTAL_FILE_SIZE_LIMIT")
+              );
+              fileStream.resume();
+              return;
+            }
+
+            chunks.push(chunk);
+          });
+
+          fileStream.on("limit", () => {
+            individualLimitReached = true;
+            fileLimitReached = true;
+          });
+
+          fileStream.on("end", () => {
+            if (
+              individualLimitReached ||
+              totalLimitReached
+            ) {
+              resolveFile();
+              return;
+            }
+
+            files.push({
+              fieldname: fieldName,
+              originalname: filename,
+              mimetype: mimeType,
+              size: fileSize,
+              buffer: Buffer.concat(chunks),
+            });
+
+            resolveFile();
+          });
+
+          fileStream.on("error", rejectFile);
+        }
+      );
+
+      filePromises.push(filePromise);
+    });
 
     busboy.on("filesLimit", () => {
       fileLimitReached = true;
     });
 
-    busboy.on("error", reject);
+    busboy.on("error", (error) => {
+      reject(error);
+    });
 
     busboy.on("finish", async () => {
       try {
@@ -176,6 +165,13 @@ if (req.rawBody) {
             new Error(
               `Formato no permitido: ${invalidFile}`
             )
+          );
+          return;
+        }
+
+        if (totalLimitReached) {
+          reject(
+            new Error("TOTAL_FILE_SIZE_LIMIT")
           );
           return;
         }
@@ -194,7 +190,11 @@ if (req.rawBody) {
       }
     });
 
-    busboy.end(req.rawBody);
+    if (req.rawBody) {
+      busboy.end(req.rawBody);
+    } else {
+      req.pipe(busboy);
+    }
   });
 /* ========================================
    FUNCIONES AUXILIARES
