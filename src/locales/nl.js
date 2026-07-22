@@ -718,5 +718,45 @@ faq: {
        formError:
       "Controleer de gemarkeerde velden voordat je de aanvraag verzendt.",
   },
+ },
+
+  opiniones: {
+  eyebrow: "Klantbeoordelingen",
+  title: "Vertrouwen groeit door elke ervaring",
+  intro:
+    "Mensen die voor MY Translator kozen, delen hun ervaring met een professionele, persoonlijke en nauwkeurige service.",
+
+  ratingLabel: "van de 5",
+  basedOn: "Gebaseerd op",
+  reviewSingular: "geverifieerde Google-beoordeling",
+  reviewPlural: "geverifieerde Google-beoordelingen",
+
+  verified: "Geverifieerde beoordeling",
+  selectedReviews: "Door Google uitgelichte beoordelingen",
+
+  viewAll: "Bekijk alle beoordelingen op Google",
+  viewReview: "Bekijk beoordeling op Google",
+
+  loadingLabel: "Google-beoordelingen worden geladen",
+
+  errorTitle: "De beoordelingen konden niet worden geladen",
+  errorText:
+    "Je kunt alle klantervaringen rechtstreeks op Google bekijken.",
+  errorButton: "Bekijk beoordelingen op Google",
+
+  anonymous: "Klant",
+  openReview: "Open de beoordeling van",
+  reviewBy: "Beoordeling van",
+  starsLabel: "sterren",
+
+  today: "Vandaag",
+  yesterday: "Gisteren",
+  daysAgo: "{value} dagen geleden",
+  oneWeekAgo: "Een week geleden",
+  weeksAgo: "{value} weken geleden",
+  oneMonthAgo: "Een maand geleden",
+  monthsAgo: "{value} maanden geleden",
+  oneYearAgo: "Een jaar geleden",
+  yearsAgo: "{value} jaar geleden",
 },
 };

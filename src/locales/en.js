@@ -514,10 +514,11 @@ faq: {
       answerList: [
         "You can submit it directly to the institution requesting it.",
         "If an institution requires additional certification, it is best to confirm this in advance.",
-      ],
+       ],
     },
   ],
 },
+
 
 
 quoteForm: {
@@ -549,6 +550,8 @@ quoteForm: {
       text: "You receive a clear proposal before any work begins.",
     },
   ],
+
+
 
   privacyTitle: "Your documents are protected",
   privacyText:
@@ -704,8 +707,48 @@ quoteForm: {
      fileSizeRejected:
       "These files could not be added because the total size would exceed {maxMb} MB: {files}.",
 
-    formError:
-      "Review the highlighted fields before submitting your request.",
-  },
+     formError:
+     "Review the highlighted fields before submitting your request.",
+     },
+    },
+
+  opiniones: {
+  eyebrow: "Client reviews",
+  title: "Trust is built through every experience",
+  intro:
+    "People who chose MY Translator share their experience with a professional, personal and precise service.",
+
+  ratingLabel: "out of 5",
+  basedOn: "Based on",
+  reviewSingular: "verified Google review",
+  reviewPlural: "verified Google reviews",
+
+  verified: "Verified review",
+  selectedReviews: "Reviews highlighted by Google",
+
+  viewAll: "View all reviews on Google",
+  viewReview: "View review on Google",
+
+  loadingLabel: "Loading Google reviews",
+
+  errorTitle: "Reviews could not be loaded",
+  errorText:
+    "You can read all client experiences directly on Google.",
+  errorButton: "View reviews on Google",
+
+  anonymous: "Client",
+  openReview: "Open the review by",
+  reviewBy: "Review by",
+  starsLabel: "stars",
+
+  today: "Today",
+  yesterday: "Yesterday",
+  daysAgo: "{value} days ago",
+  oneWeekAgo: "A week ago",
+  weeksAgo: "{value} weeks ago",
+  oneMonthAgo: "A month ago",
+  monthsAgo: "{value} months ago",
+  oneYearAgo: "A year ago",
+  yearsAgo: "{value} years ago",
 },
 };

@@ -714,4 +714,45 @@ faq: {
       "Revisá los campos señalados antes de enviar la solicitud.",
   },
 },
+
+
+  opiniones: {
+  eyebrow: "Opiniones de clientes",
+  title: "La confianza se construye con cada experiencia",
+  intro:
+    "Personas que confiaron en MY Translator comparten su experiencia con un servicio profesional, cercano y preciso.",
+
+  ratingLabel: "de 5",
+  basedOn: "Basado en",
+  reviewSingular: "opinión verificada en Google",
+  reviewPlural: "opiniones verificadas en Google",
+
+  verified: "Opinión verificada",
+  selectedReviews: "Opiniones destacadas por Google",
+
+  viewAll: "Ver todas las opiniones en Google",
+  viewReview: "Ver opinión en Google",
+
+  loadingLabel: "Cargando opiniones de Google",
+
+  errorTitle: "Las opiniones no pudieron cargarse",
+  errorText:
+    "Podés consultar todas las experiencias directamente en Google.",
+  errorButton: "Ver opiniones en Google",
+
+  anonymous: "Cliente",
+  openReview: "Abrir la opinión de",
+  reviewBy: "Opinión de",
+  starsLabel: "estrellas",
+
+  today: "Hoy",
+  yesterday: "Ayer",
+  daysAgo: "Hace {value} días",
+  oneWeekAgo: "Hace una semana",
+  weeksAgo: "Hace {value} semanas",
+  oneMonthAgo: "Hace un mes",
+  monthsAgo: "Hace {value} meses",
+  oneYearAgo: "Hace un año",
+  yearsAgo: "Hace {value} años",
+},
 };

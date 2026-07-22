@@ -460,12 +460,11 @@ exports.sendEmail = functionsV1
 
         return res.status(500).json({
           error:
-            "Error al enviar el correo",
+            "No se pudo enviar la solicitud",
         });
       }
     });
   });
-
 /* ========================================
    ENVÍO NUEVO — 2.ª GENERACIÓN
 
@@ -623,8 +622,147 @@ exports.sendEmailV2 = onRequest(
       }
 
       return res.status(500).json({
-        error:
+         error:
           "No se pudo enviar la solicitud",
+      });
+    }
+  }
+);
+
+    /* ========================================
+   GOOGLE REVIEWS
+
+   Obtiene la valoración general y una
+   selección de reseñas desde Google Places.
+======================================== */
+
+exports.getGoogleReviews = onRequest(
+  {
+    region: "europe-west1",
+
+    secrets: [googlePlacesApiKey],
+
+    cors: true,
+
+    minInstances: 0,
+    maxInstances: 5,
+
+    timeoutSeconds: 30,
+    memory: "256MiB",
+  },
+
+  async (req, res) => {
+    if (req.method !== "GET") {
+      return res.status(405).json({
+        error: "Método no permitido",
+      });
+    }
+
+    try {
+      const placeId =
+        "ChIJB_uIrftvxkcRGRoIHC3xWXU";
+
+      const apiKey =
+        googlePlacesApiKey.value();
+
+      const endpoint =
+        `https://places.googleapis.com/v1/places/${placeId}`;
+
+      const response = await fetch(endpoint, {
+        method: "GET",
+
+        headers: {
+          "X-Goog-Api-Key": apiKey,
+
+          "X-Goog-FieldMask": [
+            "id",
+            "displayName",
+            "rating",
+            "userRatingCount",
+            "googleMapsUri",
+            "reviews",
+          ].join(","),
+        },
+      });
+
+      if (!response.ok) {
+        const googleError =
+          await response.text();
+
+        console.error(
+          "Error de Google Places:",
+          response.status,
+          googleError
+        );
+
+        return res.status(502).json({
+          error:
+            "No se pudieron obtener las opiniones de Google",
+        });
+      }
+
+      const place = await response.json();
+
+      const reviews = (
+        place.reviews || []
+      ).map((review) => ({
+        nombre:
+          review.authorAttribution
+            ?.displayName || "Cliente",
+
+        foto:
+          review.authorAttribution
+            ?.photoUri || null,
+
+        perfil:
+          review.authorAttribution
+            ?.uri || null,
+
+        estrellas:
+          review.rating || 0,
+
+        fecha:
+          review.relativePublishTimeDescription ||
+          "",
+
+        fechaPublicacion:
+          review.publishTime || null,
+
+        texto:
+          review.text?.text || "",
+
+        idioma:
+          review.text?.languageCode || null,
+      }));
+
+      return res.status(200).json({
+        ok: true,
+
+        negocio:
+          place.displayName?.text ||
+          "MY Translator",
+
+        rating:
+          place.rating || 0,
+
+        totalOpiniones:
+          place.userRatingCount || 0,
+
+        googleMapsUrl:
+          place.googleMapsUri || null,
+
+        reviews,
+      });
+     
+       } catch (error) {
+      console.error(
+        "Error en getGoogleReviews:",
+        error
+      );
+
+      return res.status(500).json({
+        error:
+          "No se pudieron cargar las opiniones",
       });
     }
   }

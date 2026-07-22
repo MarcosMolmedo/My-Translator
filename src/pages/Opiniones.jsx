@@ -1,144 +1,424 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../Styles/Opiniones.css";
 import personaIcon from "../assets/images/iconoopiniones.png";
 
-const testimonios = [
-  {
-    nombre: "Nicolas Dabinovic",
-    rol: "Especialista en operaciones y servicio al cliente",
-    fecha: "4 de abril de 2024, Nicolas fue cliente de Yohana",
-    texto:
-      "I truthfully recommend Yohana Malvasio. She has done some translations for me and I have to say that she has done an impeccable job. She is really efficient, really clear with the times and fast as well. She was able to explain every question I had. If you are looking to translate Spanish to English in the Netherlands, she is one of the few in the country that is certified to do it and, in my experience, really professional.",
-  },
-  {
-    nombre: "Juan Pablo Poittevin Santana",
-    rol: "Software Engineer",
-    fecha: "11 de abril de 2024, Juan Pablo fue cliente de Yohana",
-    texto:
-      "Yohana translated my birth certificate from Spanish to English. She was professional and not only helped me with the translation, but also advised me on the documents I needed to register with the Amsterdam municipality. I recommend anyone in the Netherlands who needs a Spanish-English translator to contact Yohana.",
-  },
-  {
-    nombre: "Gladis Rodríguez Hernández",
-    rol: "Naval Engineer | Project Estimator at Damen Shiprepair Rotterdam | Specialized in Shiprepair and Shipbuilding Cost Analysis | Rotterdam-based",
-    fecha: "17 de abril de 2024, Gladis fue cliente de Yohana",
-    texto:
-      "Yohana es muy profesional. Tuve que traducir un certificado matrimonial y todo fue perfecto.",
-  },
-  {
-    nombre: "Elisa Souza Quevedo",
-    rol: "",
-    fecha: "22 de abril de 2024, Elisa fue cliente de Yohana",
-    texto:
-      "Yohana es una gran profesional, necesitábamos una traducción de la partida de matrimonio y por indicación contactamos con ella, y estamos muy contentos con el resultado, su trabajo es impecable.",
-  },
-  {
-    nombre: "Andrés Rodríguez Von Hauske",
-    rol: "Junior Architect | Collective Housing | Social & Sustainable Design | TU/e Graduate",
-    fecha: "24 de abril de 2024, Andrés fue cliente de Yohana",
-    texto:
-      "Yohana es una persona muy profesional y atenta a las necesidades del cliente. Fue de mucha ayuda y mentoría sobre cómo darle seguimiento al proceso de legalización de documentos en Países Bajos. ¡Definitivamente alguien que pone por delante a sus clientes y el servicio!",
-  },
-  {
-    nombre: "Abril Seyahian",
-    rol: "Value and Evidence | Health Economics and Outcomes Research | HEOR",
-    fecha: "25 de abril de 2024, Abril fue cliente de Yohana",
-    texto:
-      "I highly recommend Yohana for Spanish to English translation services in the Netherlands. I had the pleasure of requesting her services as translator recently, and she exceeded expectations in every aspect. She was incredibly responsive, delivering high-quality translations promptly. Additionally, she was always available to clarify any doubts and provide assistance, making the entire process smooth and efficient. I would not hesitate to engage her services again and recommend her to anyone seeking a reliable and skilled English translator.",
-  },
-  {
-    nombre: "Paloma Rodríguez Guaraglia",
-    rol: "",
-    fecha: "Hace 2 semanas",
-    texto:
-      "La atención y servicio de Yohana es excelente y super recomendable. En mi caso debía solicitar una partida en el Registro Civil de Rotterdam y, a pesar de que su fuerte es la traducción, no solo logró conseguirme el documento, sino que también gestionó la apostilla de La Haya. Asimismo, una vez despachado a Argentina colaboró conmigo hasta el último momento para asegurar que el documento llegue a mis manos. Sin duda volvería a confiar en su profesionalismo y la recomendaría. A su vez la comunicación fue súper fluida y clara. Sin dudas recomiendo su servicio.",
-  },
-  {
-    nombre: "Camila",
-    rol: "",
-    fecha: "Hace 6 meses",
-    texto:
-      "El servicio de Yohana es excelente. Debía traducir una partida y ella al instante respondió de manera muy amable y cálida. Una vez que corroboramos si los datos personales eran correctos, envió la partida por correo y en menos de una semana ya la tenía conmigo. ¡Sumamente recomendable!",
-  },
-  {
-    nombre: "Andrea Montero",
-    rol: "",
-    fecha: "Hace 6 meses",
-    texto:
-      "Súper profesional, seria y puntual con las entregas. ¡Gracias Yoha por las traducciones! Súper recomendable.",
-  },
-  {
-    nombre: "Matías Del Bel",
-    rol: "",
-    fecha: "Hace 5 horas",
-    texto:
-      "Excelente servicio. Contacté a Yohana porque necesitaba traducir unos documentos con urgencia, y no solo los entregó a tiempo, sino que además me asesoró durante todo el proceso. ¡Una experiencia realmente excelente!",
-  },
-  {
-    nombre: "Robert Knoester",
-    rol: "",
-    fecha: "Hace 3 meses",
-    texto:
-      "Yohana has been very helpful a couple of times. Service is quick and communication is perfect. Attention to details and very friendly. She even helped me with finding another translator for Portuguese documents.",
-  },
-  {
-    nombre: "Aracely Núñez Mejía",
-    rol: "",
-    fecha: "Hace 8 meses",
-    texto:
-      "Yoha's translation services are excellent. She offers sworn translations with a high level of professionalism, speed and attention to detail. Highly recommended!",
-  },
-  {
-    nombre: "Camila",
-    rol: "",
-    fecha: "Hace 8 meses",
-    texto:
-      "Yohana helped me translate some documents I needed to come to the Netherlands. The translation was accurate and I got the papers on time so I'm really grateful. Thank you! ❤️",
-  },
-  {
-    nombre: "Caro Gv",
-    rol: "",
-    fecha: "Hace 18 horas",
-    texto:
-      "Yohana is an excellent professional, reliable and friendly!",
-  },
-  {
-    nombre: "Alison Ptrs",
-    rol: "",
-    fecha: "Hace 21 horas",
-    texto:
-      "Yohana is a very kind and professional woman. She is easy to interact with and flexible when it comes to scheduling time and date. She also provided me with more information about the translator job, which truly inspired me. I would definitely recommend working with her.",
-  },
-];
+const GOOGLE_REVIEWS_URL =
+  "https://europe-west1-my-translator-8c7e0.cloudfunctions.net/getGoogleReviews";
 
-const Opiniones = () => {
+const GOOGLE_REVIEWS_FALLBACK_URL =
+  "https://www.google.com/maps/search/?api=1&query=MY+Translator+Utrecht";
+
+const replaceValue = (text, value) =>
+  text.replace("{value}", String(value));
+
+const formatReviewDate = (publishTime, text) => {
+  if (!publishTime) {
+    return "";
+  }
+
+  const publishDate = new Date(publishTime);
+
+  if (Number.isNaN(publishDate.getTime())) {
+    return "";
+  }
+
+  const now = new Date();
+  const millisecondsDifference = now.getTime() - publishDate.getTime();
+  const daysDifference = Math.max(
+    0,
+    Math.floor(millisecondsDifference / (1000 * 60 * 60 * 24))
+  );
+
+  if (daysDifference === 0) {
+    return text.today;
+  }
+
+  if (daysDifference === 1) {
+    return text.yesterday;
+  }
+
+  if (daysDifference < 7) {
+    return replaceValue(text.daysAgo, daysDifference);
+  }
+
+  if (daysDifference < 14) {
+    return text.oneWeekAgo;
+  }
+
+  if (daysDifference < 30) {
+    return replaceValue(
+      text.weeksAgo,
+      Math.floor(daysDifference / 7)
+    );
+  }
+
+  if (daysDifference < 60) {
+    return text.oneMonthAgo;
+  }
+
+  if (daysDifference < 365) {
+    return replaceValue(
+      text.monthsAgo,
+      Math.floor(daysDifference / 30)
+    );
+  }
+
+  if (daysDifference < 730) {
+    return text.oneYearAgo;
+  }
+
+  return replaceValue(
+    text.yearsAgo,
+    Math.floor(daysDifference / 365)
+  );
+};
+
+const renderStars = (rating = 5) => {
+  const safeRating = Math.max(0, Math.min(5, Math.round(rating)));
+
+  return Array.from({ length: 5 }, (_, index) => (
+    <span
+      key={index}
+      className={
+        index < safeRating
+          ? "opiniones__star opiniones__star--active"
+          : "opiniones__star opiniones__star--inactive"
+      }
+      aria-hidden="true"
+    >
+      ★
+    </span>
+  ));
+};
+
+const ReviewSkeleton = ({ index }) => (
+  <article
+    className="opiniones__card opiniones__card--skeleton"
+    aria-hidden="true"
+    key={index}
+  >
+    <div className="opiniones__card-top">
+      <div className="opiniones__skeleton-avatar" />
+
+      <div className="opiniones__skeleton-header">
+        <div className="opiniones__skeleton-line opiniones__skeleton-line--name" />
+        <div className="opiniones__skeleton-line opiniones__skeleton-line--date" />
+      </div>
+    </div>
+
+    <div className="opiniones__skeleton-stars" />
+
+    <div className="opiniones__skeleton-body">
+      <div className="opiniones__skeleton-line opiniones__skeleton-line--full" />
+      <div className="opiniones__skeleton-line opiniones__skeleton-line--full" />
+      <div className="opiniones__skeleton-line opiniones__skeleton-line--medium" />
+      <div className="opiniones__skeleton-line opiniones__skeleton-line--short" />
+    </div>
+  </article>
+);
+
+const Opiniones = ({ translations }) => {
+console.log("translations:", translations);
+
+const opiniones = translations?.opiniones;
+
+  const [reviewsData, setReviewsData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    const loadGoogleReviews = async () => {
+      setIsLoading(true);
+      setHasError(false);
+
+      try {
+        const response = await fetch(GOOGLE_REVIEWS_URL, {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+          },
+          signal: controller.signal,
+        });
+
+        if (!response.ok) {
+          throw new Error(
+            `No se pudieron cargar las opiniones: ${response.status}`
+          );
+        }
+
+        const data = await response.json();
+
+        if (!data?.ok || !Array.isArray(data?.reviews)) {
+          throw new Error("La respuesta de Google Reviews no es válida.");
+        }
+
+        setReviewsData(data);
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          console.error("Error al cargar Google Reviews:", error);
+          setHasError(true);
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    loadGoogleReviews();
+
+    return () => {
+      controller.abort();
+    };
+  }, []);
+
+  const reviews = reviewsData?.reviews || [];
+  const rating = Number(reviewsData?.rating || 0);
+  const totalReviews = Number(reviewsData?.totalOpiniones || 0);
+
+  const googleMapsUrl =
+    reviewsData?.googleMapsUrl || GOOGLE_REVIEWS_FALLBACK_URL;
+
+  const reviewCountText =
+    totalReviews === 1
+      ? opiniones.reviewSingular
+      : opiniones.reviewPlural;
+
   return (
-    <section className="opiniones">
-      <div className="opiniones__overlay">
-        <div className="opiniones__content">
-          <div className="opiniones__grid">
-            {testimonios.map((item, index) => (
-              <article key={index} className="opiniones__card">
-                <div className="opiniones__avatar">
-                  <img
-                    src={personaIcon}
-                    alt="Icono persona"
-                    className="opiniones__avatar-icon"
-                  />
-                </div>
+    <main className="opiniones">
+      <section
+        className="opiniones__hero"
+        aria-labelledby="opiniones-title"
+      >
+        <div className="opiniones__container">
+          <div className="opiniones__intro">
+            <div className="opiniones__intro-content">
+              <p className="opiniones__eyebrow">{opiniones.eyebrow}</p>
 
-                <header className="opiniones__header">
-                  <h3 className="opiniones__nombre">{item.nombre}</h3>
-                  {item.rol && <p className="opiniones__rol">{item.rol}</p>}
-                  <p className="opiniones__fecha">{item.fecha}</p>
-                </header>
+              <h1
+                id="opiniones-title"
+                className="opiniones__title"
+              >
+                {opiniones.title}
+              </h1>
 
-                <p className="opiniones__texto">{item.texto}</p>
-              </article>
-            ))}
+              <p className="opiniones__description">
+                {opiniones.intro}
+              </p>
+            </div>
+
+            {!hasError && (
+              <div
+                className="opiniones__summary"
+                aria-live="polite"
+              >
+                {isLoading ? (
+                  <div
+                    className="opiniones__summary-skeleton"
+                    aria-label={opiniones.loadingLabel}
+                  >
+                    <div className="opiniones__summary-skeleton-rating" />
+                    <div className="opiniones__summary-skeleton-stars" />
+                    <div className="opiniones__summary-skeleton-text" />
+                  </div>
+                ) : (
+                  <>
+                    <div className="opiniones__rating">
+                      <strong className="opiniones__rating-number">
+                        {rating.toFixed(1)}
+                      </strong>
+
+                      <span className="opiniones__rating-label">
+                        {opiniones.ratingLabel}
+                      </span>
+                    </div>
+
+                    <div
+                      className="opiniones__stars"
+                      aria-label={`${rating.toFixed(1)} ${opiniones.starsLabel}`}
+                    >
+                      {renderStars(rating)}
+                    </div>
+
+                    <p className="opiniones__count">
+                      {opiniones.basedOn}{" "}
+                      <strong>{totalReviews}</strong>{" "}
+                      {reviewCountText}
+                    </p>
+
+                    <a
+                      href={googleMapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="opiniones__google-link"
+                    >
+                      <span>{opiniones.viewAll}</span>
+                      <span
+                        className="opiniones__google-link-arrow"
+                        aria-hidden="true"
+                      >
+                        →
+                      </span>
+                    </a>
+                  </>
+                )}
+              </div>
+            )}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section
+        className="opiniones__reviews"
+        aria-label={opiniones.eyebrow}
+      >
+        <div className="opiniones__container">
+          {isLoading && (
+            <>
+              <p className="opiniones__sr-only" aria-live="polite">
+                {opiniones.loadingLabel}
+              </p>
+
+              <div className="opiniones__grid">
+                {Array.from({ length: 6 }, (_, index) => (
+                  <ReviewSkeleton key={index} index={index} />
+                ))}
+              </div>
+            </>
+          )}
+
+          {!isLoading && hasError && (
+            <div
+              className="opiniones__error"
+              role="status"
+            >
+              <div
+                className="opiniones__error-icon"
+                aria-hidden="true"
+              >
+                ★
+              </div>
+
+              <h2 className="opiniones__error-title">
+                {opiniones.errorTitle}
+              </h2>
+
+              <p className="opiniones__error-text">
+                {opiniones.errorText}
+              </p>
+
+              <a
+                href={googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="opiniones__error-button"
+              >
+                {opiniones.errorButton}
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          )}
+
+          {!isLoading && !hasError && reviews.length > 0 && (
+            <div className="opiniones__grid">
+              {reviews.map((review, index) => {
+                const reviewerName =
+                  review.nombre?.trim() || opiniones.anonymous;
+
+               const formattedDate = formatReviewDate(
+               review.fechaPublicacion,
+               opiniones
+               );
+
+                return (
+                  <article
+                    key={`${reviewerName}-${review.fechaPublicacion || index}`}
+                    className="opiniones__card"
+                    aria-label={`${opiniones.reviewBy} ${reviewerName}`}
+                  >
+                    <div className="opiniones__card-top">
+                      <div
+                        className="opiniones__avatar"
+                        aria-hidden="true"
+                      >
+                        <img
+                          src={personaIcon}
+                          alt=""
+                          className="opiniones__avatar-icon"
+                        />
+                      </div>
+
+                      <header className="opiniones__header">
+                        <h2 className="opiniones__name">
+                          {reviewerName}
+                        </h2>
+
+                        <p className="opiniones__meta">
+                          <span className="opiniones__verified">
+                            {opiniones.verified}
+                          </span>
+
+                          {formattedDate && (
+                            <>
+                              <span
+                                className="opiniones__meta-separator"
+                                aria-hidden="true"
+                              >
+                                ·
+                              </span>
+
+                              <time
+                                className="opiniones__date"
+                                dateTime={
+                                  review.fechaPublicacion || undefined
+                                }
+                              >
+                                {formattedDate}
+                              </time>
+                            </>
+                          )}
+                        </p>
+                      </header>
+                    </div>
+
+                    <div
+                      className="opiniones__card-stars"
+                      aria-label={`${review.estrellas || 5} ${
+                        opiniones.starsLabel
+                      }`}
+                    >
+                      {renderStars(review.estrellas || 5)}
+                    </div>
+
+                    <blockquote className="opiniones__quote">
+                      <p className="opiniones__text">
+                        {review.texto}
+                      </p>
+                    </blockquote>
+
+                    {review.perfil && (
+                      <a
+                        href={review.perfil}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="opiniones__profile-link"
+                        aria-label={`${opiniones.openProfile} ${reviewerName}`}
+                      >
+                        Google
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
+                  </article>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </section>
+    </main>
   );
 };
 
