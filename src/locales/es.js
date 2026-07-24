@@ -754,5 +754,10 @@ faq: {
   monthsAgo: "Hace {value} meses",
   oneYearAgo: "Hace un año",
   yearsAgo: "Hace {value} años",
+  ctaTitle: "¿Querés leer todas las opiniones?",
+ctaTitle: "¿Querés leer todas las opiniones?",
+ctaText: "Más de {value} clientes compartieron su experiencia en Google.",
+ctaButton: "Ver todas las opiniones",
+
 },
 };

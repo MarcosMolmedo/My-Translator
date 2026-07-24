@@ -750,5 +750,10 @@ quoteForm: {
   monthsAgo: "{value} months ago",
   oneYearAgo: "A year ago",
   yearsAgo: "{value} years ago",
+
+  ctaTitle: "Want to read all reviews?",
+  ctaText: "More than {value} clients shared their experience on Google.",
+  ctaButton: "View all reviews",
+  
 },
 };

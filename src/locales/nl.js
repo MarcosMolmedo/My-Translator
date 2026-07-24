@@ -758,5 +758,10 @@ faq: {
   monthsAgo: "{value} maanden geleden",
   oneYearAgo: "Een jaar geleden",
   yearsAgo: "{value} jaar geleden",
+
+  ctaTitle: "Alle beoordelingen lezen?",
+  ctaText: "Meer dan {value} klanten deelden hun ervaring op Google.",
+  ctaButton: "Bekijk alle beoordelingen",
+  
 },
 };

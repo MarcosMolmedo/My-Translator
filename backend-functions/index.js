@@ -703,37 +703,35 @@ exports.getGoogleReviews = onRequest(
 
       const place = await response.json();
 
-      const reviews = (
-        place.reviews || []
-      ).map((review) => ({
-        nombre:
-          review.authorAttribution
-            ?.displayName || "Cliente",
+     const reviews = (
+  place.reviews || []
+).map((review) => ({
+  nombre:
+    review.authorAttribution
+      ?.displayName || "Cliente",
 
-        foto:
-          review.authorAttribution
-            ?.photoUri || null,
+  foto:
+    review.authorAttribution
+      ?.photoUri || null,
 
-        perfil:
-          review.authorAttribution
-            ?.uri || null,
+  googleReviewUrl:
+    place.googleMapsUri || null,
 
-        estrellas:
-          review.rating || 0,
+  estrellas:
+    review.rating || 0,
 
-        fecha:
-          review.relativePublishTimeDescription ||
-          "",
+  fecha:
+    review.relativePublishTimeDescription || "",
 
-        fechaPublicacion:
-          review.publishTime || null,
+  fechaPublicacion:
+    review.publishTime || null,
 
-        texto:
-          review.text?.text || "",
+  texto:
+    review.text?.text || "",
 
-        idioma:
-          review.text?.languageCode || null,
-      }));
+  idioma:
+    review.text?.languageCode || null,
+}));
 
       return res.status(200).json({
         ok: true,

@@ -1,20 +1,27 @@
 /* ========================================
    OPINIONES
+   BLOQUE 1 — BASE, HERO Y GOOGLE
 ======================================== */
 
 .opiniones {
   --opiniones-background: #f7f6f3;
   --opiniones-surface: #ffffff;
+
   --opiniones-text: #101735;
   --opiniones-text-soft: #5f6478;
+
   --opiniones-primary: #203a75;
   --opiniones-primary-dark: #162b59;
+
   --opiniones-accent: #c6a15b;
+  --opiniones-accent-strong: #d99a0b;
   --opiniones-accent-soft: rgba(198, 161, 91, 0.14);
-  --opiniones-border: rgba(16, 23, 53, 0.08);
+
+  --opiniones-border: rgba(16, 23, 53, 0.09);
+
   --opiniones-shadow:
     0 1px 2px rgba(16, 23, 53, 0.02),
-    0 24px 70px rgba(16, 23, 53, 0.06);
+    0 24px 70px rgba(16, 23, 53, 0.055);
 
   width: 100%;
   min-height: 100vh;
@@ -48,7 +55,7 @@
 
 .opiniones__hero {
   position: relative;
-  padding: 5.5rem 0 3rem;
+  padding: 4.5rem 0 0;
 }
 
 .opiniones__intro {
@@ -56,124 +63,102 @@
 
   display: grid;
   grid-template-columns:
-    minmax(0, 1.25fr)
-    minmax(300px, 0.75fr);
-  gap: clamp(3rem, 7vw, 7rem);
+    minmax(0, 1fr)
+    minmax(470px, 0.95fr);
+
+  gap: clamp(2.5rem, 6vw, 6rem);
   align-items: center;
 
-  min-height: 500px;
-  padding:
-    clamp(2.5rem, 5vw, 5rem)
-    clamp(1.75rem, 5vw, 4.5rem);
+  min-height: auto;
 
-  overflow: hidden;
+  padding:
+    clamp(2.2rem, 4vw, 3.5rem)
+    clamp(1.75rem, 4vw, 3.5rem)
+    1.5rem;
+
+  overflow: visible;
 
   border: 1px solid var(--opiniones-border);
-  border-radius: 2rem;
+  border-bottom: 0;
+  border-radius: 1.5rem 1.5rem 0 0;
 
   background:
     radial-gradient(
-      circle at 92% 14%,
-      rgba(198, 161, 91, 0.15),
+      circle at 84% 12%,
+      rgba(198, 161, 91, 0.1),
       transparent 30%
     ),
-    linear-gradient(
-      135deg,
-      #ffffff 0%,
-      #fbfaf8 55%,
-      #f2efe8 100%
-    );
+    var(--opiniones-surface);
 
   box-shadow: var(--opiniones-shadow);
 }
 
-.opiniones__intro::before {
-  content: "";
-
-  position: absolute;
-  top: -140px;
-  right: -120px;
-
-  width: 360px;
-  height: 360px;
-
-  border: 1px solid rgba(32, 58, 117, 0.08);
-  border-radius: 50%;
-
-  pointer-events: none;
-}
-
+.opiniones__intro::before,
 .opiniones__intro::after {
-  content: "";
-
-  position: absolute;
-  right: 7%;
-  bottom: -190px;
-
-  width: 330px;
-  height: 330px;
-
-  border: 65px solid rgba(32, 58, 117, 0.035);
-  border-radius: 50%;
-
-  pointer-events: none;
+  display: none;
 }
 
 .opiniones__intro-content {
   position: relative;
   z-index: 1;
 
-  max-width: 700px;
+  max-width: 650px;
 }
+
+/* ========================================
+   EYEBROW
+======================================== */
 
 .opiniones__eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
 
-  margin: 0 0 1.25rem;
+  margin: 0 0 0.7rem;
 
-  color: var(--opiniones-primary);
+  color: #a97719;
 
   font-size: 0.78rem;
   font-weight: 700;
   line-height: 1.4;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
 }
 
 .opiniones__eyebrow::before {
-  content: "";
-
-  width: 2rem;
-  height: 1px;
-
-  background: var(--opiniones-accent);
+  display: none;
 }
 
+/* ========================================
+   TÍTULO
+======================================== */
+
 .opiniones__title {
-  max-width: 760px;
+  max-width: 620px;
   margin: 0;
 
   color: var(--opiniones-text);
 
-  font-size: clamp(2.75rem, 5.2vw, 5.3rem);
+  font-size: clamp(2.2rem, 3.4vw, 3.6rem);
   font-weight: 700;
-  line-height: 0.98;
-  letter-spacing: -0.055em;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
 
   text-wrap: balance;
 }
 
+/* ========================================
+   DESCRIPCIÓN
+======================================== */
+
 .opiniones__description {
-  max-width: 630px;
-  margin: 1.75rem 0 0;
+  max-width: 470px;
+  margin: 0.85rem 0 0;
 
   color: var(--opiniones-text-soft);
 
-  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  font-size: clamp(1rem, 1.2vw, 1.08rem);
   font-weight: 400;
-  line-height: 1.75;
+  line-height: 1.6;
 }
 
 /* ========================================
@@ -184,61 +169,108 @@
   position: relative;
   z-index: 1;
 
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: auto 1fr;
+
+  grid-template-areas:
+    "rating stars"
+    "count count"
+    "button button";
+
+  align-items: center;
+
+  column-gap: 1rem;
+  row-gap: 0.7rem;
 
   width: 100%;
-  max-width: 390px;
+  max-width: 520px;
   margin-left: auto;
-  padding: clamp(2rem, 4vw, 3rem);
+  padding: 0;
 
-  border: 1px solid rgba(16, 23, 53, 0.07);
-  border-radius: 1.75rem;
+  border: 0;
+  border-radius: 0;
 
-  background: rgba(255, 255, 255, 0.84);
+  background: transparent;
+  box-shadow: none;
 
-  box-shadow:
-    0 1px 2px rgba(16, 23, 53, 0.02),
-    0 18px 45px rgba(16, 23, 53, 0.06);
-
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
+/* ========================================
+   LOGO GOOGLE
+======================================== */
+
+.opiniones__google-logo {
+  flex: 0 0 auto;
+
+  display: inline-block;
+
+  width: 2.8rem;
+  height: 2.8rem;
+
+  background-image:
+    url("https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg");
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* ========================================
+   PUNTUACIÓN
+======================================== */
+
 .opiniones__rating {
-  display: flex;
-  align-items: flex-end;
-  gap: 0.65rem;
+  grid-area: rating;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
 
   margin: 0;
+
+  white-space: nowrap;
 }
 
 .opiniones__rating-number {
   color: var(--opiniones-text);
 
-  font-size: clamp(3.8rem, 6vw, 5.5rem);
+  font-size: clamp(2.2rem, 3vw, 3rem);
   font-weight: 700;
-  line-height: 0.82;
-  letter-spacing: -0.07em;
+  line-height: 1;
+  letter-spacing: -0.055em;
 }
 
 .opiniones__rating-label {
-  margin-bottom: 0.45rem;
+  position: absolute;
 
-  color: var(--opiniones-text-soft);
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
 
-  font-size: 0.88rem;
-  font-weight: 600;
-  line-height: 1.4;
+  overflow: hidden;
+
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+
+  border: 0;
 }
 
+/* ========================================
+   ESTRELLAS DEL RESUMEN
+======================================== */
+
 .opiniones__stars {
+  grid-area: stars;
+
   display: inline-flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 0.18rem;
 
-  margin-top: 1.4rem;
+  margin: 0;
 }
 
 .opiniones__star {
@@ -250,22 +282,32 @@
   transform: translateZ(0);
 }
 
+.opiniones__stars .opiniones__star {
+  font-size: clamp(1.5rem, 2vw, 2rem);
+}
+
 .opiniones__star--active {
-  color: var(--opiniones-accent);
+  color: var(--opiniones-accent-strong);
 }
 
 .opiniones__star--inactive {
   color: rgba(16, 23, 53, 0.14);
 }
 
+/* ========================================
+   CANTIDAD DE OPINIONES
+======================================== */
+
 .opiniones__count {
-  margin: 1rem 0 0;
+  grid-area: count;
+
+  margin: 0;
 
   color: var(--opiniones-text-soft);
 
-  font-size: 0.96rem;
+  font-size: 0.97rem;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .opiniones__count strong {
@@ -274,129 +316,62 @@
 }
 
 /* ========================================
-   ENLACE A GOOGLE
+   BOTÓN VER TODAS
 ======================================== */
 
 .opiniones__google-link {
+  grid-area: button;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.65rem;
 
-  min-height: 48px;
-  margin-top: 1.8rem;
-  padding: 0.85rem 1.2rem;
+  width: fit-content;
+  min-height: 46px;
+  margin-top: 0.35rem;
+  padding: 0.78rem 1.4rem;
 
-  border: 1px solid rgba(32, 58, 117, 0.18);
-  border-radius: 999px;
-
-  background: transparent;
   color: var(--opiniones-primary);
+  background: transparent;
+
+  border: 1.5px solid var(--opiniones-primary);
+  border-radius: 999px;
 
   font-size: 0.9rem;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1;
   text-decoration: none;
 
   transition:
-    color 180ms ease,
-    background-color 180ms ease,
-    border-color 180ms ease,
-    transform 180ms ease,
-    box-shadow 180ms ease;
+    color 0.22s ease,
+    background 0.22s ease,
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
 }
 
 .opiniones__google-link:hover {
-  border-color: var(--opiniones-primary);
-
-  background: var(--opiniones-primary);
   color: #ffffff;
+  background: var(--opiniones-primary);
 
   transform: translateY(-2px);
 
   box-shadow:
-    0 10px 24px rgba(32, 58, 117, 0.16);
+    0 10px 24px rgba(32, 58, 117, 0.18);
 }
 
 .opiniones__google-link:focus-visible {
-  outline: 3px solid rgba(32, 58, 117, 0.22);
+  outline: 3px solid rgba(32, 58, 117, 0.25);
   outline-offset: 4px;
 }
 
 .opiniones__google-link-arrow {
-  display: inline-flex;
-
-  font-size: 1rem;
-  line-height: 1;
-
-  transition: transform 180ms ease;
+  transition: transform 0.22s ease;
 }
 
 .opiniones__google-link:hover
-  .opiniones__google-link-arrow {
-  transform: translateX(4px);
-}
-
-/* ========================================
-   SKELETON DEL RESUMEN
-======================================== */
-
-.opiniones__summary-skeleton {
-  width: 100%;
-}
-
-.opiniones__summary-skeleton-rating,
-.opiniones__summary-skeleton-stars,
-.opiniones__summary-skeleton-text {
-  position: relative;
-
-  overflow: hidden;
-
-  border-radius: 999px;
-
-  background: rgba(16, 23, 53, 0.08);
-}
-
-.opiniones__summary-skeleton-rating::after,
-.opiniones__summary-skeleton-stars::after,
-.opiniones__summary-skeleton-text::after {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.72) 50%,
-      transparent 100%
-    );
-
-  transform: translateX(-100%);
-
-  animation:
-    opiniones-skeleton-loading
-    1.4s
-    ease-in-out
-    infinite;
-}
-
-.opiniones__summary-skeleton-rating {
-  width: 54%;
-  height: 4rem;
-}
-
-.opiniones__summary-skeleton-stars {
-  width: 42%;
-  height: 1.1rem;
-  margin-top: 1.4rem;
-}
-
-.opiniones__summary-skeleton-text {
-  width: 82%;
-  height: 0.9rem;
-  margin-top: 1.2rem;
+.opiniones__google-link-arrow {
+  transform: translateX(3px);
 }
 
 /* ========================================
@@ -405,8 +380,29 @@
 
 .opiniones__reviews {
   width: 100%;
-  padding: 2rem 0 7rem;
+  padding: 0 0 7rem;
 }
+
+.opiniones__reviews
+.opiniones__container {
+  padding:
+    1.5rem
+    clamp(1rem, 2vw, 1.75rem)
+    clamp(1.5rem, 3vw, 2.25rem);
+
+  border: 1px solid var(--opiniones-border);
+  border-top: 0;
+  border-radius: 0 0 1.5rem 1.5rem;
+
+  background: var(--opiniones-surface);
+
+  box-shadow:
+    0 24px 70px rgba(16, 23, 53, 0.055);
+}
+
+/* ========================================
+   TEXTO SOLO PARA LECTORES DE PANTALLA
+======================================== */
 
 .opiniones__sr-only {
   position: absolute;
@@ -425,136 +421,18 @@
 }
 
 /* ========================================
-   ANIMACIÓN SKELETON
-======================================== */
-
-@keyframes opiniones-skeleton-loading {
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-/* ========================================
-   RESPONSIVE — CABECERA
-======================================== */
-
-@media (max-width: 960px) {
-  .opiniones__hero {
-    padding-top: 4rem;
-  }
-
-  .opiniones__intro {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-
-    min-height: auto;
-  }
-
-  .opiniones__intro-content {
-    max-width: 760px;
-  }
-
-  .opiniones__summary {
-    max-width: 100%;
-    margin-left: 0;
-  }
-
-  .opiniones__title {
-    max-width: 800px;
-  }
-}
-
-@media (max-width: 640px) {
-  .opiniones__container {
-    width: min(calc(100% - 1.5rem), 1180px);
-  }
-
-  .opiniones__hero {
-    padding: 1.5rem 0 2rem;
-  }
-
-  .opiniones__intro {
-    gap: 2.25rem;
-
-    padding: 2rem 1.25rem 1.25rem;
-
-    border-radius: 1.5rem;
-  }
-
-  .opiniones__intro::before {
-    top: -180px;
-    right: -180px;
-  }
-
-  .opiniones__eyebrow {
-    margin-bottom: 1rem;
-
-    font-size: 0.7rem;
-    letter-spacing: 0.11em;
-  }
-
-  .opiniones__eyebrow::before {
-    width: 1.5rem;
-  }
-
-  .opiniones__title {
-    font-size: clamp(2.35rem, 12vw, 3.4rem);
-    line-height: 1;
-    letter-spacing: -0.05em;
-  }
-
-  .opiniones__description {
-    margin-top: 1.25rem;
-
-    font-size: 0.98rem;
-    line-height: 1.65;
-  }
-
-  .opiniones__summary {
-    padding: 1.5rem;
-
-    border-radius: 1.35rem;
-  }
-
-  .opiniones__rating-number {
-    font-size: 4rem;
-  }
-
-  .opiniones__google-link {
-    width: 100%;
-  }
-
-  .opiniones__reviews {
-    padding: 1rem 0 5rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .opiniones__google-link,
-  .opiniones__google-link-arrow {
-    transition: none;
-  }
-
-  .opiniones__summary-skeleton-rating::after,
-  .opiniones__summary-skeleton-stars::after,
-  .opiniones__summary-skeleton-text::after {
-    animation: none;
-  }
-}
-
-/* ========================================
    GRID
 ======================================== */
 
 .opiniones__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2rem;
+  gap: 1.2rem;
   align-items: stretch;
 }
 
 /* ========================================
-   CARD
+   TARJETA
 ======================================== */
 
 .opiniones__card {
@@ -562,16 +440,17 @@
   flex-direction: column;
 
   height: 100%;
-  padding: 2rem;
+  min-height: 320px;
 
-  border: 1px solid var(--opiniones-border);
-  border-radius: 1.75rem;
+  padding: 1.5rem;
 
-  background: var(--opiniones-surface);
+  background: #ffffff;
+
+  border: 1px solid rgba(16, 23, 53, 0.08);
+  border-radius: 1.15rem;
 
   box-shadow:
-    0 1px 2px rgba(16, 23, 53, 0.02),
-    0 18px 55px rgba(16, 23, 53, 0.05);
+    0 8px 24px rgba(16, 23, 53, 0.045);
 
   transition:
     transform .28s ease,
@@ -580,33 +459,40 @@
 }
 
 .opiniones__card:hover {
-  transform: translateY(-8px);
+
+  transform: translateY(-6px);
 
   border-color: rgba(32,58,117,.16);
 
   box-shadow:
-    0 18px 60px rgba(16,23,53,.12);
+    0 18px 45px rgba(16,23,53,.10);
 }
 
 /* ========================================
-   CABECERA CARD
+   CABECERA
 ======================================== */
 
 .opiniones__card-top{
+
   display:flex;
   align-items:flex-start;
-  gap:1rem;
+  gap:.95rem;
 }
 
+/* ========================================
+   AVATAR
+======================================== */
+
 .opiniones__avatar{
+
   flex-shrink:0;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  width:60px;
-  height:60px;
+  width:52px;
+  height:52px;
 
   border-radius:50%;
 
@@ -614,61 +500,107 @@
     linear-gradient(
       145deg,
       #ffffff,
-      #ece9e3
+      #f3efe8
     );
 
-  border:1px solid rgba(16,23,53,.08);
+  border:1px solid rgba(198,161,91,.18);
 
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.9),
-    0 8px 18px rgba(16,23,53,.06);
+    inset 0 1px 0 rgba(255,255,255,.95),
+    0 6px 16px rgba(16,23,53,.05);
 }
 
 .opiniones__avatar-icon{
-  width:26px;
-  height:26px;
+
+  width:23px;
+  height:23px;
+
   object-fit:contain;
+
   opacity:.72;
 }
 
+/* ========================================
+   HEADER
+======================================== */
+
 .opiniones__header{
+
   flex:1;
 }
 
 .opiniones__name{
+
   margin:0;
 
   color:var(--opiniones-text);
 
-  font-size:1.05rem;
+  font-size:1rem;
   font-weight:700;
-  line-height:1.3;
+  line-height:1.25;
 }
 
+/* ========================================
+   META
+======================================== */
+
 .opiniones__meta{
+
   display:flex;
   flex-wrap:wrap;
   align-items:center;
   gap:.35rem;
 
-  margin:.45rem 0 0;
+  margin:.35rem 0 0;
 
   color:var(--opiniones-text-soft);
 
-  font-size:.83rem;
-  line-height:1.5;
+  font-size:.82rem;
+  line-height:1.4;
 }
 
+/* ========================================
+   OPINIÓN VERIFICADA
+======================================== */
+
 .opiniones__verified{
+
+  display:inline-flex;
+  align-items:center;
+  gap:.32rem;
+
   color:var(--opiniones-primary);
+
   font-weight:600;
 }
 
+.opiniones__verified::before{
+
+  content:"✓";
+
+  display:grid;
+  place-items:center;
+
+  width:.92rem;
+  height:.92rem;
+
+  border-radius:50%;
+
+  background:var(--opiniones-primary);
+
+  color:#ffffff;
+
+  font-size:.58rem;
+  font-weight:800;
+}
+
 .opiniones__meta-separator{
+
   opacity:.45;
 }
 
 .opiniones__date{
+
   color:inherit;
 }
 
@@ -677,10 +609,16 @@
 ======================================== */
 
 .opiniones__card-stars{
-  display:flex;
-  gap:.18rem;
 
-  margin:1.35rem 0 1rem;
+  display:flex;
+  gap:.14rem;
+
+  margin:1rem 0 .85rem;
+}
+
+.opiniones__card-stars .opiniones__star{
+
+  font-size:1.15rem;
 }
 
 /* ========================================
@@ -688,243 +626,63 @@
 ======================================== */
 
 .opiniones__quote{
+
   flex:1;
 
   margin:0;
 }
 
 .opiniones__text{
-  margin:0;
-
-  color:var(--opiniones-text-soft);
-
-  font-size:.98rem;
-  line-height:1.8;
-
-  overflow-wrap:anywhere;
-}
-
-/* ========================================
-   LINK PERFIL
-======================================== */
-
-.opiniones__profile-link{
-  display:inline-flex;
-  align-items:center;
-  gap:.45rem;
-
-  margin-top:1.6rem;
-
-  color:var(--opiniones-primary);
-
-  font-size:.86rem;
-  font-weight:700;
-  text-decoration:none;
-
-  transition:
-    gap .2s ease,
-    color .2s ease;
-}
-
-.opiniones__profile-link:hover{
-  gap:.7rem;
-  color:var(--opiniones-primary-dark);
-}
-
-/* ========================================
-   ERROR
-======================================== */
-
-.opiniones__error{
-
-  max-width:720px;
-  margin:0 auto;
-
-  text-align:center;
-
-  padding:4rem 2rem;
-
-  border-radius:2rem;
-
-  border:1px solid var(--opiniones-border);
-
-  background:white;
-
-  box-shadow:var(--opiniones-shadow);
-}
-
-.opiniones__error-icon{
-
-  width:82px;
-  height:82px;
-
-  margin:0 auto 1.75rem;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border-radius:50%;
-
-  background:var(--opiniones-accent-soft);
-
-  color:var(--opiniones-accent);
-
-  font-size:2rem;
-}
-
-.opiniones__error-title{
 
   margin:0;
 
   color:var(--opiniones-text);
 
-  font-size:2rem;
-  font-weight:700;
+  font-size:.95rem;
+  line-height:1.62;
+
+  overflow-wrap:anywhere;
 }
 
-.opiniones__error-text{
+/* ========================================
+   LINK
+======================================== */
 
-  max-width:520px;
-
-  margin:1rem auto 2rem;
-
-  color:var(--opiniones-text-soft);
-
-  line-height:1.8;
-}
-
-.opiniones__error-button{
+.opiniones__profile-link{
 
   display:inline-flex;
   align-items:center;
-  gap:.6rem;
+  gap:.45rem;
 
-  padding:.9rem 1.5rem;
+  margin-top:1.4rem;
 
-  border-radius:999px;
+  color:var(--opiniones-primary);
 
-  background:var(--opiniones-primary);
-
-  color:white;
-
-  text-decoration:none;
+  font-size:.84rem;
   font-weight:700;
 
+  text-decoration:none;
+
   transition:
-    transform .2s ease,
-    background .2s ease;
+    gap .22s ease,
+    color .22s ease;
 }
 
-.opiniones__error-button:hover{
+.opiniones__profile-link:hover{
 
-  transform:translateY(-2px);
+  gap:.72rem;
 
-  background:var(--opiniones-primary-dark);
-}
-
-/* ========================================
-   SKELETON CARD
-======================================== */
-
-.opiniones__card--skeleton{
-  pointer-events:none;
-}
-
-.opiniones__skeleton-avatar,
-.opiniones__skeleton-line,
-.opiniones__skeleton-stars{
-
-  position:relative;
-
-  overflow:hidden;
-
-  background:rgba(16,23,53,.08);
-
-  border-radius:999px;
-}
-
-.opiniones__skeleton-avatar{
-  width:60px;
-  height:60px;
-  border-radius:50%;
-}
-
-.opiniones__skeleton-header{
-  flex:1;
-}
-
-.opiniones__skeleton-line{
-
-  height:.9rem;
-
-  margin-bottom:.7rem;
-}
-
-.opiniones__skeleton-line--name{
-  width:55%;
-}
-
-.opiniones__skeleton-line--date{
-  width:35%;
-}
-
-.opiniones__skeleton-stars{
-
-  width:110px;
-  height:18px;
-
-  margin:1.5rem 0;
-}
-
-.opiniones__skeleton-body{
-  margin-top:.2rem;
-}
-
-.opiniones__skeleton-line--full{
-  width:100%;
-}
-
-.opiniones__skeleton-line--medium{
-  width:84%;
-}
-
-.opiniones__skeleton-line--short{
-  width:62%;
-}
-
-.opiniones__skeleton-avatar::after,
-.opiniones__skeleton-stars::after,
-.opiniones__skeleton-line::after{
-
-  content:"";
-
-  position:absolute;
-  inset:0;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255,255,255,.7),
-      transparent
-    );
-
-  animation:
-    opiniones-skeleton-loading
-    1.4s
-    infinite;
-
-  transform:translateX(-100%);
+  color:var(--opiniones-primary-dark);
 }
 
 /* ========================================
-   RESPONSIVE
+   GRID RESPONSIVE
 ======================================== */
 
 @media (max-width:1100px){
 
   .opiniones__grid{
+
     grid-template-columns:repeat(2,1fr);
   }
 
@@ -933,52 +691,520 @@
 @media (max-width:760px){
 
   .opiniones__grid{
+
     grid-template-columns:1fr;
   }
 
   .opiniones__card{
-    padding:1.6rem;
+
+    min-height:auto;
+
+    padding:1.35rem;
   }
 
   .opiniones__avatar{
-    width:54px;
-    height:54px;
+
+    width:48px;
+    height:48px;
   }
 
   .opiniones__avatar-icon{
-    width:22px;
-    height:22px;
+
+    width:21px;
+    height:21px;
   }
 
   .opiniones__name{
-    font-size:1rem;
+
+    font-size:.97rem;
   }
 
   .opiniones__text{
-    font-size:.95rem;
-    line-height:1.7;
-  }
 
-  .opiniones__error{
-    padding:2.5rem 1.5rem;
-  }
-
-  .opiniones__error-title{
-    font-size:1.6rem;
+    font-size:.93rem;
   }
 
 }
 
-@media (prefers-reduced-motion:reduce){
+/* ========================================
+   TARJETA CTA DORADA
+======================================== */
 
+.opiniones__card.opiniones__card--cta {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 320px;
+  padding: 1.7rem 1.45rem;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(198, 161, 91, 0.55);
+  border-radius: 1.2rem;
+
+  background:
+    radial-gradient(
+      circle at 20% 15%,
+      rgba(255, 255, 255, 0.35),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      #d7b56d 0%,
+      #c6a15b 48%,
+      #ad8540 100%
+    );
+
+  box-shadow:
+    0 16px 36px rgba(118, 82, 24, 0.18);
+
+  color: #ffffff;
+}
+
+.opiniones__card.opiniones__card--cta::before {
+  content: "";
+
+  position: absolute;
+  top: -90px;
+  right: -70px;
+
+  width: 230px;
+  height: 230px;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.opiniones__card.opiniones__card--cta::after {
+  content: "";
+
+  position: absolute;
+  left: -70px;
+  bottom: -100px;
+
+  width: 220px;
+  height: 220px;
+
+  border: 45px solid rgba(255, 255, 255, 0.07);
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.opiniones__card.opiniones__card--cta:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(255, 255, 255, 0.34);
+
+  box-shadow:
+    0 22px 50px rgba(118, 82, 24, 0.26);
+}
+
+.opiniones__cta-content {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  max-width: 330px;
+
+  text-align: center;
+}
+
+.opiniones__cta-icon {
+  display: grid;
+  place-items: center;
+
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 1rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.14);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  font-size: 1.85rem;
+  line-height: 1;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.opiniones__cta-title {
+  max-width: 280px;
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(1.45rem, 2vw, 1.8rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+
+  text-wrap: balance;
+}
+
+.opiniones__cta-text {
+  margin: 0.9rem 0 1.2rem;
+
+  color: rgba(255, 255, 255, 0.88);
+
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.opiniones__cta-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  width: min(100%, 270px);
+  min-height: 46px;
+  padding: 0.8rem 1.25rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 999px;
+
+  background: #ffffff;
+  color: #8a662e;
+
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+
+  box-shadow:
+    0 10px 24px rgba(84, 54, 10, 0.16);
+
+  transition:
+    transform 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.opiniones__cta-link:hover {
+  transform: translateY(-2px);
+
+  background: #fffdf8;
+
+  box-shadow:
+    0 14px 30px rgba(84, 54, 10, 0.22);
+}
+
+.opiniones__cta-link:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.45);
+  outline-offset: 4px;
+}
+
+/* ========================================
+   SKELETON LOADING
+======================================== */
+
+.opiniones__skeleton {
+  pointer-events: none;
+}
+
+.opiniones__skeleton-circle,
+.opiniones__skeleton-line,
+.opiniones__skeleton-stars {
+  position: relative;
+
+  overflow: hidden;
+
+  background: rgba(16, 23, 53, 0.08);
+}
+
+.opiniones__skeleton-circle::after,
+.opiniones__skeleton-line::after,
+.opiniones__skeleton-stars::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  transform: translateX(-100%);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.7),
+      transparent
+    );
+
+  animation: opiniones-shimmer 1.5s infinite;
+}
+
+.opiniones__skeleton-circle {
+  width: 52px;
+  height: 52px;
+
+  border-radius: 50%;
+}
+
+.opiniones__skeleton-line {
+  height: 0.82rem;
+
+  border-radius: 999px;
+}
+
+.opiniones__skeleton-line--name {
+  width: 46%;
+  margin-bottom: 0.7rem;
+}
+
+.opiniones__skeleton-line--meta {
+  width: 66%;
+}
+
+.opiniones__skeleton-line--text {
+  width: 100%;
+  margin-bottom: 0.65rem;
+}
+
+.opiniones__skeleton-line--text-short {
+  width: 74%;
+}
+
+.opiniones__skeleton-stars {
+  width: 110px;
+  height: 1.1rem;
+  margin: 1rem 0 0.9rem;
+
+  border-radius: 999px;
+}
+
+@keyframes opiniones-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ========================================
+   ESTADO DE ERROR
+======================================== */
+
+.opiniones__error {
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: clamp(2rem, 5vw, 4rem);
+
+  border: 1px solid rgba(16, 23, 53, 0.09);
+  border-radius: 1.2rem;
+
+  background: #ffffff;
+
+  text-align: center;
+
+  box-shadow:
+    0 10px 30px rgba(16, 23, 53, 0.05);
+}
+
+.opiniones__error-icon {
+  display: grid;
+  place-items: center;
+
+  width: 3.8rem;
+  height: 3.8rem;
+  margin-bottom: 1rem;
+
+  border-radius: 50%;
+
+  background: rgba(32, 58, 117, 0.08);
+  color: var(--opiniones-primary);
+
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.opiniones__error-title {
+  margin: 0;
+
+  color: var(--opiniones-text);
+
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.opiniones__error-text {
+  max-width: 520px;
+  margin: 0.7rem 0 0;
+
+  color: var(--opiniones-text-soft);
+
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+/* ========================================
+   RESPONSIVE TABLET
+======================================== */
+
+@media (max-width: 960px) {
+  .opiniones__hero {
+    padding-top: 3rem;
+  }
+
+  .opiniones__intro {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    padding-bottom: 1.25rem;
+  }
+
+  .opiniones__intro-content {
+    max-width: 760px;
+  }
+
+  .opiniones__title {
+    max-width: 720px;
+  }
+
+  .opiniones__summary {
+    max-width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* ========================================
+   RESPONSIVE MOBILE
+======================================== */
+
+@media (max-width: 640px) {
+  .opiniones__container {
+    width: min(calc(100% - 1.5rem), 1180px);
+  }
+
+  .opiniones__hero {
+    padding: 1.5rem 0 0;
+  }
+
+  .opiniones__intro {
+    gap: 1.75rem;
+
+    padding:
+      1.75rem
+      1.15rem
+      1.1rem;
+
+    border-radius: 1.25rem 1.25rem 0 0;
+  }
+
+  .opiniones__eyebrow {
+    margin-bottom: 0.65rem;
+
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+  }
+
+  .opiniones__title {
+    font-size: clamp(2rem, 10vw, 2.75rem);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+  }
+
+  .opiniones__description {
+    margin-top: 0.8rem;
+
+    font-size: 0.96rem;
+    line-height: 1.55;
+  }
+
+  .opiniones__summary {
+    grid-template-columns: auto 1fr;
+    column-gap: 0.7rem;
+  }
+
+  .opiniones__google-logo {
+    width: 2.15rem;
+    height: 2.15rem;
+  }
+
+  .opiniones__rating {
+    gap: 0.55rem;
+  }
+
+  .opiniones__rating-number {
+    font-size: 2.25rem;
+  }
+
+  .opiniones__stars .opiniones__star {
+    font-size: 1.25rem;
+  }
+
+  .opiniones__count {
+    font-size: 0.9rem;
+  }
+
+  .opiniones__google-link {
+    width: 100%;
+  }
+
+  .opiniones__reviews {
+    padding-bottom: 5rem;
+  }
+
+  .opiniones__reviews
+  .opiniones__container {
+    padding: 0.9rem;
+
+    border-radius: 0 0 1.25rem 1.25rem;
+  }
+
+  .opiniones__card.opiniones__card--cta {
+    min-height: 300px;
+  }
+
+  .opiniones__cta-icon {
+    width: 3.6rem;
+    height: 3.6rem;
+
+    font-size: 1.65rem;
+  }
+
+  .opiniones__cta-title {
+    font-size: 1.45rem;
+  }
+
+  .opiniones__error {
+    padding: 2rem 1.2rem;
+  }
+}
+
+/* ========================================
+   MOVIMIENTO REDUCIDO
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
   .opiniones__card,
+  .opiniones__google-link,
+  .opiniones__google-link-arrow,
   .opiniones__profile-link,
-  .opiniones__error-button{
-    transition:none;
+  .opiniones__cta-link {
+    transition: none;
   }
 
-  .opiniones__card:hover{
-    transform:none;
+  .opiniones__skeleton-circle::after,
+  .opiniones__skeleton-line::after,
+  .opiniones__skeleton-stars::after {
+    animation: none;
   }
-
 }

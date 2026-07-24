@@ -226,16 +226,21 @@ const opiniones = translations?.opiniones;
                   </div>
                 ) : (
                   <>
-                    <div className="opiniones__rating">
-                      <strong className="opiniones__rating-number">
-                        {rating.toFixed(1)}
-                      </strong>
+                   <div className="opiniones__rating">
+                   <span
+                    className="opiniones__google-logo"
+                    aria-hidden="true"
+                   />
 
-                      <span className="opiniones__rating-label">
-                        {opiniones.ratingLabel}
-                      </span>
-                    </div>
+                  <strong className="opiniones__rating-number">
+                   {rating.toFixed(1)}
+                  </strong>
 
+                  <span className="opiniones__rating-label">
+                  {opiniones.ratingLabel}
+                  </span>
+                  </div>
+                  
                     <div
                       className="opiniones__stars"
                       aria-label={`${rating.toFixed(1)} ${opiniones.starsLabel}`}
@@ -322,100 +327,131 @@ const opiniones = translations?.opiniones;
             </div>
           )}
 
-          {!isLoading && !hasError && reviews.length > 0 && (
-            <div className="opiniones__grid">
-              {reviews.map((review, index) => {
-                const reviewerName =
-                  review.nombre?.trim() || opiniones.anonymous;
+      {!isLoading && !hasError && reviews.length > 0 && (
+  <div className="opiniones__grid">
+    {reviews.slice(0, 5).map((review, index) => {
+      const reviewerName =
+        review.nombre?.trim() || opiniones.anonymous;
 
-               const formattedDate = formatReviewDate(
-               review.fechaPublicacion,
-               opiniones
-               );
+      const formattedDate = formatReviewDate(
+        review.fechaPublicacion,
+        opiniones
+      );
 
-                return (
-                  <article
-                    key={`${reviewerName}-${review.fechaPublicacion || index}`}
-                    className="opiniones__card"
-                    aria-label={`${opiniones.reviewBy} ${reviewerName}`}
-                  >
-                    <div className="opiniones__card-top">
-                      <div
-                        className="opiniones__avatar"
-                        aria-hidden="true"
-                      >
-                        <img
-                          src={personaIcon}
-                          alt=""
-                          className="opiniones__avatar-icon"
-                        />
-                      </div>
-
-                      <header className="opiniones__header">
-                        <h2 className="opiniones__name">
-                          {reviewerName}
-                        </h2>
-
-                        <p className="opiniones__meta">
-                          <span className="opiniones__verified">
-                            {opiniones.verified}
-                          </span>
-
-                          {formattedDate && (
-                            <>
-                              <span
-                                className="opiniones__meta-separator"
-                                aria-hidden="true"
-                              >
-                                ·
-                              </span>
-
-                              <time
-                                className="opiniones__date"
-                                dateTime={
-                                  review.fechaPublicacion || undefined
-                                }
-                              >
-                                {formattedDate}
-                              </time>
-                            </>
-                          )}
-                        </p>
-                      </header>
-                    </div>
-
-                    <div
-                      className="opiniones__card-stars"
-                      aria-label={`${review.estrellas || 5} ${
-                        opiniones.starsLabel
-                      }`}
-                    >
-                      {renderStars(review.estrellas || 5)}
-                    </div>
-
-                    <blockquote className="opiniones__quote">
-                      <p className="opiniones__text">
-                        {review.texto}
-                      </p>
-                    </blockquote>
-
-                    {review.perfil && (
-                      <a
-                        href={review.perfil}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="opiniones__profile-link"
-                        aria-label={`${opiniones.openProfile} ${reviewerName}`}
-                      >
-                        Google
-                        <span aria-hidden="true">↗</span>
-                      </a>
-                    )}
-                  </article>
-                );
-              })}
+      return (
+        <article
+          key={`${reviewerName}-${review.fechaPublicacion || index}`}
+          className="opiniones__card"
+          aria-label={`${opiniones.reviewBy} ${reviewerName}`}
+        >
+          <div className="opiniones__card-top">
+            <div
+              className="opiniones__avatar"
+              aria-hidden="true"
+            >
+              <img
+                src={personaIcon}
+                alt=""
+                className="opiniones__avatar-icon"
+              />
             </div>
-          )}
+
+            <header className="opiniones__header">
+              <h2 className="opiniones__name">
+                {reviewerName}
+              </h2>
+
+              <p className="opiniones__meta">
+                <span className="opiniones__verified">
+                  {opiniones.verified}
+                </span>
+
+                {formattedDate && (
+                  <>
+                    <span
+                      className="opiniones__meta-separator"
+                      aria-hidden="true"
+                    >
+                      ·
+                    </span>
+
+                    <time
+                      className="opiniones__date"
+                      dateTime={
+                        review.fechaPublicacion || undefined
+                      }
+                    >
+                      {formattedDate}
+                    </time>
+                  </>
+                )}
+              </p>
+            </header>
+          </div>
+
+          <div
+            className="opiniones__card-stars"
+            aria-label={`${review.estrellas || 5} ${
+              opiniones.starsLabel
+            }`}
+          >
+            {renderStars(review.estrellas || 5)}
+          </div>
+
+          <blockquote className="opiniones__quote">
+            <p className="opiniones__text">
+              {review.texto}
+            </p>
+          </blockquote>
+
+          <a
+            href={googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="opiniones__profile-link"
+            aria-label={`${opiniones.openReview} ${reviewerName}`}
+          >
+            {opiniones.viewReview}
+            <span aria-hidden="true">↗</span>
+          </a>
+        </article>
+      );
+    })}
+
+    <article
+      className="opiniones__card opiniones__card--cta"
+      aria-label={opiniones.ctaTitle}
+    >
+      <div
+        className="opiniones__cta-icon"
+        aria-hidden="true"
+      >
+        ⭐
+      </div>
+
+      <h2 className="opiniones__cta-title">
+        {opiniones.ctaTitle}
+      </h2>
+
+      <p className="opiniones__cta-text">
+        {replaceValue(
+          opiniones.ctaText,
+          totalReviews
+        )}
+      </p>
+
+      <a
+        href={googleMapsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="opiniones__cta-link"
+      >
+        {opiniones.ctaButton}
+        <span aria-hidden="true">→</span>
+      </a>
+    </article>
+  </div>
+)}
         </div>
       </section>
     </main>
