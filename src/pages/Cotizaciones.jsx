@@ -45,7 +45,7 @@ const createInitialErrors = () => ({
   archivos: "",
 });
 
-const Cotizaciones = ({ translations }) => {
+const Cotizaciones = ({ translations, language }) => {
   const t = translations.quoteForm;
 
   const [formData, setFormData] = useState(createInitialFormData);
@@ -56,7 +56,6 @@ const Cotizaciones = ({ translations }) => {
   const [cargando, setCargando] = useState(false);
   const [enviado, setEnviado] = useState(false);
   const [dragging, setDragging] = useState(false);
-
   const fileInputRef = useRef(null);
   const successTimerRef = useRef(null);
 
@@ -515,6 +514,7 @@ const Cotizaciones = ({ translations }) => {
     data.append("idioma", formData.idioma);
     data.append("paisEmisor", formData.paisEmisor);
     data.append("apostillado", formData.apostillado);
+    data.append("locale", language);
     data.append(
       "tiempoEntrega",
       formData.tiempoEntrega

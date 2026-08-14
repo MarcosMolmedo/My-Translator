@@ -57,11 +57,13 @@ function App() {
               path="/preguntasfrecuentes"
               element={<PreguntasFrecuentes translations={translations} />}
             />
-
+   
             <Route
-              path="/cotizaciones"
-              element={<Cotizaciones translations={translations} />}
-            />
+            path="/cotizaciones"
+             element={ <Cotizaciones translations={translations} language={language}
+             />
+             }
+             />
 
             <Route
               path="/contacto"

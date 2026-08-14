@@ -426,6 +426,419 @@ const sendQuotationEmailWithBrevo = async ({
 };
 
 /* ========================================
+   CONFIRMACIÓN AUTOMÁTICA AL CLIENTE
+======================================== */
+
+const escapeHtml = (value = "") =>
+  String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+const isVacationPeriod = () => {
+  const now = Date.now();
+
+  // 14/08/2026 12:00 en Países Bajos
+  const vacationStart = new Date(
+    "2026-08-14T10:00:00Z"
+  ).getTime();
+
+  // 28/08/2026 00:00 en Países Bajos
+  const vacationEnd = new Date(
+    "2026-08-27T22:00:00Z"
+  ).getTime();
+
+  return now >= vacationStart && now < vacationEnd;
+};
+
+const getCustomerConfirmationContent = ({
+  formData,
+  files = [],
+}) => {
+  const {
+    nombre = "",
+    locale = "es",
+    idioma = "",
+    paisEmisor = "",
+    apostillado = "",
+    retiroUtrecht = "",
+    envioPostNL = "",
+    tiempoEntrega = "",
+  } = formData;
+
+  const safeName = escapeHtml(nombre);
+
+  const deliveryMethod =
+    retiroUtrecht === "Sí"
+      ? "Utrecht Terwijde"
+      : envioPostNL === "Sí"
+      ? "PostNL"
+      : "-";
+
+  const languageDirection =
+    idioma === "es-en"
+      ? "Español → Inglés"
+      : idioma === "en-es"
+      ? "Inglés → Español"
+      : idioma || "-";
+
+  const vacationActive = isVacationPeriod();
+
+  const translations = {
+    es: {
+      subject:
+        "Hemos recibido su solicitud de cotización | Yohana Malvasio",
+
+      greeting: `Estimado/a ${safeName},`,
+
+      intro:
+        "Gracias por solicitar una cotización. Su solicitud ha sido recibida correctamente.",
+
+      response:
+        "Revisaré la documentación y responderé personalmente a su solicitud a la mayor brevedad posible.",
+
+      summaryTitle: "Resumen de su solicitud",
+
+      language: "Traducción",
+      country: "País emisor",
+      apostille: "Apostilla",
+      delivery: "Entrega",
+      timeframe: "Plazo solicitado",
+      files: "Archivos recibidos",
+
+      modifyTitle: "¿Necesita modificar o agregar información?",
+
+      modify:
+        "Puede responder directamente a este correo indicando cualquier cambio o información adicional. No es necesario completar nuevamente el formulario.",
+
+      vacationTitle: "IMPORTANTE — VACACIONES",
+
+      vacation:
+        "Estaré fuera de la oficina por vacaciones hasta el 27 de agosto. Todas las solicitudes continúan recibiéndose normalmente y serán atendidas a partir de mi regreso, por orden de recepción.",
+
+      closing:
+        "Gracias por su confianza.",
+
+      regards: "Atentamente,",
+
+      role:
+        "Traductora Jurada de Inglés–Español",
+    },
+
+    en: {
+      subject:
+        "We have received your quotation request | Yohana Malvasio",
+
+      greeting: `Dear ${safeName},`,
+
+      intro:
+        "Thank you for requesting a quotation. Your request has been received successfully.",
+
+      response:
+        "I will review your documentation and personally respond to your request as soon as possible.",
+
+      summaryTitle: "Summary of your request",
+
+      language: "Translation",
+      country: "Issuing country",
+      apostille: "Apostille",
+      delivery: "Delivery",
+      timeframe: "Requested timeframe",
+      files: "Files received",
+
+      modifyTitle:
+        "Do you need to change or add any information?",
+
+      modify:
+        "You can reply directly to this email with any changes or additional information. There is no need to complete the form again.",
+
+      vacationTitle: "IMPORTANT — HOLIDAY NOTICE",
+
+      vacation:
+        "I will be out of the office on holiday until August 27th. All quotation requests will continue to be received normally and will be handled upon my return, in the order in which they were received.",
+
+      closing:
+        "Thank you for your trust.",
+
+      regards: "Best regards,",
+
+      role:
+        "English–Spanish Sworn Translator",
+    },
+
+    nl: {
+      subject:
+        "Uw offerteaanvraag is ontvangen | Yohana Malvasio",
+
+      greeting: `Beste ${safeName},`,
+
+      intro:
+        "Bedankt voor uw offerteaanvraag. Uw aanvraag is succesvol ontvangen.",
+
+      response:
+        "Ik zal uw documenten bekijken en uw aanvraag zo snel mogelijk persoonlijk beantwoorden.",
+
+      summaryTitle: "Samenvatting van uw aanvraag",
+
+      language: "Vertaling",
+      country: "Land van afgifte",
+      apostille: "Apostille",
+      delivery: "Levering",
+      timeframe: "Gewenste termijn",
+      files: "Ontvangen bestanden",
+
+      modifyTitle:
+        "Wilt u informatie wijzigen of toevoegen?",
+
+      modify:
+        "U kunt rechtstreeks op deze e-mail antwoorden met eventuele wijzigingen of aanvullende informatie. U hoeft het formulier niet opnieuw in te vullen.",
+
+      vacationTitle: "BELANGRIJK — VAKANTIE",
+
+      vacation:
+        "Ik ben tot en met 27 augustus met vakantie. Alle offerteaanvragen worden tijdens deze periode normaal ontvangen en worden na mijn terugkomst op volgorde van ontvangst behandeld.",
+
+      closing:
+        "Bedankt voor uw vertrouwen.",
+
+      regards: "Met vriendelijke groet,",
+
+      role:
+        "Beëdigd vertaler Engels–Spaans",
+    },
+  };
+
+  const content =
+    translations[locale] || translations.es;
+
+  const summaryRows = [
+    [content.language, languageDirection],
+    [content.country, paisEmisor || "-"],
+    [content.apostille, apostillado || "-"],
+    [content.delivery, deliveryMethod],
+    [content.timeframe, tiempoEntrega || "-"],
+    [content.files, String(files.length)],
+  ];
+
+  const summaryHtml = summaryRows
+    .map(
+      ([label, value]) => `
+        <tr>
+          <td style="
+            padding: 8px 12px;
+            border-bottom: 1px solid #ececec;
+            font-weight: 600;
+            color: #101735;
+          ">
+            ${escapeHtml(label)}
+          </td>
+
+          <td style="
+            padding: 8px 12px;
+            border-bottom: 1px solid #ececec;
+            color: #444444;
+          ">
+            ${escapeHtml(value)}
+          </td>
+        </tr>
+      `
+    )
+    .join("");
+
+  const vacationHtml = vacationActive
+    ? `
+      <div style="
+        margin: 24px 0;
+        padding: 18px;
+        background: #f7f6f3;
+        border-left: 4px solid #101735;
+        border-radius: 8px;
+      ">
+        <strong style="
+          display: block;
+          margin-bottom: 8px;
+          color: #101735;
+        ">
+          ${content.vacationTitle}
+        </strong>
+
+        <span style="color: #444444;">
+          ${content.vacation}
+        </span>
+      </div>
+    `
+    : "";
+
+  const htmlContent = `
+    <!DOCTYPE html>
+    <html>
+      <body style="
+        margin: 0;
+        padding: 0;
+        background: #f5f5f5;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #222222;
+      ">
+        <div style="
+          max-width: 640px;
+          margin: 0 auto;
+          padding: 32px 16px;
+        ">
+          <div style="
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 32px;
+          ">
+            <h2 style="
+              margin-top: 0;
+              color: #101735;
+            ">
+              MY Translator
+            </h2>
+
+            <p>${content.greeting}</p>
+
+            <p>${content.intro}</p>
+
+            <p>${content.response}</p>
+
+            ${vacationHtml}
+
+            <h3 style="
+              margin-top: 28px;
+              color: #101735;
+            ">
+              ${content.summaryTitle}
+            </h3>
+
+            <table style="
+              width: 100%;
+              border-collapse: collapse;
+              margin-bottom: 28px;
+            ">
+              ${summaryHtml}
+            </table>
+
+            <h3 style="color: #101735;">
+              ${content.modifyTitle}
+            </h3>
+
+            <p>${content.modify}</p>
+
+            <p style="margin-top: 28px;">
+              ${content.closing}
+            </p>
+
+            <p>
+              ${content.regards}<br><br>
+              <strong>Yohana Malvasio</strong><br>
+              ${content.role}<br>
+              info@malvasioyohana.nl
+            </p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+
+  const textContent = [
+    content.greeting,
+    "",
+    content.intro,
+    content.response,
+    "",
+    vacationActive
+      ? `${content.vacationTitle}\n${content.vacation}\n`
+      : "",
+    content.summaryTitle,
+    ...summaryRows.map(
+      ([label, value]) => `${label}: ${value}`
+    ),
+    "",
+    content.modifyTitle,
+    content.modify,
+    "",
+    content.closing,
+    "",
+    content.regards,
+    "Yohana Malvasio",
+    content.role,
+    "info@malvasioyohana.nl",
+  ]
+    .filter(Boolean)
+    .join("\n");
+
+  return {
+    subject: content.subject,
+    htmlContent,
+    textContent,
+  };
+};
+
+const sendCustomerConfirmationWithBrevo = async ({
+  formData,
+  files,
+}) => {
+  const {
+    nombre = "",
+    email = "",
+  } = formData;
+
+  if (!isValidEmail(email)) {
+    throw new Error("INVALID_CUSTOMER_EMAIL");
+  }
+
+  const brevo = new BrevoClient({
+    apiKey: brevoApiKey.value(),
+    timeoutInSeconds: 30,
+    maxRetries: 2,
+  });
+
+  const {
+    subject,
+    htmlContent,
+    textContent,
+  } = getCustomerConfirmationContent({
+    formData,
+    files,
+  });
+
+  const result =
+    await brevo.transactionalEmails.sendTransacEmail({
+      sender: {
+        name: "Yohana Malvasio",
+        email: EMAIL_USER,
+      },
+
+      to: [
+        {
+          email: email.trim(),
+          name:
+            nombre.trim() ||
+            "Cliente",
+        },
+      ],
+
+      replyTo: {
+        email: EMAIL_USER,
+        name: "Yohana Malvasio",
+      },
+
+      subject,
+      htmlContent,
+      textContent,
+    });
+
+  console.log(
+    `Confirmación enviada a ${email}`
+  );
+
+  return result;
+};
+
+/* ========================================
    ENVÍO ANTIGUO — 1.ª GENERACIÓN
 
    Se conserva temporalmente como respaldo.
@@ -542,34 +955,39 @@ exports.sendEmailV2 = onRequest(
           });
       }
 
-      const formData = {
-        nombre:
-          fields?.nombre?.trim() || "",
+const formData = {
+  nombre:
+    fields?.nombre?.trim() || "",
 
-        email:
-          fields?.email?.trim() || "",
+  email:
+    fields?.email?.trim() || "",
 
-        idioma:
-          fields?.idioma || "",
+  locale:
+    ["es", "en", "nl"].includes(fields?.locale)
+      ? fields.locale
+      : "es",
 
-        paisEmisor:
-          fields?.paisEmisor || "",
+  idioma:
+    fields?.idioma || "",
 
-        apostillado:
-          fields?.apostillado || "",
+  paisEmisor:
+    fields?.paisEmisor || "",
 
-        retiroUtrecht:
-          fields?.retiroUtrecht || "",
+  apostillado:
+    fields?.apostillado || "",
 
-        envioPostNL:
-          fields?.envioPostNL || "",
+  retiroUtrecht:
+    fields?.retiroUtrecht || "",
 
-        tiempoEntrega:
-          fields?.tiempoEntrega || "",
+  envioPostNL:
+    fields?.envioPostNL || "",
 
-        comentario:
-          fields?.comentario || "",
-      };
+  tiempoEntrega:
+    fields?.tiempoEntrega || "",
+
+  comentario:
+    fields?.comentario || "",
+};
 
       if (!formData.nombre) {
         return res.status(400).json({
@@ -586,15 +1004,29 @@ exports.sendEmailV2 = onRequest(
       }
 
       await sendQuotationEmailWithBrevo({
-        formData,
-        files,
-      });
+  formData,
+  files,
+});
 
-      return res.status(200).json({
-        ok: true,
-        message:
-          "Solicitud enviada correctamente",
-      });
+try {
+  await sendCustomerConfirmationWithBrevo({
+    formData,
+    files,
+  });
+} catch (confirmationError) {
+  console.error(
+    "La cotización llegó a Yohana, pero falló la confirmación al cliente:",
+    confirmationError
+  );
+}
+
+return res.status(200).json({
+  ok: true,
+  message:
+    "Solicitud enviada correctamente",
+});
+
+
     } catch (error) {
       console.error(
         "Error en sendEmailV2:",
